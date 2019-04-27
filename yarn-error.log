@@ -1,0 +1,66 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn start
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  10.15.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/waqasrehmani/work/info30005/info30005-leaf-cafeco-app/package.json: Unexpected token } in JSON at position 450
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1631:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "client-user",
+    "version": "0.1.0",
+    "private": true,
+    "engines": {
+      "npm": "6.4.1",
+      "node": "10.15.0"
+    },
+    "dependencies": {
+      "@material-ui/core": "^3.9.3",
+      "google-map-react": "^1.1.4",
+      "react": "^16.8.5",
+      "react-dom": "^16.8.5",
+      "react-icons": "^3.6.1",
+      "react-rating": "^1.6.2",
+      "react-router-dom": "^5.0.0",
+      "react-scripts": "2.1.8",
+      "react-slick": "^0.23.2",
+      "serve": "^11.0.0",
+    },
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+      "extends": "react-app"
+    },
+    "browserslist": [
+      ">0.2%",
+      "not dead",
+      "not ie <= 11",
+      "not op_mini all"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -1,6 +1,4 @@
 
-@import "~slick-carousel/slick/slick.css";
-@import "~slick-carousel/slick/slick-theme.css";
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
 .input-label {
@@ -15,7 +13,6 @@ html, body {
     background: #F7FAF8;
     scroll-behavior: smooth;
     color: #333;
-
 }
 
 html {
@@ -38,71 +35,177 @@ body {
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    flex: 1;
+    justify-content: center;
+    align-items: center;
+    background: rgba(10, 13, 10, 0.8);
 }
 
-.landing-grid-container{
+.home-landing-graphic{
+    position: absolute;
+    top: 0;
+    border: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-landing-graphic img {
     width: 98vw;
-    min-height: 98vh;
-    display: grid;
-    padding: 1vh 1vw;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 1%;
-    grid-template-areas:
-            "item1 item1 item1 item2 item2 item2 item2"
-            "item1 item1 item1 item2 item2 item2 item2"
-            "item1 item1 item1 item2 item2 item2 item2"
-            "item1 item1 item1 . item3 item3 item3"
-            "item4 item4 item4 item4 item3 item3 item3"
-            "item4 item4 item4 item4 item3 item3 item3"
-            "item4 item4 item4 item4 item3 item3 item3";
+    height: 98vh;
+}
 
 
+.home-landing-graphic-image1{
+    position: absolute;
+    top: 0;
+    border: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+.home-landing-graphic-image2{
+    position: absolute;
+    top: 0;
+    border: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-landing-graphic-image3{
+    position: absolute;
+    top: 0;
+    border: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+}
+
+.home-landing-home-button-container{
+    z-index: 3;
+    position: absolute;
+    top: 3vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.home-landing-home-button-container a {
+    cursor: pointer;
+    text-decoration-line: none;
+    color: #eee;
+    font-weight: lighter;
+    outline: 0;
+    border: solid 1px #888;
+    width: 75px;
+    height: 75px;
+    border-radius: 75px;
+    transition: all 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.home-landing-home-button-container a:hover {
+    background: #EF5439;
+    transform: scale(1.4);
+    border-color:  #444;
 
 }
 
-.landing-grid-item1 {
-    grid-area: item1;
-    background: rgba( 0, 0, 255, 1);
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px 0 #aaa;
-}
-.landing-grid-item1:hover{
-    background: rgba( 0, 0, 255, 0.5);
-}
-
-.landing-grid-item2 {
-    grid-area: item2;
-    background: rgba( 255, 0, 0, 1);
-
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px 0 #aaa;
-}
-.landing-grid-item2:hover{
-    background: rgba( 255, 0, 0, 0.5);
+.home-landing-home-dots-container {
+    z-index: 3;
+    position: absolute;
+    top: 14vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-.landing-grid-item3 {
-    grid-area: item3;
-    background: rgba( 0, 255, 0, 1);
-
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px 0 #aaa;
-}
-.landing-grid-item3:hover{
-    background: rgba( 0, 255, 0, 0.5);
+.home-landing-home-dots-container div {
+    border: solid 1px #eee;
+    width: 25px;
+    height: 25px;
+    border-radius: 25px;
 }
 
-.landing-grid-item4 {
-    grid-area: item4;
-    background: rgba( 255, 255, 0, 1);
-    border-radius: 20px;
-    box-shadow: 2px 2px 5px 0 #aaa;
+.home-landing-home-dots-container-line{
+    display: block;
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    border-bottom: solid 1px #eee;
 }
-.landing-grid-item4:hover{
-    background: rgba( 255, 255, 0, 0.5);
+
+.home-landing-right-button-container{
+    z-index: 2;
+    position: absolute;
+    top: 45vh;
+    left: 90vw;
+    height: 10vh;
+    width: 10vw;
+    color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
 }
+
+.home-landing-right-button-container svg {
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+.home-landing-right-button-container svg:hover {
+    text-shadow: 0 0 10px #eee;
+    color: #EF5439;
+    transform: scale(1.2);
+}
+
+.home-landing-left-button-container{
+    z-index: 2;
+    position: absolute;
+    top: 45vh;
+    left: 0;
+    height: 10vh;
+    width: 10vw;
+    color: #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em;
+}
+
+.home-landing-left-button-container svg {
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+.home-landing-left-button-container svg:hover {
+    text-shadow: 0 0 10px #eee;
+    color: #EF5439;
+    transform: scale(1.2);
+}
+
 
 .landing-grid-button {
     position: absolute;
@@ -235,8 +338,8 @@ body {
     position: fixed;
     z-index: 4;
     top: 30%;
-    left:30%;
-    width: 40%;
+    left:35%;
+    width: 30%;
     height: 40%;
     background: #eee;
     /*border-color: black;*/
@@ -254,8 +357,8 @@ body {
     position: fixed;
     z-index: 4;
     top: 20%;
-    left:25%;
-    width: 50%;
+    left: 30%;
+    width: 40%;
     height: 60%;
     background: #eee;
     /*border-color: black;*/
@@ -1152,7 +1255,7 @@ body {
 
 .reward-selector-list {
     flex: 4;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .reward-selector-list-item {
@@ -1193,12 +1296,12 @@ body {
     background: #EF5439;
     border-radius: 20px;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
     padding: 1vh 2vw;
     color: #eeeeee;
-    overflow: auto;
+    overflow-y: auto;
 }
 .reward-selector-list-not-picture {
     display: block;
@@ -1207,7 +1310,7 @@ body {
 
 .reward-selector-not h2 {
     display: block;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: center;
 }
 

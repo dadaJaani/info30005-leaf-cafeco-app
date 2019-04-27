@@ -7,19 +7,15 @@
     "node": "10.15.0"
   },
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
     "google-map-react": "^1.1.4",
-    "nuka-carousel": "^4.5.4",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
     "react-icons": "^3.6.1",
+    "react-pose": "^4.0.8",
     "react-rating": "^1.6.2",
-    "react-responsive-carousel": "^3.1.47",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
-    "react-slick": "^0.23.2",
-    "serve": "^11.0.0",
-    "slick-carousel": "^1.8.1"
+    "serve": "^11.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
