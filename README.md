@@ -1,11 +1,13 @@
 
 
-## Cafeco
+## Cafeco App
 
 
-###Cafeco Server
-In the folder called server. Node Server. Run by "npm start"
 
-###Cafeco App
-In the folder called client-user. React App. Run by "npm start"
 
+### Leaf
+This is a react app. Test run by "npm start" or "yarn start"
+
+
+
+### NOTE: This repository contains only the frontend web app for the Web Info Tech Project. 
