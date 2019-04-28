@@ -11,7 +11,11 @@ import LogIn from '../components/LogIn'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+import locMarker from '../assets/loc-marker.svg'
+
+const AnyReactComponent = ({ text, history }) => <div onClick={history.push('/restaurant/jsb')}>
+    <img alt = 'marker map' src = {locMarker} width={30} height={30}/>
+</div>;
 
 class Dashboard extends Component {
 
@@ -121,9 +125,31 @@ class Dashboard extends Component {
                             defaultZoom={this.props.zoom}
                         >
                             <AnyReactComponent
-                                lat={59.955413}
-                                lng={30.337844}
+                                lat={-37.795821}
+                                lng={144.979143}
                                 text="My Marker"
+                                history = {this.props.history}
+                            />
+
+                            <AnyReactComponent
+                                lat={-37.802871}
+                                lng={144.959125}
+                                text="My Marker"
+                                history = {this.props.history}
+                            />
+
+                            <AnyReactComponent
+                                lat={-37.817573}
+                                lng={144.992216}
+                                text="My Marker"
+                                history = {this.props.history}
+                            />
+
+                            <AnyReactComponent
+                                lat={-37.816700}
+                                lng={144.965789}
+                                text="My Marker"
+                                history = {this.props.history}
                             />
                         </GoogleMapReact>
                     </div>
