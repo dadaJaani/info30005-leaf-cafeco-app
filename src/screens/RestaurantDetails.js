@@ -146,7 +146,7 @@ class RestaurantDetails extends Component {
 
                     <div className='restaurant-detail-about'>
                         <h2>About</h2>
-                        <p>Lorem ipusm akdjvakljvbadlkfvba adlj ba ajf nnkjdf naj nnlakjfn ljafnvljaf nlkvjafnnlkjn </p>
+                        <p> We serve vegetables, and lots of them, while keeping sustainablility in mind. </p>
 
                         <h2>Sustainable Practices</h2>
                         <ul>
@@ -201,7 +201,7 @@ class RestaurantDetails extends Component {
 
                         <div className='restaurant-detail-reviews-list'>
                             <div className='restaurant-detail-reviews-list-item'>
-                                <label>sLeepIngAtLast</label>
+                                <label>JHolden</label>
                                 <div>
                                     <Rating
                                         initialRating={4}
@@ -227,12 +227,12 @@ class RestaurantDetails extends Component {
                                     <span >31/3/2019</span>
                                 </div>
 
-                                <p>Lorem ipasusma akj nkaj ajdfnalksdjfn nlakjd asdjfn aksdjnf aslkjdfn alskdjf nlaskdjfn nalksjnf klasbfakd vbuann liruvnsr lsn</p>
+                                <p> pretty good food, not a bad place and seems pretty sustainable </p>
                             </div>
 
 
                             <div className='restaurant-detail-reviews-list-item'>
-                                <label>sLeepIngAtLast</label>
+                                <label>vampiremaybe</label>
                                 <div>
                                     <Rating
                                         initialRating={2}
@@ -258,11 +258,11 @@ class RestaurantDetails extends Component {
                                     <span >31/3/2019</span>
                                 </div>
 
-                                <p>Lorem ipasusma akj nkaj ajdfnalksdjfn ad lkad alkm alsmd  ad;k admv kdfm; vkamd;f knadjkfv adfmlakdm lkvnf lkmflvmadflk mkf ka mldfk malkf malkf mladfmv lkadfm fk amlf makf madjf na;df n;afdkva; ldjf ban;df ;adkfav dfkm ;adfmnadfu n;fdkv; alkdfm ;dfn ;fkdv; akfdmv ;akfdm ;kadfn lkavn ;ak sdkfm v;skdfm ;skm d;slkmv ;sfdkm ;ksfd hviofdmv kmsf msdof mlsfdv smdflms;dkf;k j;sfdkm ;ksfdmb kms;dfkm nlakjd asdjfn aksdjnf aslkjdfn alskdjf nlaskdjfn nalksjnf klasbfakd vbuann liruvnsr lsn</p>
+                                <p> I do not know fellow mortal, I just... I am afraid I just drink blood dearest soul. </p>
                             </div>
 
                             <div className='restaurant-detail-reviews-list-item'>
-                                <label>sLeepIngAtLast</label>
+                                <label>Psyducks</label>
                                 <div>
                                     <Rating
                                         initialRating={5}
@@ -288,11 +288,11 @@ class RestaurantDetails extends Component {
                                     <span >31/3/2019</span>
                                 </div>
 
-                                <p>Lorem ipasusma akj nkaj ajdfnalksdjfn nlakjd asdjfn aksdjnf aslkjdfn alskdjf nlaskdjfn nalksjnf klasbfakd vbuann liruvnsr lsn</p>
+                                <p> Being quite a big fan of vegetables I must say this is probably one of, if not the best restaurant I have eaten at. </p>
                             </div>
 
                             <div className='restaurant-detail-reviews-list-item'>
-                                <label>sLeepIngAtLast</label>
+                                <label>Foodhunter</label>
                                 <div>
                                     <Rating
                                         initialRating={3}
@@ -318,11 +318,11 @@ class RestaurantDetails extends Component {
                                     <span >31/3/2019</span>
                                 </div>
 
-                                <p>Lorem ipasusma akj nkaj ajdfnalksdjfn nlakjd asdjfn aksdjnf aslkjdfn alskdjf nlaskdjfn nalksjnf klasbfakd vbuann liruvnsr lsn</p>
+                                <p> Food was not bad, but probably not worth it for the price. </p>
                             </div>
 
                             <div className='restaurant-detail-reviews-list-item'>
-                                <label>sLeepIngAtLast</label>
+                                <label>BobbyD</label>
                                 <div>
                                     <Rating
                                         initialRating={1}
@@ -348,7 +348,7 @@ class RestaurantDetails extends Component {
                                     <span >31/3/2019</span>
                                 </div>
 
-                                <p>Lorem ipasusma akj nkaj ajdfnalksdjfn nlakjd asdjfn aksdjnf aslkjdfn alskdjf nlaskdjfn nalksjnf klasbfakd vbuann liruvnsr lsn</p>
+                                <p> yeah the sustainablility of the place is great but the food absolutely sucks </p>
                             </div>
 
 

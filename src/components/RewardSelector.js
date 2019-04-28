@@ -12,7 +12,7 @@ class RewardSelector extends Component {
             return(
                 <div className='reward-selector'>
                     <h2>Choose your Rewards</h2>
-                    <h4>Awaialable Cradits: 352</h4>
+                    <h4>Avaliable Credits: 352</h4>
 
                     <div className='reward-selector-list'>
 
