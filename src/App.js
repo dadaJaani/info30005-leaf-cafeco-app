@@ -50,9 +50,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('app props', this.props)
-    console.log('app state', this.state)
-
     return (
       <div className='app-container'>
         <Router>

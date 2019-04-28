@@ -13,8 +13,18 @@ import Footer from '../components/Footer'
 
 import locMarker from '../assets/loc-marker.svg'
 
-const AnyReactComponent = ({ text, history }) => <div onClick={history.push('/restaurant/jsb')}>
-    <img alt = 'marker map' src = {locMarker} width={30} height={30}/>
+const AnyReactComponent = ({ history }) => <div >
+    <img
+        alt='marker map'
+        className='map-marker'
+        onClick={() => {
+            window.scrollTo(0, 0)
+            return history.push('/restaurant/asd')
+        }}
+        src={locMarker}
+        width={30}
+        height={30}
+    />
 </div>;
 
 class Dashboard extends Component {
@@ -71,8 +81,8 @@ class Dashboard extends Component {
     };
 
     render() {
-        console.log('dashboard props', this.props)
-        console.log(window)
+
+
         return (
             <div >
 

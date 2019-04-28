@@ -118,14 +118,7 @@ class RestaurantList extends Component {
 
 
     render(){
-        console.log(this.state)
-        let sortedItems = this.state.items.sort((a, b) => (a.name > b.name) ? 1 : -1)
-        console.log(sortedItems)
         const { itemsSorted } = this.state
-
-        // if ()
-        Object.keys(itemsSorted).forEach( i => console.log(i))
-
 
         return(
             <div>

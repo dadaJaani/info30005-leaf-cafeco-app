@@ -29,6 +29,10 @@ body {
     min-height: 100vh;
 }
 
+.map-marker {
+    cursor: pointer;
+}
+
 /* LANDING PAGE */
 
 .home-container{
@@ -1664,3 +1668,82 @@ body {
     text-align: center;
 }
 
+/* ================================================================================= */
+/*ABOUT PAGE*/
+/* ================================================================================= */
+
+
+.about-container {
+    width: 80vw;
+    margin: 0 auto 5vh;
+    display: grid;
+    grid-template-rows: 4fr auto 4fr;
+    grid-template-columns: 3fr 1fr 3fr;
+    grid-row-gap: 5vh;
+    grid-column-gap: 3vh;
+    grid-template-areas:
+            "item1 item2 item2"
+            "item5 item5 item5"
+            "item3 item3 item4"
+    ;
+}
+
+.about-item5{
+    grid-area: item5;
+    text-align: center;
+    /*padding: 0 10vw ;*/
+}
+
+.about-item5 p {
+    font-size: 1.3em;
+}
+
+.about-item1{
+    grid-area: item1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
+
+.about-item1 p{
+    font-size: 1.1em;
+}
+
+
+
+.about-item2{
+    grid-area: item2;
+}
+.about-item2 img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.about-item3{
+    grid-area: item3;
+}
+.about-item3 img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.about-item4{
+    grid-area: item4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
+.about-item4 h1{
+    text-align: center;
+}
+
+.about-item4 p{
+    font-size: 1.1em;
+
+}
