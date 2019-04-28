@@ -22,8 +22,7 @@ The front end of most other functionalities (e.g. ratings, reviews, login, signu
 
 
 ### Getting Started
-This is a react app. Test run by "npm start" or "yarn start"
-
+This is a react app. https://cafeco-frontend.herokuapp.com
 
 
 ### NOTE: This repository contains only the frontend web app for the Web Info Tech Project. 
