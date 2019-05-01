@@ -6,8 +6,7 @@ class RewardSelector extends Component {
     
 
     render () {
-        console.log(this.props.userLoggedIn)
-        
+
         if ( this.props.userLoggedIn){
             return(
                 <div className='reward-selector'>
@@ -52,7 +51,11 @@ class RewardSelector extends Component {
         } else {
             return(
                 <div className='reward-selector-not'>
-                    <img src={pictureNotLoggedIn} className='reward-selector-list-not-picture'/>
+                    <img
+                        src={pictureNotLoggedIn}
+                        className='reward-selector-list-not-picture'
+                        alt='art'
+                    />
                     <h2>Sign up or log in to acccess Rewards</h2>
 
                     <div className='reward-selector-not-buttons'>

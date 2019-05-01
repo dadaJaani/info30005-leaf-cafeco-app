@@ -211,119 +211,7 @@ body {
 }
 
 
-.landing-grid-button {
-    position: absolute;
-    top: 38vh;
-    height: 24vh;
-    width: 24vh;
-    border-radius: 24vh;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-    background: #eee;
-    border-style: solid;
-    border-color: #333;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-self: center;
-    padding: 1vh;
 
-}
-
-.landing-grid-button-inner {
-    /*position: absolute;*/
-    /*top: 1vh;*/
-    /*height: 22vh;*/
-    /*width: 22vh;*/
-    border-radius: 24vh;
-    flex: 1;
-    /*left: 0;*/
-    /*right: 0;*/
-    /*margin-left: auto;*/
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 2em;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #333;
-    transition: all 0.5s;
-}
-.landing-grid-button-inner:hover {
-    transform: scale(1.1);
-    font-size: 2.4em;
-    box-shadow: 0px 0px 15px 0 #000;
-
-}
-
-.home-carousel-container {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: stretch;
-    justify-content: center;
-    flex: 1;
-}
-
-.home-carousel-container  .slider-wrapper {
-
-    display: flex;
-    flex-flow: column wrap;
-    align-items: stretch;
-    justify-content: center;
-    flex: 1;
-}
-
-.home-carousel-container .carousel  {
-
-    display: flex;
-    flex-flow: column wrap;
-    align-items: stretch;
-    justify-content: center;
-    flex: 1;
-}
-
-.home-carousel-container .carousel-slider {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: stretch;
-    justify-content: center;
-    flex: 1;
-}
-
-.home-carousel-container .slide {
-    flex: 1;
-    display: flex;
-    flex-flow: column wrap;
-    align-items: stretch;
-    justify-content: center;
-    background: 0;
-}
-
-
-.home-carousel-item {
-    display: flex;
-    flex: 1;
-    flex-flow: column wrap;
-    justify-content: stretch;
-    align-items: center;
-    background: #bfbfbf;
-
-}
-
-.button-landing {
-    width: 20%;
-    height: 2%;
-    z-index: 4;
-    background: #eee;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 5px;
-}
 
 
 /* MODAL LOGIN SIGNUP */
@@ -393,6 +281,21 @@ body {
     font-size: 0.85em;
 }
 
+
+.signup-input-container{
+    width: 71%;
+    height: 30px;
+    text-align: left;
+    border: 0;
+    margin: 10px;
+    /*padding: 0 3%;*/
+    font-size: 0.8em;
+    background: #eee;
+    outline:0;
+    transition: all 0.3s;
+
+}
+
 .signup-input {
     width: 65%;
     height: 30px;
@@ -408,11 +311,40 @@ body {
     transition: all 0.3s;
 }
 
+.signup-input-user {
+    width: 100%;
+    margin: 0;
+}
+
+.signup-input-check-container {
+    position: absolute;
+    margin: 0 0 0 1.8em;
+    transition: all 0.6s;
+}
+
+.invisible{
+    opacity: 0;
+}
+
+.signup-input-check {
+    width: 1.4em;
+    height: 1.4em;
+    color: #1A7773;
+}
+
+.signup-input-cross{
+    width: 1.4em;
+    height: 1.4em;
+    color: rgba(121,1,3,0.67);
+    transform: rotate(45deg);
+}
+
 .signup-input:focus {
     /*border-bottom: 1px solid #11a820;*/
     box-shadow: 0 0 5px 0 #1A7773;
-
 }
+
+
 
 .signup-title {
     font-size: 1.5em;
@@ -443,6 +375,20 @@ body {
     font-size: 0.8em;
 }
 
+.signup-button-disabled {
+    outline: 0;
+    width: 25%;
+    height: 4vh;
+    margin: 10px;
+    margin-top: 3%;
+    color: #eeeeee;
+    background: linear-gradient( to right, #666666, #707070);
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-size: 0.8em;
+}
+
 .signup-button-close {
     outline: 0;
     width: 25%;
@@ -465,7 +411,6 @@ body {
     /*color: #11a220;*/
     /*border-color: #11a220;*/
     box-shadow: 0 0 10px 0 #4AC785;
-
 }
 
 .signup-button-close:hover {
@@ -474,6 +419,11 @@ body {
     box-shadow: 0 0 10px 0 #4AC785;
 
 }
+
+.signup-button-disabled {
+    box-shadow: none;
+}
+
 /* ======================================================
 /* NAVBAR
 /* ====================================================== */
@@ -565,7 +515,7 @@ body {
     grid-area: profile-item1;
     background: #1A7773;
     border-radius: 18px;
-    padding: 10%;
+    padding: 10% 5% ;
     /*display: flex;*/
     /*justify-content: center;*/
     /*align-items: center;*/
@@ -584,22 +534,22 @@ body {
     /*width: 90%;*/
     /*padding: 0 10% 0 10%;*/
     margin: 0 0 1.5em 0;
-    padding: 5% 0 0 5%;
+    padding: 5% 0 0 10%;
     font-weight: lighter;
 }
 .profile-item1 label {
     display: inline-block;
     color: #4ac785;
     text-align: right;
-    width: 25%;
-    font-size: 0.85em;
-    margin: 0 3% 0 0;
-
+    width: 15%;
+    font-size: 0.55em;
+    margin: 0 2% 0 0;
 }
 .profile-item1 span {
     display: inline-block;
     text-align: left;
-    font-size: 0.85em;
+    font-size: 0.72em;
+
 }
 
 .profile-item2 {
@@ -782,6 +732,47 @@ body {
 .profile-info-image {
     width: 250px;
     height: 250px;
+}
+
+.profile-not-signed-in {
+    width: 100vw;
+    height: 100vh;
+    background-color: #333333;
+    margin: 0;
+}
+.profile-not-signed-in a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 1.5em;
+    padding: 0;
+    width: 8em;
+    height: 8em;
+    border-radius: 10em;
+    background-color: #4ac785;
+    color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+.profile-not-signed-in h1 {
+    color: #eeeeee;
+    position: absolute;
+    width: 100vw;
+    text-align: center;
+    top: 30%;
+}
+
+.profile-not-signed-in a:hover {
+    background: #EF5439;
+    color: #eee;
+    transform: scale(1.3);
 }
 
 
@@ -1342,6 +1333,41 @@ body {
     box-shadow: 0 0 10px 0 #eee;
 }
 
+.restaurant-detail-star-container-hide {
+    display: none;
+    opacity: 0;
+    transition: all 0.3s;
+
+}
+
+.restaurant-detail-star-container {
+    /*position: absolute;*/
+    display: inline-block;
+    float: right;
+    height: 2em;
+    width: 2em;
+    margin-top: -5em;
+    transition: all 0.3s;
+}
+
+.restaurant-detail-star{
+    cursor: pointer;
+    height: 2em;
+    width: 2em;
+    transition: all 0.3s;
+}
+.restaurant-detail-star-selected {
+    color: #EF5439;
+}
+
+.restaurant-detail-star-not-selected {
+    color: #888;
+}
+
+.restaurant-detail-star:hover {
+    transform: scale(1.5);
+    color: #EF5439;
+}
 
 /* HOME PAGE */
 
@@ -1367,9 +1393,10 @@ body {
     grid-area: dashboard-main;
     /*box-shadow: 1px 1px 5px 0 #bbb;*/
     background: url(../assets/plant.png);
-    background-size: 90vw 69vh;
-    background-position: right bottom;
+    background-size: 100vw 85vh;
+    background-position: right;
     background-repeat: no-repeat;
+    /*background-repeat: no-repeat;*/
     padding: 10vh 6vw;
 }
 .home-grid-main h1 {

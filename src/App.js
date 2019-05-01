@@ -2,15 +2,13 @@ import React, { Component } from 'react'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+
 import Home from './screens/Home'
 import Dashboard from "./screens/Dashboard"
 import Profile from './screens/Profile'
 import RestaurantDetails from './screens/RestaurantDetails'
 import RestaurantList from './screens/RestaurantList'
 import About from './screens/About'
-
-
-
 
 import './styles/main.css'
 
@@ -25,6 +23,8 @@ class App extends Component {
     this.state = {
       userLoggedIn: false,
       user: {},
+      restaurants: [],
+      selectedRestaurant: {},
     }
   }
 
@@ -36,10 +36,10 @@ class App extends Component {
   }
 
   logInUser = (user) => {
-    this.setState({
-      userLoggedIn: true,
-      user,
-    })
+      this.setState({
+        userLoggedIn: true,
+        user,
+      })
   }
 
   signUpUser = (user) => {
@@ -49,7 +49,31 @@ class App extends Component {
     })
   }
 
+  selectRestaurant = (restaurantID) => {
+    let selectedRestaurant =  this.state.restaurants.find( (a) => a.id === restaurantID)
+
+    this.setState({
+      selectedRestaurant
+    })
+
+  }
+
+  populateAllRestaurants = () => {
+    API.getAllRestaurants().then(res =>
+        this.setState({
+          restaurants: res
+        })
+    )
+  }
+
+  componentDidMount() {
+    // API.createRestaurant().then(res => console.log(res));
+    this.populateAllRestaurants()
+
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div className='app-container'>
         <Router>
@@ -60,8 +84,9 @@ class App extends Component {
                   signUpUser={this.signUpUser}
                   userLoggedIn={this.state.userLoggedIn}
                   user={this.state.user}
+                  restaurants={this.state.restaurants}
                   logOutUser={this.logOutUser}
-
+                  selectRestaurant={this.selectRestaurant}
               />
           )}/>
 
@@ -70,6 +95,7 @@ class App extends Component {
                   userLoggedIn={this.state.userLoggedIn}
                   user={this.state.user}
                   logOutUser={this.logOutUser}
+                  restaurants={this.state.restaurants}
               />
           )}/>
 
@@ -80,6 +106,7 @@ class App extends Component {
                   userLoggedIn={this.state.userLoggedIn}
                   user={this.state.user}
                   logOutUser={this.logOutUser}
+                  restaurant={this.state.selectedRestaurant}
               />
           )}/>
 
@@ -90,6 +117,9 @@ class App extends Component {
                   userLoggedIn={this.state.userLoggedIn}
                   user={this.state.user}
                   logOutUser={this.logOutUser}
+                  restaurants={this.state.restaurants}
+                  selectRestaurant={this.selectRestaurant}
+                  populateAllRestaurants={this.populateAllRestaurants}
               />
           )}/>
 
@@ -100,7 +130,6 @@ class App extends Component {
                 userLoggedIn={this.state.userLoggedIn}
                 user={this.state.user}
                 logOutUser={this.logOutUser}
-
               />
             )}
           />

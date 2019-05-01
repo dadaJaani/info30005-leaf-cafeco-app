@@ -37,6 +37,8 @@ class NavBar extends Component {
     doLogIn = (user) => {
         this.closeLogin()
         this.props.logInUser(user)
+
+
     }
 
     // Functions for Sign Up Modal
@@ -71,7 +73,6 @@ class NavBar extends Component {
     }
 
     render () {
-        console.log(this.props.history.location.pathname)
 
         return (
             <div className={'navbar-container'}>

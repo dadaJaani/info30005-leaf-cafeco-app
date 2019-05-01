@@ -13,17 +13,19 @@ import Footer from '../components/Footer'
 
 import locMarker from '../assets/loc-marker.svg'
 
-const AnyReactComponent = ({ history }) => <div >
+const AnyReactComponent = ({ history, restaurantID, selectRestaurant, name }) => <div >
     <img
         alt='marker map'
         className='map-marker'
         onClick={() => {
             window.scrollTo(0, 0)
-            return history.push('/restaurant/asd')
+            selectRestaurant(restaurantID)
+            return history.push('/restaurant/' + restaurantID)
         }}
         src={locMarker}
         width={30}
         height={30}
+        title={name}
     />
 </div>;
 
@@ -56,9 +58,9 @@ class Dashboard extends Component {
         this.props.signUpUser(user)
     }
 
-    goToRestaurantProfile = () => {
+    goToRestaurantProfile = (resaurantID) => {
         this.scrollToTop()
-        this.props.history.push('/restaurant/' + 'asd')
+        this.props.history.push('/restaurant/' + resaurantID)
 
     }
 
@@ -72,6 +74,10 @@ class Dashboard extends Component {
         window.scrollTo(0, 0)
     }
 
+    selectRestaurant = (restaurantID) => {
+        this.props.selectRestaurant(restaurantID)
+    }
+
     static defaultProps = {
         center: {
             lat: -37.798404,
@@ -81,6 +87,26 @@ class Dashboard extends Component {
     };
 
     render() {
+
+        let topRestaurants = []
+        let topRestaurantsMarkers = []
+
+
+        if (this.props.restaurants) {
+            topRestaurants = this.props.restaurants
+
+            for (var i=0; i<10; i++) {
+                topRestaurants = topRestaurants.sort((b ,a) => a.averageSustainabilityRating - b.averageSustainabilityRating).slice(0,10);
+            }
+
+            topRestaurantsMarkers = topRestaurants.map( resto => ({
+                lat: resto.location.lat,
+                lng: resto.location.lng,
+                restaurantID: resto.id,
+                name: resto.name,
+
+            }))
+        }
 
 
         return (
@@ -134,33 +160,20 @@ class Dashboard extends Component {
                             defaultCenter={this.props.center}
                             defaultZoom={this.props.zoom}
                         >
-                            <AnyReactComponent
-                                lat={-37.795821}
-                                lng={144.979143}
-                                text="My Marker"
-                                history = {this.props.history}
-                            />
-
-                            <AnyReactComponent
-                                lat={-37.802871}
-                                lng={144.959125}
-                                text="My Marker"
-                                history = {this.props.history}
-                            />
-
-                            <AnyReactComponent
-                                lat={-37.817573}
-                                lng={144.992216}
-                                text="My Marker"
-                                history = {this.props.history}
-                            />
-
-                            <AnyReactComponent
-                                lat={-37.816700}
-                                lng={144.965789}
-                                text="My Marker"
-                                history = {this.props.history}
-                            />
+                            {
+                                topRestaurantsMarkers.map(marker =>
+                                    <AnyReactComponent
+                                        lat={marker.lat}
+                                        lng={marker.lng}
+                                        key={marker.restaurantID}
+                                        name={marker.name}
+                                        text="My Marker"
+                                        history = {this.props.history}
+                                        restaurantID={marker.restaurantID}
+                                        selectRestaurant={this.selectRestaurant}
+                                    />
+                                )
+                            }
                         </GoogleMapReact>
                     </div>
 
@@ -177,135 +190,47 @@ class Dashboard extends Component {
 
                     <div className='home-grid-featured'>
 
-                        <div
-                            className='home-grid-featured-item'
 
-                        >
-                            <img
-                                src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'
-                                className='home-grid-featured-item-photo'
-                                alt='resto photo'
-                            />
-                            <p
-                                className='home-grid-featured-item-name'
-                            >
-                                The Vegie Bar
-                            </p>
-                            <p
-                                className='home-grid-featured-item-info'
-                            >
-                                Inventive veggie and vegan meals, raw food and cocktails in a lively space with a leafy courtyard.
-                            </p>
-                            <div
-                                className='home-grid-featured-item-button-container'
-                            >
-                                <button
-                                    className='home-grid-featured-item-button'
-                                    onClick={this.goToRestaurantProfile}
+                        {
+                            topRestaurants.map(restaurant => (
+                                <div
+                                    className='home-grid-featured-item'
+                                    key={restaurant.id}
                                 >
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
+                                    <img
+                                        src={restaurant.photo}
+                                        className='home-grid-featured-item-photo'
+                                        alt='resto photo'
+                                    />
+                                    <p
+                                        className='home-grid-featured-item-name'
+                                    >
+                                        {restaurant.name}
+                                    </p>
+                                    <p
+                                        className='home-grid-featured-item-info'
+                                    >
+                                        {restaurant.description}
+                                    </p>
+                                    <div
+                                        className='home-grid-featured-item-button-container'
+                                    >
+                                        <button
+                                            className='home-grid-featured-item-button'
+                                            onClick={ () => {
+                                                this.selectRestaurant(restaurant.id)
+                                                this.goToRestaurantProfile(restaurant.id)
+                                            }}
 
-                        <div
-                            className='home-grid-featured-item'
-
-                        >
-                            <img
-                                src='https://i.pinimg.com/originals/de/07/a0/de07a037aabaf27d230b0e3116856c8c.jpg'
-                                className='home-grid-featured-item-photo'
-                                alt='resto photo'
-                            />
-                            <p
-                                className='home-grid-featured-item-name'
-                            >
-                                Seven Seeds Coffee Roasters
-                            </p>
-                            <p
-                                className='home-grid-featured-item-info'
-                            >
-                                Airy, industrial-chic cafe and micro-roaster serving all-day brunch, salads and specialty teas.
-                            </p>
-                            <div
-                                className='home-grid-featured-item-button-container'
-                            >
-                                <button
-                                    className='home-grid-featured-item-button'
-                                    onClick={this.goToRestaurantProfile}
-                                >
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
-
-
-                        <div
-                            className='home-grid-featured-item'
-
-                        >
-                            <img
-                                src='https://www.broadsheet.com.au/media/cache/1f/bf/1fbf6804a7aa53d06282fd070acb3301.jpg'
-                                className='home-grid-featured-item-photo'
-                                alt='resto photo'
-                            />
-                            <p
-                                className='home-grid-featured-item-name'
-                            >
-                                Fifty Acres
-                            </p>
-                            <p
-                                className='home-grid-featured-item-info'
-                            >
-                                Inventive all-day breakfast menu in a boutique cafe with exposed-brick walls and booth seating.
-                            </p>
-                            <div
-                                className='home-grid-featured-item-button-container'
-                            >
-                                <button
-                                    className='home-grid-featured-item-button'
-                                    onClick={this.goToRestaurantProfile}
-                                >
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
-
-
-                        <div
-                            className='home-grid-featured-item'
-
-                        >
-                            <img
-                                src='https://www.goodfood.com.au/content/dam/images/g/z/o/j/2/2/image.related.wideLandscape.940x529.gzmqv0.png/1511218776331.jpg'
-                                className='home-grid-featured-item-photo'
-                                alt='resto photo'
-                            />
-                            <p
-                                className='home-grid-featured-item-name'
-                            >
-                                Brunetti Flinders Lane
-                            </p>
-                            <p
-                                className='home-grid-featured-item-info'
-                            >
-                                Italian cafe known for sweets, serving pizza and pasta in a modern space with an outdoor area.
-                            </p>
-                            <div
-                                className='home-grid-featured-item-button-container'
-                            >
-                                <button
-                                    className='home-grid-featured-item-button'
-                                    onClick={this.goToRestaurantProfile}
-                                >
-                                    Learn More
-                                </button>
-                            </div>
-                        </div>
+                                        >
+                                            Learn More
+                                        </button>
+                                    </div>
+                                </div>
+                            ))
+                        }
 
                         <div className='home-grid-featured-item-void' />
-
-
 
                     </div>
 

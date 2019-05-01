@@ -4,6 +4,10 @@ import { Link, withRouter } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import Footer from '../components/Footer'
 
+import * as API from '../utils/api'
+
+
+
 class Profile extends Component {
 
     constructor(props) {
@@ -13,6 +17,9 @@ class Profile extends Component {
 
         }
     }
+
+
+
 
 
 
@@ -29,11 +36,20 @@ class Profile extends Component {
     }
 
 
+    componentDidMount() {
+        API.getRewardsByUserID(this.props.user.username).then(res => {
+            console.log(res)
+        })
+    }
+
+
     render () {
+
+        const { user } = this.props
+
         if (this.props.userLoggedIn) {
             return (
                 <div>
-
                     <NavBar
                         {...this.props}
                         logOutUser={this.logOutUser}
@@ -47,19 +63,19 @@ class Profile extends Component {
 
                             <div >
                                 <label >Name:</label>
-                                <span>Ena Kawakami</span>
+                                <span>{user.fname} {user.lname}</span>
 
                             </div>
 
                             <div >
                                 <label>Username:</label>
-                                <span>ekk1105</span>
+                                <span>{user.username}</span>
 
                             </div>
 
                             <div>
                                 <label>Email:</label>
-                                <span>kawakamiena@gmail.com</span>
+                                <span>{user.email}</span>
 
                             </div>
 
@@ -77,7 +93,7 @@ class Profile extends Component {
                             </h2>
                             <div className='profile-item2-points-container'>
                                 <p >
-                                    352
+                                    {user.points}
                                 </p>
                                 <span >
                                     available
@@ -243,13 +259,16 @@ class Profile extends Component {
             )
         } else {
             return (
-                <div>
-                    No user signed in. Go
+                <div className='profile-not-signed-in'>
+                    <h1>
+                        User not signed in
+                    </h1>
+
                     <Link
                         className={'navbar-button'}
                         to={'/dashboard'}
                     > Home </Link>
-                    to sign in.
+
 
                 </div>
             )

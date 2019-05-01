@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
-import { IoIosArrowForward, IoIosArrowBack, IoIosArrowUp } from 'react-icons/io'
+import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io'
 import posed from 'react-pose';
 
 import landing1 from '../assets/landing1.svg'
@@ -45,7 +45,6 @@ class Home extends Component {
     
     render() {
 
-        console.log(this.state)
         const { slideIndex } = this.state
 
         const Graphics = posed.div({

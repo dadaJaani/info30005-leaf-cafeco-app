@@ -4,6 +4,7 @@ import { IoIosArrowUp } from "react-icons/io";
 
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
+import Dashboard from "./Dashboard";
 
 class RestaurantList extends Component {
 
@@ -11,63 +12,64 @@ class RestaurantList extends Component {
         super(props)
 
         this.state = {
-            items: [
-                {
-                    name: "Starbucks",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "MCG"
-                },
-                {
-                    name: "Anderson",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "Home"
-                },
-                {
-                    name: "Candey",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "House"
-                },
-                {
-                    name: "Danbury",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asd"
-                },
-                {
-                    name: "DistantLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-                {
-                    name: "DistantLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-                {
-                    name: "NasstantLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-                {
-                    name: "JanstiLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-                {
-                    name: "DistantLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-                {
-                    name: "DistantLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-                {
-                    name: "DistantLannd",
-                    photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
-                    location: "asdas"
-                },
-            ],
+            items: props.restaurants,
+            //     [
+            //     {
+            //         name: "Starbucks",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "MCG"
+            //     },
+            //     {
+            //         name: "Candey",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "House"
+            //     },
+            //     {
+            //         name: "Anderson",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "Home"
+            //     },
+            //     {
+            //         name: "Danbury",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asd"
+            //     },
+            //     {
+            //         name: "DistantLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            //     {
+            //         name: "DistantLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            //     {
+            //         name: "NasstantLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            //     {
+            //         name: "JanstiLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            //     {
+            //         name: "DistantLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            //     {
+            //         name: "DistantLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            //     {
+            //         name: "DistantLannd",
+            //         photo: "https://file.videopolis.com/D/9dc9f4ba-0b2d-4cbb-979f-fee7be8a4198/8485.11521.brussels.the-hotel-brussels.amenity.restaurant-AD3WAP2L-13000-853x480.jpeg",
+            //         location: "asdas"
+            //     },
+            // ],
             itemsSorted: {},
             loading: true,
         };
@@ -92,14 +94,15 @@ class RestaurantList extends Component {
         this.props.signUpUser(user)
     }
 
-    componentDidMount() {
+    sortIntoCategories = () => {
         let temp =  {}
-        this.state.items.forEach((item) => {
+        let sortedTemp = this.state.items.sort((a,b) => a.name > b.name ? 1 : -1)
+
+        sortedTemp.forEach((item) => {
             let firstChar = item.name[0].toUpperCase()
             if ( temp[firstChar] === undefined || temp[firstChar.toUpperCase()] === null) {
                 temp[firstChar] = []
             }
-
             temp[firstChar].push(item)
         })
 
@@ -107,9 +110,21 @@ class RestaurantList extends Component {
             itemsSorted: temp,
             loading: false,
         })
+    }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            items: nextProps.restaurants
+        });
+        this.sortIntoCategories()
+    }
 
-        console.log('temp', temp)
+    componentDidMount() {
+        if (this.props.restaurants.length === 0) {
+            this.props.populateAllRestaurants()
+        } else {
+            this.sortIntoCategories()
+        }
     }
 
     scrollToTop = () => {
@@ -119,7 +134,7 @@ class RestaurantList extends Component {
 
     render(){
         const { itemsSorted } = this.state
-
+        console.log(this.props)
         return(
             <div>
                 <NavBar
@@ -162,11 +177,12 @@ class RestaurantList extends Component {
                                         className='restaurant-list-sublist-item'
                                         onClick={() => {
                                             this.scrollToTop()
-                                            return this.props.history.push('/restaurant/' + restaurant.name )
+                                            this.props.selectRestaurant(restaurant.id)
+                                            this.props.history.push('/restaurant/' + restaurant.id)
                                         }}
                                     >
                                         <img
-                                            alt='resto photo'
+                                            alt='restosasd photo'
                                             src={restaurant.photo}
                                         />
                                         <span>

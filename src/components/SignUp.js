@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-
-// import * as API from '../utils/api'
+import * as API from '../utils/api'
 
 import '../styles/main.css'
+import {IoIosAddCircle, IoIosCheckmarkCircle} from "react-icons/io";
 
 class SignUp extends Component {
 
@@ -17,6 +17,14 @@ class SignUp extends Component {
             email: '',
             password: '',
             cpassword: '',
+            showStatusUser: false,
+            usernameExists: false,
+            showStatusEmail: false,
+            emailExists: false,
+
+            showStatusPassword: false,
+            passwordCorrect: false,
+            formErrors: true,
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,11 +39,110 @@ class SignUp extends Component {
             password: this.refs.passwordIN.value,
             cpassword: this.refs.cpasswordIN.value,
         })
+
+        if (this.refs.cpasswordIN.value !== '' && this.refs.passwordIN.value !== ''){
+
+            if (this.refs.cpasswordIN.value ===  this.refs.passwordIN.value) {
+                this.setState({
+                    showStatusPassword: true,
+                    passwordCorrect: true
+                })
+            } else {
+                this.setState({
+                    showStatusPassword: true,
+                    passwordCorrect: false
+                })
+            }
+        } else {
+            this.setState({
+                showStatusPassword: false,
+            })
+        }
+
+        this.setState((prevState) =>  {
+            const { username, emailExists, email, passwordCorrect, usernameExists, fname, lname } = prevState
+            if (!emailExists && username !== '' && passwordCorrect && !usernameExists && email !== '' && fname !== '' && lname !== ''){
+                return {
+                    formErrors: false,
+                }
+            } else {
+                return {
+                    formErrors: true,
+                }
+            }
+
+        })
+
     }
 
 
+    handleChangeUser = () => {
+        if (this.refs.usernameIN.value !== ''){
+            API.checkUserID(this.refs.usernameIN.value).then(res =>
+                this.setState({
+                    showStatusUser: true,
+                    usernameExists: res
+                }, () => {
+                    this.setState((prevState) =>  {
+                        const { username, emailExists, email, passwordCorrect, fname, lname } = prevState
+                        if (!emailExists && username !== '' && passwordCorrect && !res && email !== '' && fname !== '' && lname !== ''){
+                            return {
+                                formErrors: false,
+                            }
+                        } else {
+                            return {
+                                formErrors: true,
+                            }
+                        }
+
+                    })
+                    }
+                )
+
+
+            )
+        } else {
+            this.setState({
+                showStatusUser: false,
+            })
+        }
+
+
+    }
+
+    handleChangeEmail = () => {
+
+        if (this.refs.emailIN.value !== ''){
+            API.checkUserEmail(this.refs.emailIN.value).then(res =>
+                this.setState({
+                    showStatusEmail: true,
+                    emailExists: res
+                }, () => {
+                    this.setState((prevState) =>  {
+                        const { username, emailExists, email, passwordCorrect, fname, lname } = prevState
+                        if (!emailExists && username !== '' && passwordCorrect && !res && email !== '' && fname !== '' && lname !== ''){
+                            return {
+                                formErrors: false,
+                            }
+                        } else {
+                            return {
+                                formErrors: true,
+                            }
+                        }
+
+                    })
+                })
+            )
+        } else {
+            this.setState({
+                showStatusEmail: false,
+            })
+        }
+    }
+
     signUpUser = (event) => {
         event.preventDefault();
+
         // console.log(this.state);
         // alert('A name was submitted: ' + this.state);
 
@@ -57,15 +164,34 @@ class SignUp extends Component {
     doSignUp = (event) => {
         event.preventDefault();
 
-        this.props.doSignUp({
-            name: 'asdasd',
-        });
+        if (this.state.formErrors) {
+
+        } else {
+            let newUser = {
+                username: this.state.username,
+                fname: this.state.fname,
+                lname: this.state.lname,
+                email: this.state.email,
+                password: this.state.password,
+            }
+
+            API.createUser(newUser).then( res => {
+                console.log(res)
+                if (!res) {
+
+                } else {
+                    this.props.doSignUp(res)
+                }
+            })
+        }
+
     }
 
     closeSignUp = () => {
         this.props.closeSignUp()
     }
 
+    //mj@hotmail.com
 
     render(){
 
@@ -86,6 +212,7 @@ class SignUp extends Component {
 
                         <div className='signup-input-container'>
                             <label className='signup-input-label'>Username:</label>
+
                             <input
                                 className={'signup-input'}
                                 placeholder={'Username'}
@@ -93,7 +220,25 @@ class SignUp extends Component {
                                 value={this.state.username}
                                 ref="usernameIN"
                                 onChange={this.handleChange}
+                                onBlur={this.handleChangeUser}
                             />
+
+                            <div className={ this.state.showStatusUser
+                                ? 'signup-input-check-container'
+                                : 'signup-input-check-container invisible'
+                            }>
+                                {!this.state.usernameExists
+                                    ?
+                                    <IoIosCheckmarkCircle
+                                        className={'signup-input-check'}
+                                    />
+
+                                    :
+                                    <IoIosAddCircle
+                                        className={'signup-input-cross'}
+                                    />
+                                }
+                            </div>
                         </div>
 
 
@@ -128,7 +273,25 @@ class SignUp extends Component {
                                 type="text"
                                 value={this.state.email}
                                 ref="emailIN"
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange}
+                                onBlur={this.handleChangeEmail}
+                            />
+                            <div className={ this.state.showStatusEmail
+                                ? 'signup-input-check-container'
+                                : 'signup-input-check-container invisible'
+                            }>
+                                {!this.state.emailExists
+                                    ?
+                                    <IoIosCheckmarkCircle
+                                        className={'signup-input-check'}
+                                    />
+
+                                    :
+                                    <IoIosAddCircle
+                                        className={'signup-input-cross'}
+                                    />
+                                }
+                            </div>
                         </div>
 
 
@@ -140,7 +303,8 @@ class SignUp extends Component {
                                 type={'password'}
                                 value={this.state.password}
                                 ref="passwordIN"
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange}
+                            />
                         </div>
 
                         <div className='signup-input-container'>
@@ -151,7 +315,25 @@ class SignUp extends Component {
                                 type={'password'}
                                 value={this.state.cpassword}
                                 ref="cpasswordIN"
-                                onChange={this.handleChange}/>
+                                onChange={this.handleChange}
+                            />
+
+                            <div className={ this.state.showStatusPassword
+                                ? 'signup-input-check-container'
+                                : 'signup-input-check-container invisible'
+                            }>
+                                {this.state.passwordCorrect
+                                    ?
+                                    <IoIosCheckmarkCircle
+                                        className={'signup-input-check'}
+                                    />
+
+                                    :
+                                    <IoIosAddCircle
+                                        className={'signup-input-cross'}
+                                    />
+                                }
+                            </div>
                         </div>
 
 
@@ -162,7 +344,9 @@ class SignUp extends Component {
                                 onClick={this.closeSignUp}>Cancel
                             </button>
                             <button
-                                className={'signup-button'}
+                                className={this.state.formErrors
+                                    ? 'signup-button-disabled'
+                                    : 'signup-button' }
                                 onClick={this.doSignUp}>Sign Up
                             </button>
                         </div>
