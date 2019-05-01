@@ -9,6 +9,9 @@ import Profile from './screens/Profile'
 import RestaurantDetails from './screens/RestaurantDetails'
 import RestaurantList from './screens/RestaurantList'
 import About from './screens/About'
+import PartnerSignUp from './screens/PartnerSignUp'
+
+
 
 import './styles/main.css'
 
@@ -67,7 +70,6 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // API.createRestaurant().then(res => console.log(res));
     this.populateAllRestaurants()
 
   }
@@ -132,6 +134,13 @@ class App extends Component {
                 logOutUser={this.logOutUser}
               />
             )}
+          />
+
+          <Route path="/admin/createpartner" exact render={() => (
+              <PartnerSignUp
+
+              />
+          )}
           />
         </Router>
       </div>

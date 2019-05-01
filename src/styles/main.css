@@ -33,6 +33,87 @@ body {
     cursor: pointer;
 }
 
+
+/* ADMIN CREATE PARTNER PAGE */
+
+.admin-add-partner-container {
+    width: 100vw;
+    height: 150vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-add-partner-container div{
+    padding: 0.4em 0;
+    width: 51vw;
+    display: flex;
+    align-items: center;
+}
+
+.admin-add-partner-container label{
+    display: inline-block;
+    width: 25vw;
+}
+.admin-add-partner-container textarea{
+    display: inline-block;
+    width: 25vw;
+    height: 5em;
+    outline: 0;
+    resize: none;
+    border: solid 1px #4ac785;
+    margin: 0;
+    padding: 5px;
+
+}
+
+.admin-add-partner-container input{
+    display: inline-block;
+    width: 25vw;
+    height: 2em;
+    outline: 0;
+    resize: none;
+    border: solid 1px #4ac785;
+    padding: 5px;
+}
+
+
+#small-input {
+    width: 10vw;
+    margin-right: 2vw;
+
+}
+
+#select-rewards-checkbox-input{
+    height: 28vh;
+}
+
+#select-rewards-checkbox-input-inner{
+    height: 25vh;
+    width: 25vw;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+
+}
+#select-rewards-checkbox-input-inner input{
+    display: inline;
+    width: 2vw;
+
+}
+#select-rewards-checkbox-input-inner div{
+    display: inline;
+    display: flex;
+    padding: 0;
+    margin: 0;
+}
+#select-rewards-checkbox-input-inner p{
+    display: inline;
+    margin: 0;
+}
+/*#select-rewards-checkbox-input-inner*/
+
 /* LANDING PAGE */
 
 .home-container{

@@ -110,28 +110,28 @@ export const createReward = (newReward) =>
 // ============================================================================================================
 // ============================================================================================================
 
-let newRestaurant = {
-    id: "thevegiebar",
-    password: "123",
-    email: "thevegiebars@gmail.com",
-    name: "The Vegie Bar",
-    address: "380 Brunswick St, Fitzroy, VIC 3065",
-    description: "Inventive veggie and vegan meals, raw food and cocktails in a lively space with a leafy courtyard.",
-    foodReviews:[],
-    sustainabilityReviews:[],
-    averageFoodRating: 0,
-    location: {
-        lat: -37.795840,
-        lng: 144.979121,
-    },
-    website: "vegiebar.com.au",
-    phone: "(03) 9417 6935",
-    averageSustainabilityRating: 0,
-    typeOfRewards: ["RewFD", "Rew10", "Rew20", "Rew50" ],
-    photos: "https://www.goodfood.com.au/content/dam/images/h/1/9/6/w/t/image.related.wideLandscape.940x529.h198ct.png/1545090534636.jpg",
-}
+// let newRestaurant = {
+//     id: "thevegiebar",
+//     password: "123",
+//     email: "thevegiebars@gmail.com",
+//     name: "The Vegie Bar",
+//     address: "380 Brunswick St, Fitzroy, VIC 3065",
+//     description: "Inventive veggie and vegan meals, raw food and cocktails in a lively space with a leafy courtyard.",
+//     foodReviews:[],
+//     sustainabilityReviews:[],
+//     averageFoodRating: 0,
+//     location: {
+//         lat: -37.795840,
+//         lng: 144.979121,
+//     },
+//     website: "vegiebar.com.au",
+//     phone: "(03) 9417 6935",
+//     averageSustainabilityRating: 0,
+//     typeOfRewards: ["RewFD", "Rew10", "Rew20", "Rew50" ],
+//     photos: "https://www.goodfood.com.au/content/dam/images/h/1/9/6/w/t/image.related.wideLandscape.940x529.h198ct.png/1545090534636.jpg",
+// }
 
-export const createRestaurant = () =>
+export const createRestaurant = (newRestaurant) =>
     fetch(`${api}/restaurant`, {
         method: 'post',
         headers: {
