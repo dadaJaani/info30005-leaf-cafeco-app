@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
 
 import * as API from '../utils/api'
+import { css } from 'emotion';
+
+import { Dots } from 'react-activity';
+import 'react-activity/dist/react-activity.css';
+
+const override = css`
+    display: block;
+    margin: 0 auto;
+    width: 10em;
+    border-color: red;
+`;
 
 class PartnerSignUp extends Component {
 
@@ -8,28 +19,31 @@ class PartnerSignUp extends Component {
         super(props)
 
         this.state = {
-            id: "",
-            password: "",
-            email: "",
-            name: "",
-            address: " ",
-            description: "",
-            about: "",
-            sustainabilityPractices: "",
-            foodReviews:[],
-            sustainabilityReviews:[],
-            averageFoodRating: 0,
-            location: {
-                lat: 0,
-                lng: 0,
+            restaurant: {
+                id: "",
+                password: "",
+                email: "",
+                name: "",
+                address: " ",
+                description: "",
+                about: "",
+                sustainabilityPractices: [],
+                foodReviews:[],
+                sustainabilityReviews:[],
+                averageFoodRating: 0,
+                location: {
+                    lat: 0,
+                    lng: 0,
+                },
+                website: "",
+                phone: "",
+                averageSustainabilityRating: 0,
+                typeOfRewards: [],
+                photo: "",
             },
-            website: "",
-            phone: "",
-            averageSustainabilityRating: 0,
-            typeOfRewards: [],
-            photos: "",
-        }
+            loading: false,
 
+        }
         this.buttonActive = false
     }
 
@@ -37,6 +51,7 @@ class PartnerSignUp extends Component {
 
     handleChange = () => {
         let typeOfRewards = []
+        let sustainabilityPractices = this.refs.sustainabilityPracticesIN.value.split('//');
 
         if (this.refs.RewFDIN.checked) typeOfRewards.push(this.refs.RewFDIN.value)
         if (this.refs.Rew10IN.checked) typeOfRewards.push(this.refs.Rew10IN.value)
@@ -48,36 +63,87 @@ class PartnerSignUp extends Component {
         if (this.refs.Rew100IN.checked) typeOfRewards.push(this.refs.Rew100IN.value)
 
 
+
         this.setState({
-            id: this.refs.idIN.value.toLowerCase(),
-            password: this.refs.passwordIN.value.toLowerCase(),
-            email: this.refs.emailIN.value.toLowerCase(),
-            name: this.refs.nameIN.value,
-            address: this.refs.addressIN.value,
-            description: this.refs.descriptionIN.value,
-            about: this.refs.aboutIN.value,
-            sustainabilityPractices: this.refs.sustainabilityPracticesIN.value,
-            location: {
-                lat: parseFloat(this.refs.latIN.value),
-                lng: parseFloat(this.refs.lngIN.value),
+            restaurant: {
+                id: this.refs.idIN.value.toLowerCase(),
+                password: this.refs.passwordIN.value.toLowerCase(),
+                email: this.refs.emailIN.value.toLowerCase(),
+                name: this.refs.nameIN.value,
+                address: this.refs.addressIN.value,
+                description: this.refs.descriptionIN.value,
+                about: this.refs.aboutIN.value,
+                sustainabilityPractices: sustainabilityPractices,
+                location: {
+                    lat: parseFloat(this.refs.latIN.value),
+                    lng: parseFloat(this.refs.lngIN.value),
+                },
+                website: this.refs.websiteIN.value.toLowerCase(),
+                phone: this.refs.phoneIN.value,
+                typeOfRewards: typeOfRewards,
+                photo: this.refs.photoIN.value,
             },
-            website: this.refs.websiteIN.value.toLowerCase(),
-            phone: this.refs.phoneIN.value,
-            typeOfRewards: typeOfRewards,
-            photos: this.refs.photoIN.value,
+
         })
 
         const { id, password, email, name, address, description, about, sustainablePractices, location, website, phone, photos } = this.state
+
+    }
+
+    resetFields = () => {
+        this.refs.RewFDIN.checked = false
+        this.refs.Rew10IN.checked = false
+        this.refs.Rew20IN.checked = false
+        this.refs.Rew25IN.checked = false
+        this.refs.Rew50IN.checked = false
+        this.refs.Rew75IN.checked = false
+        this.refs.RewFMIN.checked = false
+        this.refs.Rew100IN.checked = false
+        this.refs.sustainabilityPracticesIN.value = ''
+
+        this.refs.latIN.value = ''
+        this.refs.lngIN.value = ''
+
+        this.setState({
+            restaurant: {
+                id: "",
+                password: "",
+                email: "",
+                name: "",
+                address: " ",
+                description: "",
+                about: "",
+                sustainabilityPractices: [],
+                foodReviews:[],
+                sustainabilityReviews:[],
+                averageFoodRating: 0,
+                location: {
+                    lat: 0,
+                    lng: 0,
+                },
+                website: "",
+                phone: "",
+                averageSustainabilityRating: 0,
+                typeOfRewards: [],
+                photo: "",
+            },
+            loading: false,
+        })
 
 
     }
 
     createRestaurant = (e) => {
-        e.preventDefault();
+        e.preventDefault()
+        ;
+        this.setState({
+            loading: true,
+        })
 
-
-        API.createRestaurant(this.state).then(res => console.log(res));
-        console.log(this.state)
+        API.createRestaurant(this.state.restaurant).then(res => {
+            this.resetFields()
+            alert('Successfully created restaurant: ' + res.id)
+        });
     }
 
     render() {
@@ -91,7 +157,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Restaurant ID: </label>
                         <input
-                            value={this.state.id}
+                            value={this.state.restaurant.id}
                             ref="idIN"
                             onChange={this.handleChange}
                             required
@@ -100,7 +166,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Restaurant Password: </label>
                         <input
-                            value={this.state.password}
+                            value={this.state.restaurant.password}
                             ref="passwordIN"
                             onChange={this.handleChange}
                             required
@@ -109,7 +175,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Email: </label>
                         <input
-                            value={this.state.email}
+                            value={this.state.restaurant.email}
                             ref="emailIN"
                             onChange={this.handleChange}
                             required
@@ -119,7 +185,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Name: </label>
                         <input
-                            value={this.state.name}
+                            value={this.state.restaurant.name}
                             ref="nameIN"
                             onChange={this.handleChange}
                             required
@@ -128,7 +194,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Address: </label>
                         <input
-                            value={this.state.address}
+                            value={this.state.restaurant.address}
                             ref="addressIN"
                             onChange={this.handleChange}
                             required
@@ -137,7 +203,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Description: </label>
                         <textarea
-                            value={this.state.description}
+                            value={this.state.restaurant.description}
                             ref="descriptionIN"
                             onChange={this.handleChange}
                             required
@@ -146,16 +212,15 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>About: </label>
                         <textarea
-                            value={this.state.about}
+                            value={this.state.restaurant.about}
                             ref="aboutIN"
                             onChange={this.handleChange}
                             required
                         />
                     </div>
                     <div>
-                        <label>Sustainable Practice: </label>
+                        <label>Sustainable Practice (separate by '//'): </label>
                         <textarea
-                            value={this.state.sustainabilityPractices}
                             ref="sustainabilityPracticesIN"
                             onChange={this.handleChange}
                             required
@@ -220,7 +285,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Website (exclude 'http://www.'): </label>
                         <input
-                            value={this.state.website}
+                            value={this.state.restaurant.website}
                             ref="websiteIN"
                             onChange={this.handleChange}
                             required
@@ -229,7 +294,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Phone: </label>
                         <input
-                            value={this.state.phone}
+                            value={this.state.restaurant.phone}
                             ref="phoneIN"
                             onChange={this.handleChange}
                             required
@@ -239,7 +304,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Photo: </label>
                         <input
-                            value={this.state.phone}
+                            value={this.state.restaurant.photo}
                             ref="photoIN"
                             onChange={this.handleChange}
                             required
@@ -247,21 +312,27 @@ class PartnerSignUp extends Component {
                         />
                     </div>
 
-
                     <button
                         className='signup-button'
                     >
                         Add Partner
                     </button>
 
-                    <input
-                        value={this.state.photo}
-                        ref="photoIN"
-                        onChange={this.handleChange}
-                        type='reset'
-                    />
-
                 </form>
+
+                <button
+                    className='signup-button'
+                    onClick={this.resetFields}
+                >
+                    Reset
+                </button>
+
+                <Dots
+                    size={15}
+                    color={'#4ac785'}
+                    speed={2}
+                    animating={this.state.loading}
+                />
 
 
             </div>

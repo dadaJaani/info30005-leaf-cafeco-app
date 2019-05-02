@@ -36,6 +36,7 @@ body {
 
 /* ADMIN CREATE PARTNER PAGE */
 
+
 .admin-add-partner-container {
     width: 100vw;
     height: 150vh;
@@ -49,6 +50,15 @@ body {
     padding: 0.4em 0;
     width: 51vw;
     display: flex;
+    align-items: center;
+}
+
+.admin-add-partner-container form{
+    width: 100vw;
+    /*height: 125vh;*/
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
     align-items: center;
 }
 
@@ -112,7 +122,9 @@ body {
     display: inline;
     margin: 0;
 }
-/*#select-rewards-checkbox-input-inner*/
+#select-rewards-checkbox-input-inner  button{
+    display: block;
+}
 
 /* LANDING PAGE */
 

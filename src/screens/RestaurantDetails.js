@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import GoogleMapReact from 'google-map-react';
 import Rating from 'react-rating';
-import "react-toggle/style.css"
-import Toggle from 'react-toggle'
+
 import { IoIosStarOutline, IoIosStar } from 'react-icons/io'
 
 import NavBar from "../components/NavBar";

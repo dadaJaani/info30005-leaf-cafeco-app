@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-
 import Home from './screens/Home'
 import Dashboard from "./screens/Dashboard"
 import Profile from './screens/Profile'
@@ -10,8 +9,6 @@ import RestaurantDetails from './screens/RestaurantDetails'
 import RestaurantList from './screens/RestaurantList'
 import About from './screens/About'
 import PartnerSignUp from './screens/PartnerSignUp'
-
-
 
 import './styles/main.css'
 
