@@ -15,7 +15,7 @@ class PartnerSignUp extends Component {
             address: " ",
             description: "",
             about: "",
-            sustainablePractices: "",
+            sustainabilityPractices: "",
             foodReviews:[],
             sustainabilityReviews:[],
             averageFoodRating: 0,
@@ -56,7 +56,7 @@ class PartnerSignUp extends Component {
             address: this.refs.addressIN.value,
             description: this.refs.descriptionIN.value,
             about: this.refs.aboutIN.value,
-            sustainablePractices: this.refs.sustainablePracticeIN.value,
+            sustainabilityPractices: this.refs.sustainabilityPracticesIN.value,
             location: {
                 lat: parseFloat(this.refs.latIN.value),
                 lng: parseFloat(this.refs.lngIN.value),
@@ -155,8 +155,8 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Sustainable Practice: </label>
                         <textarea
-                            value={this.state.sustainablePractice}
-                            ref="sustainablePracticeIN"
+                            value={this.state.sustainabilityPractices}
+                            ref="sustainabilityPracticesIN"
                             onChange={this.handleChange}
                             required
                         />
@@ -239,7 +239,7 @@ class PartnerSignUp extends Component {
                     <div>
                         <label>Photo: </label>
                         <input
-                            value={this.state.photo}
+                            value={this.state.phone}
                             ref="photoIN"
                             onChange={this.handleChange}
                             required
@@ -259,7 +259,6 @@ class PartnerSignUp extends Component {
                         ref="photoIN"
                         onChange={this.handleChange}
                         type='reset'
-
                     />
 
                 </form>
