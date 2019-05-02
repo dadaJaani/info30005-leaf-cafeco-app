@@ -23,8 +23,8 @@ const AnyReactComponent = ({ history, restaurantID, selectRestaurant, name }) =>
             return history.push('/restaurant/' + restaurantID)
         }}
         src={locMarker}
-        width={30}
-        height={30}
+        width={40}
+        height={40}
         title={name}
     />
 </div>;
