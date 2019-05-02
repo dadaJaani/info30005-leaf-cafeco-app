@@ -1473,8 +1473,8 @@ body {
 .home-grid-main {
     grid-area: dashboard-main;
     /*box-shadow: 1px 1px 5px 0 #bbb;*/
-    background: url(../assets/plant.png);
-    background-size: 100vw 85vh;
+    background: url(../assets/directions.svg);
+    background-size: 63vw 63vh;
     background-position: right;
     background-repeat: no-repeat;
     /*background-repeat: no-repeat;*/
@@ -1598,13 +1598,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #EF5439;
-    box-shadow: 3px 3px 5px 0 #bbb;
-
+    background: #F7FAF8;
 }
 
 .home-grid-featured-title div {
-    color: #eee;
+    color: #999;
 }
 .home-grid-featured-title div:hover {
     text-shadow: 0 0 2px #eee;
