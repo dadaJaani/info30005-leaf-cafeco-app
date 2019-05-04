@@ -25,13 +25,43 @@ class App extends Component {
       user: {},
       restaurants: [],
       selectedRestaurant: {},
+      loading: true,
     }
+  }
+
+  doSomethingBeforeUnload = () => {
+    // setTimeout(() => {
+    //   localStorage.setItem("user", "null")
+    // }, 3000)
+
+  }
+
+  setupBeforeUnloadListener = () => {
+    window.addEventListener("unload", (ev) => {
+      ev.preventDefault();
+      return this.doSomethingBeforeUnload();
+    });
+  };
+
+  refresh = () => {
+    this.setState({})
+  }
+
+  updateUser = (editedUser) => {
+    this.setState({
+      user: editedUser,
+    }, () => {
+      localStorage.setItem("user", JSON.stringify(editedUser))
+    })
+
   }
 
   logOutUser = () => {
     this.setState({
       userLoggedIn: false,
       user: {},
+    }, () => {
+      localStorage.setItem("user", "null")
     })
   }
 
@@ -39,6 +69,8 @@ class App extends Component {
       this.setState({
         userLoggedIn: true,
         user,
+      }, () => {
+        localStorage.setItem("user", JSON.stringify(user))
       })
   }
 
@@ -51,7 +83,6 @@ class App extends Component {
 
   selectRestaurant = (restaurantID) => {
     let selectedRestaurant =  this.state.restaurants.find( (a) => a.id === restaurantID)
-
     this.setState({
       selectedRestaurant
     })
@@ -68,11 +99,41 @@ class App extends Component {
 
   componentDidMount() {
     this.populateAllRestaurants()
+    API.getAllRestaurants().then(res => {
+        this.setState({
+          restaurants: res
+        })
+
+        let existingUser = JSON.parse(localStorage.getItem("user"))
+        if (existingUser != null){
+          this.setState({
+            userLoggedIn: true,
+            user: existingUser,
+            loading: false,
+          })
+
+          API.getUser(existingUser.username).then( user => {
+            this.setState({
+              userLoggedIn: true,
+              user,
+            })
+          })
+        } else {
+          this.setState({
+            loading: false,
+          })
+        }
+
+    })
+    // this.setupBeforeUnloadListener();
+
+    console.log("GOES IN APP COMPONENT DID MOUNT")
+
 
   }
 
   render() {
-    console.log(this.state)
+    console.log('appstate:', this.state)
     return (
       <div className='app-container'>
         <Router>
@@ -95,6 +156,10 @@ class App extends Component {
                   user={this.state.user}
                   logOutUser={this.logOutUser}
                   restaurants={this.state.restaurants}
+                  updateUser={this.updateUser}
+                  selectRestaurant={this.selectRestaurant}
+                  refresh={this.refresh}
+                  loading={this.state.loading}
               />
           )}/>
 
@@ -106,6 +171,12 @@ class App extends Component {
                   user={this.state.user}
                   logOutUser={this.logOutUser}
                   restaurant={this.state.selectedRestaurant}
+                  populateAllRestaurants={this.populateAllRestaurants}
+                  updateUser={this.updateUser}
+                  loading={this.state.loading}
+                  selectRestaurant={this.selectRestaurant}
+                  restaurants={this.state.restaurants}
+
               />
           )}/>
 

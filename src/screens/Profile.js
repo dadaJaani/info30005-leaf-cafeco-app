@@ -14,264 +14,282 @@ class Profile extends Component {
         super(props)
 
         this.state = {
-
+            savedRestaurants: [],
+            rewardHistory: [],
         }
     }
 
-
-
-
-
+    rewardHelper = {
+        RewFD: {
+            description: "Free Drink",
+            points: 35,
+        },
+        Rew10: {
+            description: "10% Off",
+            points: 50,
+        },
+        Rew20: {
+            description: "20% Off",
+            points: 75,
+        },
+        Rew25: {
+            description: "25% Off",
+            points: 100,
+        },
+        Rew50: {
+            description: "50% Off",
+            points: 200,
+        },
+        Rew75: {
+            description: "75% Off",
+            points: 350,
+        },
+        RewFM: {
+            description: "Free Meal",
+            points: 500,
+        },
+        Rew100: {
+            description: "100% Off",
+            points: 1000,
+        },
+    }
 
     goToProfile = () => {}
 
-
-    goToRestaurantProfile = () => {
-        this.props.history.push('/restaurant/' + 'asd')
-
+    goToRestaurantProfile = (restaurantID) => {
+        this.props.selectRestaurant(restaurantID)
+        this.props.history.push('/restaurant/' + restaurantID)
     }
 
     logOutUser = () => {
         this.props.logOutUser()
     }
 
+    updateData = () => {
+        let saved = []
+        let history = []
 
-    componentDidMount() {
-        API.getRewardsByUserID(this.props.user.username).then(res => {
-            console.log(res)
-        })
+        if (this.props.user && this.props.restaurants) {
+
+            saved = this.props.user.savedRestaurants.map(item => {
+                console.log(this.props.restaurants)
+
+                let found = this.props.restaurants.find( resto => resto.id === item)
+                console.log(found)
+                return found
+            })
+
+
+            history = this.props.user.rewardHistory.map(item => {
+                let string = item.split('-')
+                let date = new Date(parseInt(string[3]))
+                return {
+                    description: this.rewardHelper[string[1]].description,
+                    points: this.rewardHelper[string[1]].points,
+                    date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+                }
+            })
+
+            this.setState({
+                savedRestaurants: saved,
+                rewardHistory: history,
+                loading: false,
+            })
+        }
+
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props !== nextProps) {
+            // this.updateData()
+        }
+    }
+
+    componentDidMount(){
+        if (this.props.userLoggedIn) {
+            // this.updateData()
+        } else {
+            this.props.refresh()
+
+        }
     }
 
 
     render () {
+        console.log('profile props:', this.props)
+        const { user, restaurants,loading } = this.props
+        console.log('profile state:', this.state)
 
-        const { user } = this.props
+        let savedRestaurants = []
+        let rewardHistory = []
 
-        if (this.props.userLoggedIn) {
+        if (!loading) {
+            savedRestaurants = user.savedRestaurants.map(item => {
+                console.log(this.props.restaurants)
+
+                let found = this.props.restaurants.find(resto => resto.id === item)
+                console.log(found)
+                return found
+            })
+
+            rewardHistory = user.rewardHistory.map(item => {
+                let string = item.split('-')
+                let resto = restaurants.find(i => i.id === string[2])
+
+                let date = new Date(parseInt(string[3]))
+                return {
+                    description: this.rewardHelper[string[1]].description,
+                    points: this.rewardHelper[string[1]].points,
+                    restaurantName: resto.name,
+                    date: `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`,
+                }
+            })
+        }
+
+        if (this.props.loading){
             return (
-                <div>
-                    <NavBar
-                        {...this.props}
-                        logOutUser={this.logOutUser}
-                        userLoggedIn={this.props.userLoggedIn}
-                        goToProfile={this.goToProfile}
-                    />
+                <div > LOADING </div>
+            )
+        } else {
 
-                    <div className={'profile-container'}>
-                        <div className={'profile-item1'}>
-                            <h2 className={'profile-item1-heading'}> Account </h2>
+            if (this.props.userLoggedIn) {
 
-                            <div >
-                                <label >Name:</label>
-                                <span>{user.fname} {user.lname}</span>
+                return (
+                    <div>
+                        <NavBar
+                            {...this.props}
+                            logOutUser={this.logOutUser}
+                            userLoggedIn={this.props.userLoggedIn}
+                            goToProfile={this.goToProfile}
+                        />
+
+                        <div className={'profile-container'}>
+                            <div className={'profile-item1'}>
+                                <h2 className={'profile-item1-heading'}> Account </h2>
+
+                                <div>
+                                    <label>Name:</label>
+                                    <span>{user.fname} {user.lname}</span>
+
+                                </div>
+
+                                <div>
+                                    <label>Username:</label>
+                                    <span>{user.username}</span>
+
+                                </div>
+
+                                <div>
+                                    <label>Email:</label>
+                                    <span>{user.email}</span>
+
+                                </div>
+
+                                <div>
+                                    <label>Password:</label>
+                                    <span>*****</span>
+                                </div>
 
                             </div>
 
-                            <div >
-                                <label>Username:</label>
-                                <span>{user.username}</span>
 
-                            </div>
-
-                            <div>
-                                <label>Email:</label>
-                                <span>{user.email}</span>
-
-                            </div>
-
-                            <div >
-                                <label>Password:</label>
-                                <span>*****</span>
-                            </div>
-
-                        </div>
-
-
-                        <div className={'profile-item2'}>
-                            <h2>
-                                Credits
-                            </h2>
-                            <div className='profile-item2-points-container'>
-                                <p >
-                                    {user.points}
-                                </p>
-                                <span >
+                            <div className={'profile-item2'}>
+                                <h2>
+                                    Credits
+                                </h2>
+                                <div className='profile-item2-points-container'>
+                                    <p>
+                                        {user.points}
+                                    </p>
+                                    <span>
                                     available
                                 </span>
 
+                                </div>
+
+
+                                <div className='profile-item2-input-container'>
+                                    <div>Redeem Code</div>
+                                    <input placeholder='Enter Credit Code'/>
+                                    <button>
+                                        Verify
+                                    </button>
+                                </div>
+
                             </div>
 
 
-                            <div className='profile-item2-input-container'>
-                                <div>Redeem Code</div>
-                                <input placeholder='Enter Credit Code'/>
-                                <button >
-                                    Verify
-                                </button>
+                            <div className={'profile-item3'}>
+                                <h2>
+                                    Saved Eateries
+                                </h2>
+
+                                <div className={'profile-item3-list'}>
+                                    {
+                                        savedRestaurants.map(item =>
+
+                                            <div
+                                                className={'profile-item3-list-item'}
+                                                onClick={() => this.goToRestaurantProfile(item.id)}
+                                            >
+                                                <img alt='resto photo' src={item.photo}/>
+                                                <div>
+                                                    {item.name}
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+
+                                </div>
+
                             </div>
 
+                            <div className={'profile-item4'}>
+
+                                <h2>
+                                    Reward History
+                                </h2>
+
+                                <div className={'profile-item4-list'}>
+                                    {
+                                        rewardHistory.map(item =>
+                                            <div className={'profile-item4-list-item'}>
+                                                <div className='profile-item4-list-item-info'>
+                                                    <label>{item.date}</label>
+                                                    <div>{item.restaurantName}</div>
+                                                    <span>{item.description}</span>
+                                                </div>
+                                                <div className='profile-item4-list-item-points'>
+                                                    {item.points}
+                                                </div>
+                                            </div>
+                                        )
+                                    }
+                                </div>
+
+
+                            </div>
                         </div>
 
-
-                        <div className={'profile-item3'}>
-                            <h2>
-                                Saved Eateries
-                            </h2>
-
-                            <div className={'profile-item3-list'}>
-                                <div
-                                    className={'profile-item3-list-item'}
-                                    onClick={this.goToRestaurantProfile}
-                                >
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-                                <div className={'profile-item3-list-item'}>
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-                                <div className={'profile-item3-list-item'}>
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-                                <div className={'profile-item3-list-item'}>
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-                                <div className={'profile-item3-list-item'}>
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-                                <div className={'profile-item3-list-item'}>
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-                                <div className={'profile-item3-list-item'}>
-                                    <img alt='resto photo' src='https://www.broadsheet.com.au/media/cache/97/09/970914d13d1e1b4fcdd4369cef1420b9.jpg'/>
-                                    <div>
-                                        The Vegie Bar
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div className={'profile-item4'}>
-
-                            <h2>
-                                Reward History
-                            </h2>
-
-                            <div className={'profile-item4-list'}>
-
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>2/3/19</label>
-                                        <div>The Vegie Bar</div>
-                                        <span>Free Drink</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        15
-                                    </div>
-                                </div>
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>5/1/19</label>
-                                        <div>The Vegie Bar</div>
-                                        <span>20%</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        30
-                                    </div>
-                                </div>
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>12/2/19</label>
-                                        <div>Fifty Acres</div>
-                                        <span>Free Drink</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        15
-                                    </div>
-                                </div>
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>16/2/19</label>
-                                        <div>The Vegie Bar</div>
-                                        <span>50% Off</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        100
-                                    </div>
-                                </div>
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>20/3/19</label>
-                                        <div>Seven Seeds</div>
-                                        <span>50% Off</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        100
-                                    </div>
-                                </div>
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>22/3/19</label>
-                                        <div>Seven Seeds</div>
-                                        <span>10% Off</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        30
-                                    </div>
-                                </div>
-                                <div className={'profile-item4-list-item'}>
-                                    <div className='profile-item4-list-item-info'>
-                                        <label>2/4/19</label>
-                                        <div>The Vegie Bar</div>
-                                        <span>Free Drink</span>
-                                    </div>
-                                    <div className='profile-item4-list-item-points'>
-                                        15
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
+                        <Footer/>
                     </div>
+                )
+            } else {
+                return (
+                    <div className='profile-not-signed-in'>
+                        <h1>
+                            User not signed in
+                        </h1>
 
-                    <Footer />
-                </div>
-            )
-        } else {
-            return (
-                <div className='profile-not-signed-in'>
-                    <h1>
-                        User not signed in
-                    </h1>
-
-                    <Link
-                        className={'navbar-button'}
-                        to={'/dashboard'}
-                    > Home </Link>
+                        <Link
+                            className={'navbar-button'}
+                            to={'/dashboard'}
+                        > Home </Link>
 
 
-                </div>
-            )
+                    </div>
+                )
+            }
         }
     }
 }

@@ -26,15 +26,39 @@ export const createUser = (newUser) =>
     }).then(res => res.json())
 
 
+export const getUser = (id) =>
+    fetch(`${api}/searchUser/${id}`, { headers })
+        .then(res => res.json())
+
 // FUNCTION TO EDIT USER
-export const editUser = (userID, edited) =>
-    fetch(`${api}/user/${userID}`, {
+export const editUser = (username, edited) =>
+    fetch(`${api}/user/${username}`, {
         method: 'put',
         headers: {
             ...headers,
             'Content-Type': 'application/json'
         },
         body: JSON.stringify( edited )
+    }).then(res => res.json())
+
+export const editUserPoints = (username, edited) =>
+    fetch(`${api}/user/${username}/points`, {
+        method: 'put',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( edited )
+    }).then(res => res.json())
+
+export const editUserSavedRestaurants = (username, savedResaurants) =>
+    fetch(`${api}/user/${username}/savedRestaurants`, {
+        method: 'put',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( savedResaurants )
     }).then(res => res.json())
 
 
@@ -89,8 +113,9 @@ export const getRewardsByUserID = (username) =>
     }).then( res => res.json())
 
 
+
 export const createReward = (newReward) =>
-    fetch(`${api}/restaurant`, {
+    fetch(`${api}/reward`, {
         method: 'post',
         headers: {
             ...headers,
@@ -98,7 +123,6 @@ export const createReward = (newReward) =>
         },
         body: JSON.stringify( newReward )
     }).then(res => res.json())
-
 
 
 
@@ -149,6 +173,16 @@ export const getAllRestaurants = () =>
 export const getRestaurant = (restaurantID) =>
     fetch(`${api}/searchRestaurant/${restaurantID}`, { headers })
         .then(res => res.json())
+
+export const createReview = (restaurantID, newReview) =>
+    fetch(`${api}/restaurant/${restaurantID}/review`, {
+        method: 'put',
+        headers: {
+            ...headers,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify( newReview )
+    }).then(res => res.json())
 
 // export const getCategories = () =>
 //     fetch(`${api}/categories`, { headers })

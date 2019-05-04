@@ -27,7 +27,10 @@ class RestaurantDetails extends Component {
 
         this.state = {
             restaurant: props.restaurant,
+            allReviews: props.restaurant.sustainabilityReviews,
             isFavorite: false,
+            reviewText: '',
+            reviewRating: 0,
         }
 
         this.navbar = React.createRef();
@@ -35,15 +38,70 @@ class RestaurantDetails extends Component {
     }
 
     setFavorite = () => {
-        this.setState({
-            isFavorite: true
+        console.log("Set Fav")
+        console.log("Current Fav of user:", this.props.user.savedRestaurants)
+
+        let newSaved = {
+            savedRestaurants: [...this.props.user.savedRestaurants, this.state.restaurant.id],
+        }
+        // var newSaved = this.props.user.savedRestaurants;
+
+        API.editUserSavedRestaurants(this.props.user.username, newSaved).then(res => {
+            this.setState({
+                isFavorite: true
+            })
+            this.props.updateUser({
+                ...this.props.user,
+                savedRestaurants: newSaved.savedRestaurants
+            });
         })
+
     }
 
     unsetFavorite = () => {
-        this.setState({
-            isFavorite: false
+        console.log("Unset Fav")
+        console.log("Current Fav of user:", this.props.user.savedRestaurants)
+
+        let newSaved = {
+            savedRestaurants: this.props.user.savedRestaurants.filter(item => item !== this.state.restaurant.id),
+        }
+
+        API.editUserSavedRestaurants(this.props.user.username, newSaved).then(res => {
+            this.setState({
+                isFavorite: false
+            })
+            this.props.updateUser({
+                ...this.props.user,
+                savedRestaurants: newSaved.savedRestaurants
+            });
         })
+
+    }
+
+
+    submitReview = () => {
+
+        let review = {
+            username: this.props.user.username,
+            review: this.state.reviewText,
+            rating: this.state.reviewRating,
+            date: new Date(),
+        }
+
+        API.createReview(this.state.restaurant.id, review)
+            .then(res => {
+                let temp = this.state.allReviews
+                temp.push(review)
+                this.setState({
+                    reviewText: '',
+                    reviewRating: 0,
+
+                })
+
+                this.props.populateAllRestaurants()
+            })
+
+
     }
 
     showLogin = () => {
@@ -69,15 +127,75 @@ class RestaurantDetails extends Component {
         this.props.signUpUser(user)
     }
 
-    componentDidMount() {
-        if (this.props.restaurant.id === undefined) {
+    dateString = (date) => {
+        let temp = new Date(date)
+        let result = `${temp.getDate()}/${temp.getMonth()}/${temp.getFullYear()}`
 
-            API.getRestaurant(this.props.history.location.pathname.substring(12)).then(item => {
+        return result
+    }
 
-                this.setState({
-                    restaurant: item[0]
-                })
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps)
+
+        if (this.props.loading !== nextProps.loading) {
+            console.log("COMPONNENNT WILL RECIEVE PROPS DESTO DETAIL:")
+            console.log(nextProps)
+
+            let address = this.props.history.location.pathname.substring(12)
+            let selectedRestaurant = nextProps.restaurants.find( (a) => a.id === address)
+            this.setState({
+                restaurant: selectedRestaurant,
+                allReviews: selectedRestaurant.sustainabilityReviews,
             })
+        }
+        
+        if (!nextProps.user.username) {
+        } else {
+            let temp = nextProps.user.savedRestaurants.find( element => element === this.state.restaurant.id)
+
+            if (!temp){
+            } else {
+                this.setState({
+                    isFavorite: true
+                });
+            }
+        }
+
+    }
+
+    componentDidMount() {
+        // if (this.props.restaurant.id === undefined) {
+        //
+        //     API.getRestaurant(this.props.history.location.pathname.substring(12)).then(item => {
+        //         this.setState({
+        //             restaurant: item[0],
+        //             allReviews: item[0].sustainabilityReviews,
+        //         })
+        //
+        //         if (this.props.userLoggedIn) {
+        //             console.log('this.props.user.savedRestaurants', this.props.user.savedRestaurants)
+        //             let temp = this.props.user.savedRestaurants.find( element => element === this.props.restaurant.id)
+        //
+        //             if (!temp) {
+        //             } else {
+        //                 this.setState({
+        //                     isFavorite: true
+        //                 });
+        //             }
+        //         }
+        //     })
+        // }
+        //
+
+        if (this.props.userLoggedIn) {
+            let temp = this.props.user.savedRestaurants.find( element => element === this.props.restaurant.id)
+
+            if (!temp) {
+            } else {
+                this.setState({
+                    isFavorite: true
+                });
+            }
         }
     }
 
@@ -91,180 +209,153 @@ class RestaurantDetails extends Component {
     
 
     render() {
-        const { restaurant } = this.state
+        // console.log('IS THIS RESTO SAVED:', this.state.isFavorite)
 
-        return(
-            <div>
-                <NavBar
-                    {...this.props}
-                    ref={this.navbar}
+        const { restaurant, allReviews } = this.state
 
-                    logOutUser={this.logOutUser}
-                    logInUser={this.logInUser}
-                    signUpUser={this.signUpUser}
-                    userLoggedIn={this.props.userLoggedIn}
-                    goToProfile={this.goToProfile}
-                />
+        if (this.props.loading){
+            return (
+                <div>LOADING</div>
+            )
+        } else {
+            return(
+                <div>
+                    <NavBar
+                        {...this.props}
+                        ref={this.navbar}
 
-                {
-                    restaurant.id !== undefined
-                    ? (
-                            <div className='restaurant-detail-container'>
+                        logOutUser={this.logOutUser}
+                        logInUser={this.logInUser}
+                        signUpUser={this.signUpUser}
+                        userLoggedIn={this.props.userLoggedIn}
+                        goToProfile={this.goToProfile}
+                    />
 
-                                <RewardSelector
-                                    userLoggedIn={this.props.userLoggedIn}
-                                    showLogin={this.showLogin}
-                                    showSignup={this.showSignup}
-                                />
+                    {
+                        restaurant.id !== undefined
+                            ? (
+                                <div className='restaurant-detail-container'>
 
-                                <div className='restaurant-detail-title'>
-                                    {restaurant.name}
-
-                                </div>
-
-
-                                <div className='restaurant-detail-photo'>
-                                    <img src={restaurant.photo}
-                                         alt='restaurant photo'
+                                    <RewardSelector
+                                        userLoggedIn={this.props.userLoggedIn}
+                                        user={this.props.user}
+                                        restaurant={this.state.restaurant}
+                                        showLogin={this.showLogin}
+                                        showSignup={this.showSignup}
+                                        offeredRewards={this.state.restaurant.typeOfRewards}
+                                        updateUser={this.props.updateUser}
                                     />
-                                </div>
-                                <div className='restaurant-detail-info'>
-                                    <p>{restaurant.description}</p>
-                                    <span>{restaurant.address}</span>
-                                    <span>{restaurant.phone}</span>
-                                    <a href={'http://www.' + restaurant.website}>Eatery Website</a>
 
-                                </div>
+                                    <div className='restaurant-detail-title'>
+                                        {restaurant.name}
 
-                                <div className='restaurant-detail-rating'>
-                                    <div>Eco Friendliness</div>
-                                    <Rating
-                                        initialRating={restaurant.averageSustainabilityRating}
-                                        readonly={true}
-                                        emptySymbol={
-                                            <img
-                                                alt='leaf empty'
-                                                width={40}
-                                                height={40}
-                                                src={leafTranslucent}
-                                            />
-                                        }
-                                        fullSymbol={
-                                            <img
-                                                alt='leaf full'
-                                                width={40}
-                                                height={40}
-                                                src={leafOpaque}
-                                            />
-                                        }
-
-                                    />
-                                </div>
-
-                                <div className='restaurant-detail-map'>
-                                    <GoogleMapReact
-                                        bootstrapURLKeys={{ key: 'AIzaSyAThroloBz4lBlrWA_ZCmtXfOFdsI46CXY' }}
-                                        defaultCenter={{
-                                            lat: restaurant.location.lat,
-                                            lng: restaurant.location.lng,
-                                        }}
-                                        defaultZoom={this.props.zoom}
-                                    >
-                                        <AnyReactComponent
-                                            lat={restaurant.location.lat}
-                                            lng={restaurant.location.lng}
-                                            text="My Marker"
-                                        />
-                                    </GoogleMapReact>
-                                </div>
-
-                                <div className='restaurant-detail-about'>
-                                    <h2>About</h2>
-
-                                    <div
-                                        className={this.props.userLoggedIn
-                                            ? 'restaurant-detail-star-container'
-                                            : 'restaurant-detail-star-container-hide'}
-                                        onClick={ this.state.isFavorite
-                                            ? this.unsetFavorite
-                                            : this.setFavorite
-                                        }
-                                    >
-                                        {this.state.isFavorite
-                                            ?   <IoIosStar
-                                                className='restaurant-detail-star restaurant-detail-star-selected'
-                                            />
-                                            :   <IoIosStarOutline
-                                                className='restaurant-detail-star restaurant-detail-star-not-selected'
-                                            />
-                                        }
                                     </div>
 
-                                    <p> We serve vegetables, and lots of them, while keeping sustainablility in mind. </p>
 
-                                    <h2>Sustainable Practices</h2>
-                                    <ul>
-                                        <li>Practice 1</li>
-                                        <li>Practice 2</li>
-                                        <li>Practice 3</li>
-                                        <li>Practice 4</li>
+                                    <div className='restaurant-detail-photo'>
+                                        <img src={restaurant.photo}
+                                             alt='restaurant photo'
+                                        />
+                                    </div>
+                                    <div className='restaurant-detail-info'>
+                                        <p>{restaurant.description}</p>
+                                        <span>{restaurant.address}</span>
+                                        <span>{restaurant.phone}</span>
+                                        <a href={'http://www.' + restaurant.website} target="_blank">Eatery Website</a>
 
-                                    </ul>
-                                </div>
+                                    </div>
+
+                                    <div className='restaurant-detail-rating'>
+                                        <div>Eco Friendliness</div>
+                                        <Rating
+                                            initialRating={restaurant.averageSustainabilityRating}
+                                            readonly={true}
+                                            emptySymbol={
+                                                <img
+                                                    alt='leaf empty'
+                                                    width={40}
+                                                    height={40}
+                                                    src={leafTranslucent}
+                                                />
+                                            }
+                                            fullSymbol={
+                                                <img
+                                                    alt='leaf full'
+                                                    width={40}
+                                                    height={40}
+                                                    src={leafOpaque}
+                                                />
+                                            }
+
+                                        />
+                                    </div>
+
+                                    <div className='restaurant-detail-map'>
+                                        <GoogleMapReact
+                                            bootstrapURLKeys={{ key: 'AIzaSyAThroloBz4lBlrWA_ZCmtXfOFdsI46CXY' }}
+                                            defaultCenter={{
+                                                lat: restaurant.location.lat,
+                                                lng: restaurant.location.lng,
+                                            }}
+                                            defaultZoom={this.props.zoom}
+                                        >
+                                            <AnyReactComponent
+                                                lat={restaurant.location.lat}
+                                                lng={restaurant.location.lng}
+                                                text="My Marker"
+                                            />
+                                        </GoogleMapReact>
+                                    </div>
+
+                                    <div className='restaurant-detail-about'>
+                                        <h2>About</h2>
+
+                                        <div
+                                            className={this.props.userLoggedIn
+                                                ? 'restaurant-detail-star-container'
+                                                : 'restaurant-detail-star-container-hide'}
+                                            onClick={ this.state.isFavorite
+                                                ? this.unsetFavorite
+                                                : this.setFavorite
+                                            }
+                                        >
+                                            {this.state.isFavorite
+                                                ?   <IoIosStar
+                                                    className='restaurant-detail-star restaurant-detail-star-selected'
+                                                />
+                                                :   <IoIosStarOutline
+                                                    className='restaurant-detail-star restaurant-detail-star-not-selected'
+                                                />
+                                            }
+                                        </div>
+
+                                        <p> {restaurant.about} </p>
+
+                                        <h2>Sustainable Practices</h2>
+                                        <ul>
+                                            {
+                                                restaurant.sustainabilityPractices.map( item =>
+                                                    <li>{item}</li>
+                                                )
+                                            }
+                                        </ul>
+                                    </div>
 
 
 
-                                <div className='restaurant-detail-reviews'>
-                                    <h2>Reviews</h2>
+                                    <div className='restaurant-detail-reviews'>
+                                        <h2>Reviews</h2>
 
-                                    {
-                                        this.props.userLoggedIn
-                                            ?
-                                            (<div className='restaurant-detail-reviews-list-input'>
-                                                <h3>Write a review.</h3>
-                                                <div>
-                                                    <Rating
-                                                        initialRating={0}
-                                                        emptySymbol={
-                                                            <img
-                                                                alt='leaf empty'
-                                                                width={22}
-                                                                height={22}
-                                                                src={leafTranslucent}
-                                                            />
-                                                        }
-                                                        fullSymbol={
-                                                            <img
-                                                                alt='leaf full'
-                                                                width={22}
-                                                                height={22}
-                                                                src={leafOpaque}
-                                                            />
-                                                        }
-
-                                                    />
-                                                </div>
-
-                                                <textarea />
-
-                                                <button>Submit Review</button>
-                                            </div>)
-                                            :   (<div/>)
-                                    }
-
-
-                                    <div className='restaurant-detail-reviews-list'>
                                         {
-                                            restaurant.sustainabilityReviews.map( review => (
-                                                <div
-                                                    className='restaurant-detail-reviews-list-item'
-                                                    key={review.username}
-                                                >
-                                                    <label>{review.username}</label>
+                                            this.props.userLoggedIn
+                                                ?
+                                                (<div className='restaurant-detail-reviews-list-input'>
+                                                    <h3>Write a review.</h3>
                                                     <div>
                                                         <Rating
-                                                            initialRating={review.rating}
-                                                            readonly={true}
+                                                            initialRating={this.state.reviewRating}
+                                                            onChange={(rate) => this.setState({ reviewRating: rate})}
+
                                                             emptySymbol={
                                                                 <img
                                                                     alt='leaf empty'
@@ -281,189 +372,85 @@ class RestaurantDetails extends Component {
                                                                     src={leafOpaque}
                                                                 />
                                                             }
-
                                                         />
-                                                        <span >review.date</span>
                                                     </div>
 
-                                                    <p>{review.review}</p>
-                                                </div>
-                                            ))
+                                                    <textarea
+                                                        value={this.state.reviewText}
+                                                        onChange={(rate) => this.setState({ reviewText: rate.target.value})}
+                                                    />
+
+                                                    <button
+                                                        onClick={this.submitReview}
+                                                    >
+                                                        Submit Review
+                                                    </button>
+                                                </div>)
+                                                :   (<div/>)
                                         }
-                                        <div className='restaurant-detail-reviews-list-item'>
-                                            <label>JHolden</label>
-                                            <div>
-                                                <Rating
-                                                    initialRating={4}
-                                                    readonly={true}
-                                                    emptySymbol={
-                                                        <img
-                                                            alt='leaf empty'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafTranslucent}
-                                                        />
-                                                    }
-                                                    fullSymbol={
-                                                        <img
-                                                            alt='leaf full'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafOpaque}
-                                                        />
-                                                    }
 
-                                                />
-                                                <span >31/3/2019</span>
+
+                                        <div className='restaurant-detail-reviews-list'>
+                                            {
+                                                allReviews.map( review => (
+                                                    <div
+                                                        className='restaurant-detail-reviews-list-item'
+                                                        key={`${review.username}/${Date.parse(review.date)}`}
+                                                    >
+                                                        <label>{review.username}</label>
+                                                        <div>
+                                                            <Rating
+                                                                initialRating={review.rating}
+                                                                readonly={true}
+                                                                emptySymbol={
+                                                                    <img
+                                                                        alt='leaf empty'
+                                                                        width={22}
+                                                                        height={22}
+                                                                        src={leafTranslucent}
+                                                                    />
+                                                                }
+                                                                fullSymbol={
+                                                                    <img
+                                                                        alt='leaf full'
+                                                                        width={22}
+                                                                        height={22}
+                                                                        src={leafOpaque}
+                                                                    />
+                                                                }
+
+                                                            />
+                                                            <span >{this.dateString(review.date)}</span>
+                                                        </div>
+
+                                                        <p>{review.review}</p>
+                                                    </div>
+                                                ))
+                                            }
+
+                                            <div className='restaurant-detail-reviews-list-item-void'>
                                             </div>
-
-                                            <p> pretty good food, not a bad place and seems pretty sustainable </p>
                                         </div>
 
-
-                                        <div className='restaurant-detail-reviews-list-item'>
-                                            <label>vampiremaybe</label>
-                                            <div>
-                                                <Rating
-                                                    initialRating={2}
-                                                    readonly={true}
-                                                    emptySymbol={
-                                                        <img
-                                                            alt='leaf empty'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafTranslucent}
-                                                        />
-                                                    }
-                                                    fullSymbol={
-                                                        <img
-                                                            alt='leaf full'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafOpaque}
-                                                        />
-                                                    }
-
-                                                />
-                                                <span >31/3/2019</span>
-                                            </div>
-
-                                            <p> I do not know fellow mortal, I just... I am afraid I just drink blood dearest soul. </p>
-                                        </div>
-
-                                        <div className='restaurant-detail-reviews-list-item'>
-                                            <label>Psyducks</label>
-                                            <div>
-                                                <Rating
-                                                    initialRating={5}
-                                                    readonly={true}
-                                                    emptySymbol={
-                                                        <img
-                                                            alt='leaf empty'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafTranslucent}
-                                                        />
-                                                    }
-                                                    fullSymbol={
-                                                        <img
-                                                            alt='leaf full'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafOpaque}
-                                                        />
-                                                    }
-
-                                                />
-                                                <span >31/3/2019</span>
-                                            </div>
-
-                                            <p> Being quite a big fan of vegetables I must say this is probably one of, if not the best restaurant I have eaten at. </p>
-                                        </div>
-
-                                        <div className='restaurant-detail-reviews-list-item'>
-                                            <label>Foodhunter</label>
-                                            <div>
-                                                <Rating
-                                                    initialRating={3}
-                                                    readonly={true}
-                                                    emptySymbol={
-                                                        <img
-                                                            alt='leaf empty'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafTranslucent}
-                                                        />
-                                                    }
-                                                    fullSymbol={
-                                                        <img
-                                                            alt='leaf full'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafOpaque}
-                                                        />
-                                                    }
-
-                                                />
-                                                <span >31/3/2019</span>
-                                            </div>
-
-                                            <p> Food was not bad, but probably not worth it for the price. </p>
-                                        </div>
-
-                                        <div className='restaurant-detail-reviews-list-item'>
-                                            <label>BobbyD</label>
-                                            <div>
-                                                <Rating
-                                                    initialRating={1}
-                                                    readonly={true}
-                                                    emptySymbol={
-                                                        <img
-                                                            alt='leaf empty'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafTranslucent}
-                                                        />
-                                                    }
-                                                    fullSymbol={
-                                                        <img
-                                                            alt='leaf full'
-                                                            width={22}
-                                                            height={22}
-                                                            src={leafOpaque}
-                                                        />
-                                                    }
-
-                                                />
-                                                <span >31/3/2019</span>
-                                            </div>
-
-                                            <p> yeah the sustainablility of the place is great but the food absolutely sucks </p>
-                                        </div>
-
-
-                                        <div className='restaurant-detail-reviews-list-item-void'>
-                                        </div>
                                     </div>
 
                                 </div>
 
+                            )
+                            :
+                            <div>
+                                Loading
+
                             </div>
-
-                    )
-                    :
-                        <div>
-                            Loading
-
-                        </div>
-                }
+                    }
 
 
-                <Footer />
-            </div>
-        )
+                    <Footer />
+                </div>
+            )
+        }
     }
-    
+
     
 }
 
