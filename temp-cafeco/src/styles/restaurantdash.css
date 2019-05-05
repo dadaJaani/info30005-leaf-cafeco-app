@@ -1,0 +1,198 @@
+/*Used some of Waqas' code for styling elements and practices*/
+
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  justify-content: start;
+  background-color: #f7faf8;
+  grid-template-columns: 1fr 4fr;
+  column-gap: 3vw;
+  font-family: "Muli", sans-serif;
+  font-weight: lighter;
+}
+
+.sidebar-container {
+  display: grid;
+  grid-template-rows: 50vh;
+  background: #1a7773;
+}
+
+.restaurantInfo {
+  text-align: center;
+  color: white;
+  display: grid;
+  grid-template-rows: 1fr 1fr 2.5fr;
+}
+
+.white-logo {
+  margin: auto;
+}
+
+.cafe-title {
+  font-weight: lighter;
+  margin: auto;
+}
+
+.location {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 4fr 1fr;
+  margin-top: 0.5vh;
+  /*grid-template-rows: 1fr 1fr;*/
+}
+
+.marker {
+  padding: 0;
+  margin: 0;
+  grid-column: 2/3;
+}
+
+#sidebar-address {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  grid-column: 3/4;
+}
+
+.menu {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 8vh);
+}
+
+.menu-item {
+  cursor: pointer;
+  text-align: center;
+  border-style: solid hidden solid hidden;
+  border-width: 4px ;
+  border-color: #4AC785;
+  transition: 0.5s;
+  color: white;
+  padding: 2vh 0 2vh 0;
+  font-size: 2.5vh;
+}
+.menu-item:hover {
+  transform: scale(1.05);
+  background-color: #4AC785;
+  border-width: 4px ;
+  border-color: #4AC785;
+}
+
+#account-review {
+  border-bottom: hidden;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: 5fr 3fr 1fr;
+  grid-template-rows: repeat(auto-fill, 5vh);
+  column-gap: 3vw;
+  color: white;
+  height: 100vh;
+}
+
+.restaurant-profile-container {
+  grid-row: 3/16;
+  background-color: #ef5439;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr 1fr 3fr 1fr;
+  border-radius: 15px;
+  grid-auto-flow: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.detail-info {
+  text-align: left;
+  font-weight: lighter;
+  padding: 0 0 0 3vw;
+  display: grid;
+  grid-auto-flow: row;
+}
+
+#profile-title {
+  font-size: 2em;
+}
+
+#business-name {
+  grid-row: 2/3;
+}
+
+#address {
+  grid-row: 3/4;
+}
+
+#rewards {
+  grid-row: 4/5;
+  list-style-type: none;
+  margin: 0;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 4vh);
+  grid-template-columns: 1fr 1fr;
+}
+
+.reward-item {
+  padding: 0;
+  /*margin: 0.5vh 0 0 0;*/
+  display: grid;
+  grid-auto-flow: row;
+}
+
+.reward-cost {
+  padding: 0;
+  margin-left: 2vw;
+}
+
+.edit-button {
+  grid-row: -1/-2;
+  margin-left: 3vw;
+  padding: 0;
+  border: 1px solid white;
+  background: none;
+  color: white;
+  border-radius: 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+  height: 5vh;
+  width: 7vw;
+  font-size: 1vw;
+}
+.edit-button:hover {
+  box-shadow: 0 0 10px 0 white;
+}
+
+.stats-container {
+  background-color: #f8C960;
+  grid-column: 2;
+  grid-row: 3/18;
+  border-radius: 15px;
+  display: grid;
+  grid-template-rows: 1fr 2fr 3fr 2fr 3fr;
+}
+
+#stats-title {
+  font-size: 2em;
+}
+
+.stats-figure {
+  padding: 0;
+  margin: auto;
+  font-size: 8vh;
+}
+
+.stats-details {
+  text-align: center;
+  padding: 1vw 3vw 1vw 3vw;
+}
+
+img{
+  padding: 35px;
+}
+
+p{
+   padding: 60px;
+}
+
+

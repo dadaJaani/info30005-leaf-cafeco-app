@@ -1,0 +1,158 @@
+/*Used some of Waqas' code for styling elements and practices*/
+
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.body-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-column-gap: 2vw;
+    grid-auto-flow: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.reviews-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: 6vh 9vh auto 7vh 6vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.reviews-border {
+    display: grid;
+    padding: 0;
+    margin: 0;
+    background-color: #c9c9c9;
+    font-weight: lighter;
+}
+
+#reviews-header{
+    grid-row: 2/3;
+    padding: 2vh 0 0 2vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.90fr;
+}
+
+.filter-by {
+    padding: 2vh 1vw 0 0;
+    margin: 0;
+    font-size: 18px;
+    text-align: right;
+}
+
+.select-rating {
+    height: 1vh;
+    margin-top: 0.5vh;
+}
+
+.small-leaf{
+    height: 3vh;
+    padding: 0;
+    margin: 0;
+}
+
+.reviews {
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: grid;
+    grid-auto-flow: row;
+    grid-auto-rows: 18vh;
+}
+
+.reviewItem {
+    text-align: left;
+    padding: 1vw 2vw 0 2vw;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+}
+/*https://www.w3.org/Style/Examples/007/evenodd.en.html*/
+.reviewItem:nth-child(odd) {
+    background-color: #f7f3e1;
+}
+.reviewItem:nth-child(even) {
+    background-color: white;
+}
+
+.user-review-footer{
+    display: grid;
+    grid-template-columns: 4fr 5fr 1fr;
+}
+
+.review-username {
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.date {
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.bottom {
+    background-color: #c9c9c9;
+}
+
+#reviews-footer {
+    grid-row: -2/-3;
+    text-align: center;
+    margin-top: 2vh;
+    /*https://stackoverflow.com/questions/25477765/the-text-align-center-isnt-working-in-a-span-element*/
+    display: block;
+}
+
+.page-link {
+    padding: 0;
+    text-decoration: none;
+    text-align: center;
+    margin: auto;
+}
+
+.average-rating-container {
+    display: grid;
+    grid-template-rows: 6vh 1fr 1fr 6fr;
+    margin-right: 35px;
+    color: white;
+}
+
+.average-rating {
+    grid-row: 2/4;
+    grid-column: 1/2;
+    background-color: #ef5439;
+    border-radius: 20px;
+}
+
+.rating-title-text {
+    text-align: center;
+    padding: 5vh 0 0 0;
+    font-size: 20px;
+    margin: 0;
+}
+
+.rating-value {
+    display: grid;
+    grid-row: 3/4;
+    grid-column: 1/2;
+    grid-template-columns: 1fr 1fr;
+}
+
+.rating-number {
+    padding: 0;
+    font-size: 43px;
+    margin: 0;
+    text-align: right;
+}
+
+.big-leaf {
+    height: 5vh;
+    padding: 0;
+    justify-self: left;
+    margin-left: 1vw;
+    margin-top: 1vh;
+}
+
+

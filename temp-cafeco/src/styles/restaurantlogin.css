@@ -1,0 +1,104 @@
+/*Used some of Waqas' code for styling elements and practices*/
+
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.login-container {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-family: "Muli", sans-serif;
+    font-weight: lighter;
+    background-color: #f7faf8;
+}
+
+.left-container {
+    height: 100vh;
+}
+
+.left-image {
+    margin-top: 31vh;
+    margin-left: 1vh;
+}
+
+.middle-container {
+    display: grid;
+    grid-template-rows: 21vh 10vh 14vh 10vh 10vh;
+    padding-top: 10vh;
+}
+
+.login-logo {
+    height: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.login-title {
+    font-weight: lighter;
+    margin: 1vh auto auto auto;
+    color: #4ac785;
+}
+
+.input {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 10vw 22vw;
+    grid-template-rows: 5vh 5vh;
+    grid-row-gap: 2vh;
+}
+
+.username {
+    padding: 0 0 0 0;
+    margin: auto auto auto auto;
+}
+
+.password {
+    padding: 0 0 0 0;
+    margin: auto auto auto auto;
+}
+
+.input-form {
+    border-radius: 5px;
+    border: 1px solid #1A7773;
+}
+
+.restaurant-login-button {
+    margin: auto;
+    color: white;
+    background: linear-gradient( to right, #4ac785, #1a7773);
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 0.9em;
+    height: 5vh;
+    width: 9vw;
+}
+.restaurant-login-button:hover {
+    box-shadow: 0 0 10px 0 #4ac785;
+}
+
+.footnote {
+    display: grid;
+    text-align: center;
+}
+
+.footnote-text {
+    padding: 0 0 0 0;
+    margin: auto;
+}
+
+.text-link {
+    color: #4ac785;
+    text-decoration: none;
+}
+
+.right-container {
+    height: 100vh;
+}
+
+.right-image {
+    margin-top: 25vh;
+    margin-left: 3vh;
+}
