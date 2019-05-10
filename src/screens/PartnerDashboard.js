@@ -91,7 +91,7 @@ class PartnerDashboard extends Component {
     createSale = (e) => {
         e.preventDefault()
 
-        let saleID = ('' + Math.random().toString(36).substr(2, 8));
+        let saleID = ('' + Math.random().toString(36).substr(2, 8)).toLowerCase();
 
         let newSale = {
             id: saleID,

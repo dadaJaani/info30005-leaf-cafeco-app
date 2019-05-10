@@ -691,10 +691,13 @@ body p {
 .profile-item2-input-container input {
     outline: 0;
     border: #1A7773;
-    width: 60%;
+    width: 62%;
     padding: 5px;
-    height: 15px;
+    height: 20px;
     border-radius: 5px;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    text-align: center;
 }
 .profile-item2-input-container input::placeholder {
     color: #4ac785;
@@ -1983,7 +1986,7 @@ body p {
     color: #eee;
     width: 28%;
     float: right;
-    height: 25px;
+    height: 30px;
 }
 
 .redeem-button:hover {
@@ -1998,5 +2001,5 @@ body p {
     color: #eee;
     width: 28%;
     float: right;
-    height: 25px;
+    height: 30px;
 }

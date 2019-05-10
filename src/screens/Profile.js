@@ -111,7 +111,7 @@ class Profile extends Component {
 
     handleChange = () => {
         this.setState({
-            rewardCodeIN: this.refs.RedeemIN.value,
+            rewardCodeIN: this.refs.RedeemIN.value.toLowerCase(),
             redeemErrors: true
         })
     }
@@ -312,6 +312,7 @@ class Profile extends Component {
                                             minLength={8}
                                             maxLength={8}
                                             required
+
                                             placeholder='Enter Credit Code'
                                         />
 
@@ -338,7 +339,7 @@ class Profile extends Component {
                                             : 'redeem-button-disabled'
                                             }
                                         >
-                                            Verify
+                                            Claim
                                         </button>
                                     </form>
 
