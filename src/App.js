@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, withRouter } from "react-router-dom";
+
+import { createBrowserHistory as createHistory } from "history";
+
+import * as ReactRouter from "react-router-dom";
 
 import Home from './screens/Home'
 import Dashboard from "./screens/Dashboard"
@@ -9,6 +13,10 @@ import RestaurantDetails from './screens/RestaurantDetails'
 import RestaurantList from './screens/RestaurantList'
 import About from './screens/About'
 import PartnerSignUp from './screens/PartnerSignUp'
+import PartnerDashboard from './screens/PartnerDashboard'
+import PartnerLogin from './screens/PartnerLogin'
+import PartnerReviews from './screens/PartnerReviews'
+
 
 import './styles/main.css'
 
@@ -26,8 +34,15 @@ class App extends Component {
       restaurants: [],
       selectedRestaurant: {},
       loading: true,
+      partner: {},
+      refresh: '',
     }
+    // this.history = createHistory({forceRefresh:true});
+    this.history = createHistory();
+
   }
+
+
 
   doSomethingBeforeUnload = () => {
     // setTimeout(() => {
@@ -129,14 +144,79 @@ class App extends Component {
 
     console.log("GOES IN APP COMPONENT DID MOUNT")
 
+  }
+
+
+  logInPartner = (partnerLoginDets) => {
+    let promise = new Promise( (resolve, reject) => {
+
+      API.loginPartner(partnerLoginDets).then( item => {
+        if (item === false) {
+          reject("Password Incorrect");
+        } else {
+          this.setState({
+            partner: item
+          }, () => {
+            resolve(item)
+          })
+        }
+      })
+    });
+
+    return promise
+  }
+
+  editPartner = (id, partnerEditData) => {
+    let promise = new Promise( (resolve, reject) => {
+      API.editPartner(id, partnerEditData).then( item => {
+
+        if (item === false) {
+          reject("Error with Editing");
+        } else {
+
+          let newEditedPartner = {
+              id: this.state.partner.id,
+              password: this.state.partner.password,
+              email: this.state.partner.email,
+              foodReviews: this.state.partner.foodReviews,
+              sustainabilityReviews: this.state.partner.sustainabilityReviews,
+              averageFoodRating: this.state.partner.averageFoodRating,
+              averageSustainabilityRating:this.state.partner.averageSustainabilityRating,
+              ...partnerEditData.restaurantUpdate,
+          }
+
+          this.setState({
+            partner: newEditedPartner,
+          }, () => {
+            resolve(item)
+          })
+        }
+      })
+    });
+
+    return promise
 
   }
 
+  logOutPartner = () => {
+    this.history.replace('/partner/login')
+    this.setState({
+      partner: {}
+    })
+  }
+
   render() {
+
+    // console.log(('' + Math.random().toString(36).substr(2, 7)).toUpperCase() )
+
+    let newEditedPartner = {}
     console.log('appstate:', this.state)
+    // console.log('context:', this.history)
+
     return (
       <div className='app-container'>
-        <Router>
+        <Router history={this.history}>
+
           <Route path="/" exact component={Home} />
           <Route path="/dashboard" exact render={() => (
               <Dashboard
@@ -193,7 +273,7 @@ class App extends Component {
               />
           )}/>
 
-          <Route path="/about" exact render={() => (
+          <Route path="/about" render={() => (
               <About
                 logInUser={this.logInUser}
                 signUpUser={this.signUpUser}
@@ -210,6 +290,36 @@ class App extends Component {
               />
           )}
           />
+
+          <Route path="/partner/home"  render={() => (
+              <PartnerDashboard
+                  partner={this.state.partner}
+                  logOutPartner={this.logOutPartner}
+                  editPartner={this.editPartner}
+              />
+          )}
+          />
+
+          <Route path="/partner/login"  render={() => (
+              <PartnerLogin
+                  restaurants={this.state.restaurants}
+                  logInPartner={this.logInPartner}
+              />
+          )}
+          />
+
+          <Route path="/partner/reviews"  render={() => (
+              <PartnerReviews
+                  partner={this.state.partner}
+                  logOutPartner={this.logOutPartner}
+              />
+          )}
+          />
+
+
+
+
+
         </Router>
       </div>
     );

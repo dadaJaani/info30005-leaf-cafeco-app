@@ -3,7 +3,9 @@ import { withRouter } from "react-router-dom";
 import GoogleMapReact from 'google-map-react';
 import Rating from 'react-rating';
 
-import { IoIosStarOutline, IoIosStar } from 'react-icons/io'
+import { IoIosStarOutline, IoIosStar, IoIosCall } from 'react-icons/io'
+import { FaRegBuilding } from 'react-icons/fa'
+
 
 import NavBar from "../components/NavBar";
 import RewardSelector from "../components/RewardSelector";
@@ -55,7 +57,6 @@ class RestaurantDetails extends Component {
                 savedRestaurants: newSaved.savedRestaurants
             });
         })
-
     }
 
     unsetFavorite = () => {
@@ -259,8 +260,16 @@ class RestaurantDetails extends Component {
                                     </div>
                                     <div className='restaurant-detail-info'>
                                         <p>{restaurant.description}</p>
-                                        <span>{restaurant.address}</span>
-                                        <span>{restaurant.phone}</span>
+                                        <span>
+                                            <FaRegBuilding
+                                                size={22}
+                                            />
+                                            {restaurant.address}</span>
+                                        <span>
+                                            <IoIosCall
+                                                size={22}
+                                            />
+                                            {restaurant.phone}</span>
                                         <a href={'http://www.' + restaurant.website} target="_blank">Eatery Website</a>
 
                                     </div>

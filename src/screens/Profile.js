@@ -3,21 +3,16 @@ import { Link, withRouter } from "react-router-dom";
 
 import NavBar from "../components/NavBar";
 import Footer from '../components/Footer'
+import RedeemSuccess from '../components/RedeemSuccess'
+
 
 import * as API from '../utils/api'
+import {IoIosAddCircle, IoIosCheckmarkCircle} from "react-icons/io";
 
 
 
 class Profile extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            savedRestaurants: [],
-            rewardHistory: [],
-        }
-    }
 
     rewardHelper = {
         RewFD: {
@@ -54,7 +49,99 @@ class Profile extends Component {
         },
     }
 
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            savedRestaurants: [],
+            rewardHistory: [],
+            rewardCodeIN: '',
+            saleItem: {},
+            saleIDExists: false,
+            showStatusSale: false,
+            redeemErrors: true,
+            redeemSuccessVisible: false,
+            redeemPoints: 0,
+        }
+    }
+
     goToProfile = () => {}
+
+    redeemCode = (e) => {
+        e.preventDefault()
+
+        if (!this.state.redeemErrors) {
+            let temp = Math.ceil(this.state.saleItem.price * 3 ) + this.props.user.points
+
+            let newCredits = {
+                points: temp,
+            }
+
+            API.editUserPoints(this.props.user.username, newCredits).then(res => {
+                this.props.updateUser({
+                    ...this.props.user,
+                    points: newCredits.points,
+                })
+
+                this.setState({
+                    redeemSuccessVisible: true,
+                    redeemPoints: Math.ceil(this.state.saleItem.price * 3 ),
+                }, () => {
+                    API.deleteSale(this.state.saleItem.id)
+                })
+            })
+        } else {
+
+        }
+    }
+
+    // openRedeemSuccess = () => {
+    //     this.setState({
+    //         redeemSuccessVisible: true
+    //     })
+    // }
+
+    closeRedeemSuccess = () => {
+        this.setState({
+            redeemSuccessVisible: false,
+            saleItem: {},
+            redeemPoints: 0,
+        })
+    }
+
+    handleChange = () => {
+        this.setState({
+            rewardCodeIN: this.refs.RedeemIN.value,
+            redeemErrors: true
+        })
+    }
+
+    checkSale = () => {
+        if (this.refs.RedeemIN.value !== ''){
+            API.getSale(this.state.rewardCodeIN).then( res => {
+                if (res !== false){
+                    this.setState({
+                        showStatusSale: true,
+                        saleItem: res,
+                        saleIDExists: true,
+                        redeemErrors: false,
+                    })
+                } else {
+                    this.setState({
+                        showStatusSale: true,
+                        saleItem: res,
+                        saleIDExists: false,
+                        redeemErrors: true
+                    })
+                }
+            })
+        } else {
+            this.setState({
+                showStatusSale: false,
+                redeemErrors: true
+            })
+        }
+    }
 
     goToRestaurantProfile = (restaurantID) => {
         this.props.selectRestaurant(restaurantID)
@@ -125,10 +212,7 @@ class Profile extends Component {
 
         if (!loading) {
             savedRestaurants = user.savedRestaurants.map(item => {
-                console.log(this.props.restaurants)
-
                 let found = this.props.restaurants.find(resto => resto.id === item)
-                console.log(found)
                 return found
             })
 
@@ -161,6 +245,11 @@ class Profile extends Component {
                             logOutUser={this.logOutUser}
                             userLoggedIn={this.props.userLoggedIn}
                             goToProfile={this.goToProfile}
+                        />
+                        <RedeemSuccess
+                            visible={this.state.redeemSuccessVisible}
+                            closeRedeemSuccess={this.closeRedeemSuccess}
+                            points={this.state.redeemPoints}
                         />
 
                         <div className={'profile-container'}>
@@ -210,10 +299,49 @@ class Profile extends Component {
 
                                 <div className='profile-item2-input-container'>
                                     <div>Redeem Code</div>
-                                    <input placeholder='Enter Credit Code'/>
-                                    <button>
-                                        Verify
-                                    </button>
+
+                                    <form
+                                        onSubmit={this.redeemCode}
+                                        className='redeem-code-container'
+                                    >
+                                        <input
+                                            value={this.state.rewardCodeIN}
+                                            ref='RedeemIN'
+                                            onChange={this.handleChange}
+                                            onBlur={this.checkSale}
+                                            minLength={8}
+                                            maxLength={8}
+                                            required
+                                            placeholder='Enter Credit Code'
+                                        />
+
+                                        <div className={ this.state.showStatusSale
+                                            ? 'redeem-code-check-container'
+                                            : 'redeem-code-check-container invisible'
+                                        }>
+                                            {this.state.saleIDExists
+                                                ?
+                                                <IoIosCheckmarkCircle
+                                                    className={'signup-input-check'}
+                                                />
+
+                                                :
+                                                <IoIosAddCircle
+                                                    className={'signup-input-cross'}
+                                                />
+                                            }
+                                        </div>
+
+                                        <button
+                                            className={!this.state.redeemErrors
+                                            ? 'redeem-button'
+                                            : 'redeem-button-disabled'
+                                            }
+                                        >
+                                            Verify
+                                        </button>
+                                    </form>
+
                                 </div>
 
                             </div>

@@ -33,7 +33,7 @@ class Footer extends Component {
 
                 <div className='footer-item4'>
                     <Link
-                        to='/partner'
+                        to='/partner/login'
                         className='footer-link'
                     >
                         Partner Business Portal

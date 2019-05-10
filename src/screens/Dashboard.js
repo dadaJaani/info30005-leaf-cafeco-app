@@ -96,7 +96,7 @@ class Dashboard extends Component {
             topRestaurants = this.props.restaurants
 
             for (var i=0; i<10; i++) {
-                topRestaurants = topRestaurants.sort((b ,a) => a.averageSustainabilityRating - b.averageSustainabilityRating).slice(0,10);
+                topRestaurants = topRestaurants.sort((b ,a) => a.averageSustainabilityRating - b.averageSustainabilityRating).slice(0,5);
             }
 
             topRestaurantsMarkers = topRestaurants.map( resto => ({

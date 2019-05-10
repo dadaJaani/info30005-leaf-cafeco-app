@@ -60,7 +60,7 @@ class RewardSelector extends Component {
                 rewardHistory: [...this.props.user.rewardHistory, newReward.id]
             }
 
-            API.editUserPoints(this.props.user.username, newUserPoints).then(res => {
+            API.editUserRewards(this.props.user.username, newUserPoints).then(res => {
                 console.log('user update after creating reward:', res)
                 this.props.updateUser({
                     ...this.props.user,

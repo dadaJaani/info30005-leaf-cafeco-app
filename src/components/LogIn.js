@@ -96,7 +96,7 @@ class LogIn extends Component {
                         onClick={this.closeLogin}
                     ></div>
 
-                    <div className={'login-container'}>
+                    <div className={'login-container1'}>
 
                         <div  className={'signup-title'}>
                             Log In

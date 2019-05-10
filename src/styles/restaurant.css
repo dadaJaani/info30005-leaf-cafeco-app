@@ -1,0 +1,751 @@
+/*Used some of Waqas' code for styling elements and practices*/
+
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.partner-top-container{
+
+}
+
+/* ===================================================================================== */
+/* ===================================================================================== */
+/* RESTAURANT SIDEBAR */
+/* ===================================================================================== */
+/* ===================================================================================== */
+
+.partner-sidebar-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 20vw;
+    height: 100vh;
+    background: #1A7773;
+    /*padding: 1vw;*/
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.partner-sidebar-info{
+    flex: 1;
+    color: #eee;
+    display: flex;
+    flex-flow: column wrap;
+    /*justify-content: center;*/
+    align-items: center;
+    padding: 1vh;
+}
+.partner-sidebar-info img {
+    margin: 0;
+    margin: 7vh 0 10vh;
+
+}
+
+.partner-sidebar-info h2 {
+    margin: 5vh 0;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.partner-sidebar-info p {
+    margin: 0;
+    text-align: center;
+    font-size: 0.8em;
+
+}
+
+.partner-sidebar-menu{
+    color: #eee;
+}
+
+.partner-sidebar-menu-item {
+    height: 10vh;
+    background-color: rgba(255,255,255,0.1);
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1em;
+    font-weight: lighter;
+    transition: all 0.3s;
+    color: #eee;
+}
+
+.partner-sidebar-menu-item:hover {
+    background-color: #ef5439;
+    font-size: 1.3em;
+}
+
+
+/* ===================================================================================== */
+/* ===================================================================================== */
+/* RESTAURANT REVIEWS */
+/* ===================================================================================== */
+/* ===================================================================================== */
+
+.partner-review-container {
+    position: absolute;
+    left: 20vw;
+    width: 73vw;
+    padding: 5vh;
+    /*height: 100vh;*/
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 15vh 5vh auto 5vh auto 5vh auto;
+    grid-gap: 2vh;
+    grid-template-areas:
+        "partner-review-heading partner-review-rating"
+        "partner-top-reviews-heading partner-top-reviews-heading"
+        "partner-top-reviews-container partner-top-reviews-container"
+        "partner-worst-reviews-heading partner-worst-reviews-heading"
+        "partner-worst-reviews-container partner-worst-reviews-container"
+        "partner-all-reviews-heading partner-all-reviews-heading"
+        "partner-all-reviews-container partner-all-reviews-container"
+
+
+;
+
+}
+
+.partner-review-container h1 {
+    grid-area: partner-review-heading;
+
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
+
+.partner-review-rating {
+    grid-area: partner-review-rating;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    background-color: #ef5439;
+    border-radius: 15px;
+    color: #eee;
+}
+
+
+.partner-review-rating img {
+    width: 5vh;
+    height: 5vh;
+    margin: -1vh 1vw 0;
+}
+
+.partner-top-reviews-container {
+    grid-area: partner-top-reviews-container;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+}
+
+.partner-top-reviews-heading {
+    grid-area: partner-top-reviews-heading;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-worst-reviews-container {
+    grid-area: partner-worst-reviews-container;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+}
+
+.partner-worst-reviews-heading {
+    grid-area: partner-worst-reviews-heading;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-all-reviews-container {
+    grid-area: partner-all-reviews-container;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: auto;
+}
+
+.partner-all-reviews-heading {
+    grid-area: partner-all-reviews-heading;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partner-reviews-item {
+    flex: 0 0 auto;
+    margin: 0 2vw 0 0 ;
+    width: 25vw;
+    height: 21vh;
+    background-color: #F8C960;
+    padding: 1vh;
+}
+
+.partner-reviews-item span {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.partner-reviews-item h2{
+    margin: 0 ;
+    font-size: 1em;
+    flex: 3;
+}
+.partner-reviews-item label {
+    flex: 1;
+
+    font-size: 0.7em;
+}
+
+.partner-reviews-item div {
+    height: 85%;
+    overflow-y: scroll;
+    font-size: 0.75em;
+}
+
+
+
+/* ===================================================================================== */
+/* ===================================================================================== */
+/* RESTAURANT PROFILE */
+/* ===================================================================================== */
+/* ===================================================================================== */
+
+.partner-main-container{
+    height: 100vh;
+    padding: 5vh;
+    width: 73vw;
+    position: absolute;
+    top: 0;
+    left: 20vw;
+    display: grid;
+    grid-gap: 3vh;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: 30vh 30vh max-content;
+    grid-template-areas:
+            "partner-profile-container partner-stats-container"
+            "partner-profile-container partner-sale-container"
+            "partner-profile-container ."
+
+;
+}
+
+
+.restaurant-profile-container {
+    grid-area: partner-profile-container;
+    height: auto;
+    /*grid-row: 3/16;*/
+    background-color: #ef5439;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto auto auto auto auto auto auto;
+    grid-template-areas:
+            "rp-heading rp-heading"
+            "rp-item1 rp-item2"
+            "rp-item3 rp-item4"
+            "rp-item5 rp-item6"
+            "rp-item7 rp-item8"
+            "rp-item9 rp-item10"
+            "rp-item11 rp-item12"
+            "rp-button rp-button"
+    ;
+    border-radius: 15px;
+}
+
+.restaurant-profile-heading {
+    grid-area: rp-heading;
+    font-size: 2.4em;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    color: #eee;
+}
+
+.restaurant-profile-button {
+    grid-area: rp-button;
+    margin: 0;
+    padding: 2vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-profile-button button {
+    border: solid 2px #eee;
+    border-radius: 40px;
+    outline: 0;
+    background: 0;
+    height: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    color: #eee;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.restaurant-profile-button button:hover{
+    background: #eee;
+    color: #ef5439;
+}
+
+.restaurant-profile-item1{
+    grid-area: rp-item1;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+}
+
+.restaurant-profile-item2{
+    grid-area: rp-item2;
+    margin: 0;
+    padding: 10px;
+}
+
+.restaurant-profile-item3{
+    grid-area: rp-item3;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+}
+
+.restaurant-profile-item4{
+    grid-area: rp-item4;
+    padding: 10px;
+}
+
+.restaurant-profile-item5{
+    grid-area: rp-item5;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+}
+
+.restaurant-profile-item6{
+    grid-area: rp-item6;
+    padding: 10px;
+}
+
+.restaurant-profile-item7{
+    grid-area: rp-item7;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+}
+
+.restaurant-profile-item8{
+    grid-area: rp-item8;
+    padding: 10px;
+}
+
+.restaurant-profile-item9{
+    grid-area: rp-item9;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+}
+
+.restaurant-profile-item10{
+    grid-area: rp-item10;
+    padding: 10px;
+}
+
+.restaurant-profile-item11{
+    grid-area: rp-item11;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+}
+
+.restaurant-profile-item12{
+    grid-area: rp-item12;
+    padding: 10px;
+}
+
+.partner-stats-container {
+    grid-area: partner-stats-container;
+
+    background-color: #f8C960;
+    grid-column: 2;
+    /*grid-row: 3/18;*/
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.partner-stats-container h2 {
+    font-size: 2em;
+    margin: 0;
+
+}
+
+.partner-stats-container label {
+    font-size: 3em;
+    margin: 0;
+}
+
+.partner-stats-container p {
+    font-size: 0.8em;
+    margin: 0;
+
+}
+
+.partner-sale-container {
+    grid-area: partner-sale-container;
+    background-color: #4AC785;
+    grid-column: 2;
+    /*grid-row: 3/18;*/
+    border-radius: 15px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.partner-sale-container h2 {
+    font-size: 2em;
+    margin: 0.81em 0;
+
+}
+.partner-sale-container form {
+    flex: 1;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+
+}
+
+.partner-sale-container input {
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    width: 15vw;
+    padding: 8px;
+    margin: 0.1vh 0 2vh;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.partner-sale-button {
+    cursor: pointer;
+    outline: 0;
+    border: solid 2px #333;
+    background: 0;
+    height: 10vh;
+    width: 10vh;
+    border-radius: 6vh;
+    font-size: 0.9em;
+    transition: all 0.3s;
+    color: #333;
+}
+
+.partner-sale-button:hover {
+    background-color: #333;
+    color: #4AC785;
+    font-size: 1.2em;
+}
+
+
+/* ===================================================================================== */
+/* ===================================================================================== */
+/* RESTAURANT EDIT */
+/* ===================================================================================== */
+/* ===================================================================================== */
+
+
+.restaurant-edit-backdrop{
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background: rgba(0,0,0,0.6);
+}
+
+.restaurant-edit-container{
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 40vw;
+    height: 80vh;
+    background: #f7faf8;
+    /*border-color: black;*/
+    /*border-style: solid;*/
+    /*border-width: 1px;*/
+    padding: 4vh 5vh;
+    border-radius: 50px;
+    display: flex;
+    flex-flow: column nowrap;
+    /*justify-content: center;*/
+    align-items: stretch;
+    box-shadow: 3px 3px 10px 0 #555;
+    overflow-y: auto;
+
+}
+
+.restaurant-edit-title {
+    font-size: 1.5em;
+    margin: 10px;
+    margin-bottom: 3%;
+    color: #4AC785;
+    text-align: center;
+}
+
+.restaurant-edit-input-container {
+    flex: 0 0 auto;
+    display: flex;
+    /*justify-content: flex-end;*/
+    align-items: center;
+}
+
+.restaurant-edit-input-label {
+    text-align: right;
+    /*width: 20%;    */
+    flex: 0.4;
+
+    margin: 0 3% 0 0;
+    /*padding: 0 5% 0 0;*/
+    font-size: 1em;
+    color: #666;
+    font-weight: bold;
+}
+
+
+.restaurant-edit-input-container{
+    /*width: 71%;*/
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    border: 0;
+    margin: 10px;
+    /*padding: 0 3%;*/
+    font-size: 0.8em;
+    outline:0;
+    transition: all 0.3s;
+    background: #f7faf8;
+}
+
+
+.restaurant-edit-input {
+    /*width: 65%;*/
+    flex: 1;
+    height: 30px;
+    text-align: left;
+    border: 0;
+    margin: 0 10px;
+    padding: 2px 3%;
+    font-size: 0.9em;
+    background: #fff;
+    outline:0;
+    border-radius: 10px;
+    border: 1px solid #1A7773;
+    transition: all 0.3s;
+}
+
+.restaurant-edit-input-checkbox{
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    margin: 0 10px;
+}
+.restaurant-edit-input-checkbox div {
+    display: flex;
+}
+
+.restaurant-edit-input-checkbox div > span{
+    margin: 0 10px;
+
+}
+
+.restaurant-edit-tainput {
+    flex: 1;
+    /*width: 65%;*/
+    height: 75px;
+    text-align: left;
+    border: 0;
+    margin: 0 10px;
+    padding: 3%;
+    font-size: 0.9em;
+    background: #fff;
+    outline:0;
+    border-radius: 10px;
+    border: 1px solid #1A7773;
+    transition: all 0.3s;
+    resize: none;
+}
+
+
+.restaurant-edit-button-container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.restaurant-edit-button {
+    outline: 0;
+    width: 25%;
+    height: 4vh;
+    margin: 10px;
+    margin-top: 3%;
+    color: #eeeeee;
+    background: linear-gradient( to right, #4AC785, #1A7773);
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.restaurant-edit-button-disabled {
+    outline: 0;
+    width: 25%;
+    height: 4vh;
+    margin: 10px;
+    margin-top: 3%;
+    color: #eeeeee;
+    background: linear-gradient( to right, #666666, #707070);
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.2s;
+    font-size: 0.8em;
+}
+
+.restaurant-edit-button-close {
+    outline: 0;
+    width: 25%;
+    height: 4vh;
+    margin: 10px;
+    margin-top: 3%;
+    background: 0;
+    color: #4AC785;
+    /*border-top-left-radius: 15px;*/
+    border-radius: 20px;
+    transition: all 0.3s;
+    border: 1px solid #4AC785;
+    cursor: pointer;
+    font-size: 0.8em;
+
+}
+
+.restaurant-edit-button:hover {
+    /*background: #eeeeee;*/
+    /*color: #11a220;*/
+    /*border-color: #11a220;*/
+    box-shadow: 0 0 10px 0 #4AC785;
+}
+
+.restaurant-edit-button-close:hover {
+    /*background: #22b922;*/
+    /*color: #eeeeee;*/
+    box-shadow: 0 0 10px 0 #4AC785;
+
+}
+
+.restaurant-edit-button-disabled {
+    box-shadow: none;
+}
+
+
+/* ===================================================================================== */
+/* ===================================================================================== */
+/* SALE SUCCESS */
+/* ===================================================================================== */
+/* ===================================================================================== */
+
+.sale-success-container {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30vw;
+    height: 28vh;
+    background-color: #f7faf8;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.sale-success-container label{
+}
+
+.sale-success-container h2{
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.sale-success-container span{
+
+}
+
+.sale-success-container div{
+    width: 80%;
+    padding: 0 10%;
+    text-align: center;
+}
+
+.sale-success-container p{
+    font-size: 0.8em;
+    font-style: italic;
+    color: #4AC785;
+    text-align: center;
+}
+
+.sale-success-container button{
+    display: block;
+    outline: 0;
+    width: 25%;
+    height: 4vh;
+    margin: 10px;
+    margin-top: 3%;
+    color: #eeeeee;
+    background: linear-gradient( to right, #4AC785, #1A7773);
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.sale-success-container button:hover{
+    box-shadow: 0 0 10px 0 #4AC785;
+}

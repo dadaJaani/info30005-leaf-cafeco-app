@@ -22,6 +22,9 @@ body {
     /*min-width: 100vw;*/
     /*min-height: 100vh;*/
 }
+body p {
+    /*padding: 0;*/
+}
 
 .app-container{
     width: 100vw;
@@ -318,7 +321,7 @@ body {
     opacity: 0.5;
 }
 
-.login-container{
+.login-container1{
     position: fixed;
     z-index: 4;
     top: 30%;
@@ -385,7 +388,6 @@ body {
     background: #eee;
     outline:0;
     transition: all 0.3s;
-
 }
 
 .signup-input {
@@ -692,6 +694,7 @@ body {
     width: 60%;
     padding: 5px;
     height: 15px;
+    border-radius: 5px;
 }
 .profile-item2-input-container input::placeholder {
     color: #4ac785;
@@ -701,21 +704,21 @@ body {
     font-size: 0.8em;
 }
 
-.profile-item2-input-container button {
-    cursor: pointer;
-    border: 0;
-    outline: 0;
-    border-radius: 25px;
-    background: linear-gradient(to right, #4ac785, #1A7773);
-    color: #eee;
-    width: 28%;
-    float: right;
-    height: 25px;
-}
+/*.profile-item2-input-container button {*/
+/*    cursor: pointer;*/
+/*    border: 0;*/
+/*    outline: 0;*/
+/*    border-radius: 25px;*/
+/*    background: linear-gradient(to right, #4ac785, #1A7773);*/
+/*    color: #eee;*/
+/*    width: 28%;*/
+/*    float: right;*/
+/*    height: 25px;*/
+/*}*/
 
-.profile-item2-input-container button:hover {
-    box-shadow: 0 0 8px #eee;
-}
+/*.profile-item2-input-container button:hover {*/
+/*    box-shadow: 0 0 8px #eee;*/
+/*}*/
 
 .profile-item3 {
     grid-area: profile-item3;
@@ -1076,10 +1079,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 2em;
-
 }
-
-
 
 .restaurant-detail-photo {
     grid-area: resto-detail-photo;
@@ -1105,6 +1105,8 @@ body {
     flex: 5;
     font-weight: lighter;
     color: #333;
+    display: flex;
+    align-items: center;
 
 }
 
@@ -1113,7 +1115,8 @@ body {
     font-weight: lighter;
     display: block;
     color: #333;
-
+    display: flex;
+    align-items: center;
 }
 
 .restaurant-detail-info a{
@@ -1122,6 +1125,8 @@ body {
     text-decoration-line: none;
     color: #EF5439;
     margin: 0 0 1em 0;
+    display: flex;
+    align-items: center;
 }
 
 .restaurant-detail-map {
@@ -1481,6 +1486,10 @@ body {
 
 }
 
+.home-grid-container p {
+    padding: 0;
+}
+
 .home-grid-main {
     grid-area: dashboard-main;
     /*box-shadow: 1px 1px 5px 0 #bbb;*/
@@ -1609,11 +1618,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #F7FAF8;
+    background: #ef5439;
 }
 
 .home-grid-featured-title div {
-    color: #999;
+    color: #eee;
 }
 .home-grid-featured-title div:hover {
     text-shadow: 0 0 2px #eee;
@@ -1706,7 +1715,6 @@ body {
     align-items: center;
     justify-content: flex-end;
     padding: 0 2%;
-
 }
 
 .home-grid-top-button{
@@ -1736,6 +1744,10 @@ body {
     ;
     font-size: 13px;
     padding: 0 5vw;
+}
+
+.footer-container p {
+    padding: 0;
 }
 
 .footer-item1{
@@ -1864,5 +1876,127 @@ body {
 
 .about-item4 p{
     font-size: 1.1em;
+}
 
+
+/* ================================================================================= */
+/* ================================================================================= */
+/*  REDEEM COMPONENT
+/* ================================================================================= */
+/* ================================================================================= */
+
+.redeem-container {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30vw;
+    height: 33vh;
+    background-color: #f7faf8;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.redeem-container label{
+
+}
+
+.redeem-container h2{
+    font-size: 1.6em;
+    text-align: center;
+}
+
+.redeem-container span{
+    font-size: 1.5em;
+    display: block;
+    font-weight: bold;
+    color: #4AC785;
+    padding: 5px;
+
+}
+
+.redeem-container div{
+    width: 80%;
+    padding: 0 10%;
+    text-align: center;
+}
+
+.redeem-container p{
+    font-size: 1.2em;
+    /*font-style: italic;*/
+    /*color: #333;*/
+    text-align: center;
+}
+
+.redeem-container button{
+    display: block;
+    outline: 0;
+    width: 25%;
+    height: 4vh;
+    margin: 10px;
+    margin-top: 3%;
+    color: #eeeeee;
+    background: linear-gradient( to right, #4AC785, #1A7773);
+    border: 0;
+    border-radius: 20px;
+    transition: all 0.2s;
+    cursor: pointer;
+    font-size: 0.8em;
+}
+
+.redeem-container button:hover{
+    box-shadow: 0 0 10px 0 #4AC785;
+}
+
+.redeem-code-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.redeem-code-check-container {
+    display: inline;
+    position: absolute;
+    left: 7.5vw;
+    /*left: 20vw;*/
+    /*margin: 5px -5vw 0 0;*/
+    background-color: #fff;
+    border-radius: 1.4em;
+    height: 1.4em;
+    width: 1.4em;
+    border: 0;
+}
+
+.redeem-button  {
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    border-radius: 25px;
+    background: linear-gradient(to right, #4ac785, #1A7773);
+    color: #eee;
+    width: 28%;
+    float: right;
+    height: 25px;
+}
+
+.redeem-button:hover {
+    box-shadow: 0 0 8px #eee;
+}
+
+.redeem-button-disabled {
+    border: 0;
+    outline: 0;
+    border-radius: 25px;
+    background: linear-gradient(to right, #666, #888);
+    color: #eee;
+    width: 28%;
+    float: right;
+    height: 25px;
 }
