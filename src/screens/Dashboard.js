@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-
 import { withRouter, Link } from "react-router-dom";
 import GoogleMapReact from 'google-map-react';
+import escapeRegExp from 'escape-string-regexp'
+
 
 import { IoIosSearch, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 
@@ -39,6 +40,8 @@ class Dashboard extends Component {
         this.state = {
             userLoggedIn: props,
             userInfo: props.user,
+            searchQuery: '',
+            autocompleteVisible: false,
         }
     }
 
@@ -91,6 +94,9 @@ class Dashboard extends Component {
         let topRestaurants = []
         let topRestaurantsMarkers = []
 
+        const { searchQuery } = this.state
+
+        let searchedRestaurants = []
 
         if (this.props.restaurants) {
             topRestaurants = this.props.restaurants
@@ -104,9 +110,19 @@ class Dashboard extends Component {
                 lng: resto.location.lng,
                 restaurantID: resto.id,
                 name: resto.name,
-
             }))
+
+
+
+            if (searchQuery) {
+                const match = new RegExp(escapeRegExp(searchQuery), 'i')
+                searchedRestaurants = this.props.restaurants.filter( c => match.test(c.name))
+            } else {
+                searchedRestaurants = []
+            }
         }
+
+
 
 
         return (
@@ -129,11 +145,50 @@ class Dashboard extends Component {
 
                         <div className='home-grid-main-form'>
                             <IoIosSearch className='home-grid-main-form-icon'/>
-                            <input
-                                placeholder='Search eatery by name'
-                                className='home-grid-form-input'
-                            />
+
+                            <div>
+
+                                <input
+                                    placeholder='Search eatery by name'
+                                    className='home-grid-form-input'
+                                    value={this.state.searchQuery}
+                                    onChange={(ref) => this.setState({searchQuery: ref.target.value})}
+                                    onFocus={() => this.setState({autocompleteVisible: true})}
+                                    onBlur={() => this.setState({autocompleteVisible: false})}
+                                />
+                                <div
+                                    className={ this.state.autocompleteVisible
+                                        ? 'home-grid-form-search-box'
+                                        : 'home-grid-form-search-box-invis'
+                                    }
+                                >
+                                    {
+                                        searchedRestaurants.map( resto =>
+                                            <div
+                                                className={'home-grid-form-search-box-item'}
+                                                key={resto.id}
+                                                onClick={ () => {
+                                                    this.selectRestaurant(resto.id)
+                                                    this.goToRestaurantProfile(resto.id)
+                                                }}
+                                            >
+                                                {resto.name}
+                                            </div>
+                                        )
+                                    }
+                                    <div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
                             <span > or </span>
+
+
+
                             <Link
                                 to='/restaurants'
 

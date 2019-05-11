@@ -964,6 +964,34 @@ body p {
 
 }
 
+.restaurant-list-search {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.restaurant-list-search input{
+    margin: auto;
+    width: 20%;
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    text-align: center;
+    outline: none;
+    border-radius: 10px;
+    border: solid 1px #ef5439;
+}
+
+.restaurant-list-search input:focus{
+    outline: 0;
+    border: solid 1px #ef5439;
+    box-shadow: 0 0 5px 0 #ef5439;
+}
+
+.restaurant-list-search input::placeholder{
+    color: #ef5439;
+    opacity: 0.5;
+}
+
 .restaurant-list-sublist {
     display: flex;
     flex-flow: row nowrap;
@@ -1367,7 +1395,7 @@ body p {
     flex: 2;
     font-size: 0.8em;
 }
-.reward-selector-list-item button{
+.reward-selector-list-item-button{
     cursor: pointer;
     height: 20px;
     border: 0;
@@ -1379,10 +1407,29 @@ body p {
     background: #eeeeee;
     transition: all 0.2s;
 }
-.reward-selector-list-item button:hover {
+.reward-selector-list-item-button:hover {
     background: #4ac785;
     color: #eeeeee;
     border: solid 1px #eee;
+    /*box-shadow: 0 0 10px 0 #eee;*/
+}
+
+.reward-selector-list-item-button-disabled {
+    /*cursor: pointer;*/
+    height: 20px;
+    border: 0;
+    border: solid 1px #EF5439;
+    border-radius: 20px;
+    flex: 1;
+    outline: 0;
+    color: #EF5439;
+    background: #eeeeee;
+    transition: all 0.2s;
+    opacity: 0.5;
+}
+
+.reward-selector-list-item-button-disabled:hover {
+
     /*box-shadow: 0 0 10px 0 #eee;*/
 }
 
@@ -1520,6 +1567,8 @@ body p {
     box-shadow: 1px 1px 5px 0 #bbb;
 }
 
+
+
 .home-grid-discover-button {
     grid-area: discover-button;
     display: flex;
@@ -1558,9 +1607,12 @@ body p {
 
 .home-grid-main-form {
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     padding: 0 2vw;
     /*justify-content: ;*/
+}
+.home-grid-main-form span{
+    padding: 0.5rem 0;
 }
 
 .home-grid-main-form input{
@@ -1577,6 +1629,59 @@ body p {
 
 .home-grid-main-form input::placeholder{
     color: #4ac785;
+}
+
+.home-grid-form-search-box {
+    z-index: 1;
+    opacity: 1;
+    height: 10rem;
+    border-radius: 10px;
+    /*background: #888;*/
+    border: solid 1px #ccc;
+    margin: 2vh 0 0 1vw;
+    transition: all 0.8s;
+    overflow-y: auto;
+    box-shadow: 2px 2px 5px 0 #ccc;
+}
+
+.home-grid-form-search-box-item {
+    cursor: pointer;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: solid 1px #ccc;
+    transition: all 0.4s;
+}
+
+.home-grid-form-search-box-item:hover {
+    background-color: #ef5439;
+    color: #eee;
+}
+
+.home-grid-form-search-box-item-invis {
+    /*opacity: 0;*/
+    /*z-index: -2;*/
+    margin: 1vh 0 0 1vw;
+    transition: all 0.8s;
+    height: 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.home-grid-form-search-box-invis {
+    opacity: 0;
+    z-index: -2;
+
+    height: 0;
+    margin: 1vh 0 0 1vw;
+
+    transition: all 0.8s;
+
 }
 
 .home-grid-main-form span {

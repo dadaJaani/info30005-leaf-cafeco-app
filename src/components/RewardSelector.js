@@ -44,31 +44,35 @@ class RewardSelector extends Component {
 
 
     createReward = (rewardType) => {
-        let newReward = {
-            id: `${this.props.user.username}-${rewardType}-${this.props.restaurant.id}-${Date.now()}`,
-            username: this.props.user.username,
-            restaurantID: this.props.restaurant.id,
-            points: this.helper[rewardType].points,
-            date: Date(),
-            type: rewardType,
-        }
 
-        API.createReward(newReward).then(res => {
+        if (this.props.user.points > this.helper[rewardType].points) {
 
-            let newUserPoints = {
-                points: this.props.user.points - this.helper[rewardType].points,
-                rewardHistory: [...this.props.user.rewardHistory, newReward.id]
+            let newReward = {
+                id: `${this.props.user.username}-${rewardType}-${this.props.restaurant.id}-${Date.now()}`,
+                username: this.props.user.username,
+                restaurantID: this.props.restaurant.id,
+                points: this.helper[rewardType].points,
+                date: Date(),
+                type: rewardType,
             }
 
-            API.editUserRewards(this.props.user.username, newUserPoints).then(res => {
-                console.log('user update after creating reward:', res)
-                this.props.updateUser({
-                    ...this.props.user,
-                    points: newUserPoints.points,
-                    rewardHistory: newUserPoints.rewardHistory,
+            API.createReward(newReward).then(res => {
+
+                let newUserPoints = {
+                    points: this.props.user.points - this.helper[rewardType].points,
+                    rewardHistory: [...this.props.user.rewardHistory, newReward.id]
+                }
+
+                API.editUserRewards(this.props.user.username, newUserPoints).then(res => {
+                    console.log('user update after creating reward:', res)
+                    this.props.updateUser({
+                        ...this.props.user,
+                        points: newUserPoints.points,
+                        rewardHistory: newUserPoints.rewardHistory,
+                    })
                 })
             })
-        })
+        }
     }
 
     render () {
@@ -86,7 +90,11 @@ class RewardSelector extends Component {
                                 <div className='reward-selector-list-item' key={reward}>
                                     <label>{this.helper[reward].description}</label>
                                     <span>{this.helper[reward].points} Credits</span>
-                                    <button
+                                    <button className={ this.props.user.points > this.helper[reward].points
+                                        ? 'reward-selector-list-item-button'
+                                        : 'reward-selector-list-item-button-disabled'
+
+                                    }
                                         onClick={() => this.createReward(reward)}
                                     >
                                         Claim

@@ -1,6 +1,6 @@
 
-// const api = "http://localhost:3001"
-const api = "https://cafeco-server.herokuapp.com"
+const api = "http://localhost:3001"
+// const api = "https://cafeco-server.herokuapp.com"
 
 const headers = {
     'Authorization': 'whatever i want',
@@ -27,7 +27,7 @@ export const createUser = (newUser) =>
 
 
 export const getUser = (id) =>
-    fetch(`${api}/searchUser/${id}`, { headers })
+    fetch(`${api}/user/${id}`, { headers })
         .then(res => res.json())
 
 // FUNCTION TO EDIT USER
@@ -156,11 +156,11 @@ export const createRestaurant = (newRestaurant) =>
 
 
 export const getAllRestaurants = () =>
-    fetch(`${api}/findAllRestaurants`, { headers })
+    fetch(`${api}/restaurant`, { headers })
         .then(res => res.json())
 
 export const getRestaurant = (restaurantID) =>
-    fetch(`${api}/searchRestaurant/${restaurantID}`, { headers })
+    fetch(`${api}/restaurant/${restaurantID}`, { headers })
         .then(res => res.json())
 
 export const createReview = (restaurantID, newReview) =>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from "react-router-dom";
 import { IoIosArrowUp } from "react-icons/io";
+import escapeRegExp from 'escape-string-regexp'
 
 import NavBar from "../components/NavBar"
 import Footer from "../components/Footer"
@@ -15,6 +16,7 @@ class RestaurantList extends Component {
             items: props.restaurants,
             itemsSorted: {},
             loading: true,
+            searchQuery: ''
         };
 
         this.refIndices = {}
@@ -74,11 +76,36 @@ class RestaurantList extends Component {
         window.scrollTo(0, 0)
     }
 
+    searchRestaurant = () => {
+        if (this.refs.searchIN.value !== ''){
+            console.log(' input exists')
+            let searchedRestaurants
+            const match = new RegExp(escapeRegExp(this.refs.searchIN.value), 'i')
+            searchedRestaurants = this.props.restaurants.filter( c => match.test(c.name))
+            this.setState({
+                items: searchedRestaurants,
+                searchQuery: this.refs.searchIN.value
+            }, () => this.sortIntoCategories());
+
+        } else {
+            console.log('no input exists')
+
+            this.setState({
+                items: this.props.restaurants,
+                searchQuery: this.refs.searchIN.value
+            }, () => this.sortIntoCategories());
+
+        }
+
+    }
+
 
     render(){
 
         const { itemsSorted } = this.state
-        console.log(this.props)
+        console.log('list props',this.props)
+        console.log('list state',this.state)
+
 
         return(
             <div>
@@ -90,6 +117,15 @@ class RestaurantList extends Component {
                     userLoggedIn={this.props.userLoggedIn}
                     goToProfile={this.goToProfile}
                 />
+
+                <div className='restaurant-list-search'>
+                    <input
+                        placeholder='Search'
+                        ref='searchIN'
+                        value={this.state.searchQuery}
+                        onChange={this.searchRestaurant}
+                    />
+                </div>
 
                 <div className='restaurant-list-top-buttons'>
                 {Object.keys(itemsSorted).map((fletter) => (
