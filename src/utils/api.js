@@ -1,6 +1,6 @@
 
 // const api = "http://localhost:3001"
-const api = "https://cafeco-server.herokuapp.com"
+const api = "https://cafeco.herokuapp.com"
 
 const headers = {
     'Authorization': 'whatever i want',
