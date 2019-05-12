@@ -49,20 +49,16 @@ class Profile extends Component {
         },
     }
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            savedRestaurants: [],
-            rewardHistory: [],
-            rewardCodeIN: '',
-            saleItem: {},
-            saleIDExists: false,
-            showStatusSale: false,
-            redeemErrors: true,
-            redeemSuccessVisible: false,
-            redeemPoints: 0,
-        }
+    state = {
+        savedRestaurants: [],
+        rewardHistory: [],
+        rewardCodeIN: '',
+        saleItem: {},
+        saleIDExists: false,
+        showStatusSale: false,
+        redeemErrors: true,
+        redeemSuccessVisible: false,
+        redeemPoints: 0,
     }
 
     goToProfile = () => {}
@@ -106,6 +102,10 @@ class Profile extends Component {
             redeemSuccessVisible: false,
             saleItem: {},
             redeemPoints: 0,
+            rewardCodeIN: '',
+            saleIDExists: false,
+            showStatusSale: false,
+            redeemErrors: true,
         })
     }
 
@@ -178,8 +178,8 @@ class Profile extends Component {
             })
 
             this.setState({
-                savedRestaurants: saved,
-                rewardHistory: history,
+                // savedRestaurants: saved,
+                // rewardHistory: history,
                 loading: false,
             })
         }
@@ -210,16 +210,15 @@ class Profile extends Component {
         let savedRestaurants = []
         let rewardHistory = []
 
-        if (!loading) {
+        if ( !loading ) {
             savedRestaurants = user.savedRestaurants.map(item => {
-                let found = this.props.restaurants.find(resto => resto.id === item)
+                let found = this.props.restaurants.find(res => res.id === item)
                 return found
             })
 
             rewardHistory = user.rewardHistory.map(item => {
                 let string = item.split('-')
-                let resto = restaurants.find(i => i.id === string[2])
-
+                let resto = this.props.restaurants.find(res => res.id === string[2])
                 let date = new Date(parseInt(string[3]))
                 return {
                     description: this.rewardHelper[string[1]].description,

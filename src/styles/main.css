@@ -2002,13 +2002,14 @@ body p {
     right: 0;
     margin: auto;
     width: 30vw;
-    height: 33vh;
+    height: 45vh;
     background-color: #f7faf8;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    overflow: scroll;
 }
 
 .redeem-container label{

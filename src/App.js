@@ -121,21 +121,22 @@ class App extends Component {
 
         let existingUser = JSON.parse(localStorage.getItem("user"))
         if (existingUser != null){
-          this.setState({
-            userLoggedIn: true,
-            user: existingUser,
-            loading: false,
-          })
+          // this.setState({
+          //   userLoggedIn: true,
+          //   user: existingUser,
+          //   loading: false,
+          // })
 
           API.getUser(existingUser.username).then( user => {
             this.setState({
               userLoggedIn: true,
               user,
+              loading: false,
             })
           })
         } else {
           this.setState({
-            loading: false,
+            loading: true,
           })
         }
 

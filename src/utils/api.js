@@ -1,6 +1,6 @@
 
-const api = "http://localhost:3002"
-// const api = "https://cafeco-server.herokuapp.com"
+// const api = "http://localhost:3001"
+const api = "https://cafeco.herokuapp.com"
 
 const headers = {
     'Authorization': 'whatever i want',
@@ -224,4 +224,4 @@ export const deleteSale = (id) =>
         headers: {
             ...headers,
         },
-    }).then(res => res.json())
+    })

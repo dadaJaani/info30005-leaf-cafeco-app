@@ -20,7 +20,7 @@ class SaleCreateSuccess extends Component {
                         </div>
                         <div>
                             <span>Price:</span>
-                            <label>{this.props.price}</label>
+                            <label>${this.props.price}</label>
                         </div>
                         <p>Please provide this code to the customer.</p>
                         <button onClick={this.props.closeSaleSuccess}>

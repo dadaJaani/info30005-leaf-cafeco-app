@@ -706,6 +706,8 @@
 }
 
 .sale-success-container label{
+    flex: 3;
+    text-align: right;
 }
 
 .sale-success-container h2{
@@ -714,6 +716,7 @@
 }
 
 .sale-success-container span{
+    flex: 1;
 
 }
 
@@ -721,6 +724,9 @@
     width: 80%;
     padding: 0 10%;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+
 }
 
 .sale-success-container p{
