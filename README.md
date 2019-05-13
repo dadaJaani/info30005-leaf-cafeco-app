@@ -23,8 +23,15 @@ The front end of most other functionalities (e.g. ratings, reviews, login, signu
 
 
 #### 12/05/2019
-The key functionalities addressed in this version (12/05/2019): 
+The four implemented pieces of functionality are:
+(see info30005-leaf-cafeco-server/{controllers, routes, models} directory):
+* User (CRUD, find all, search, validate, login, get rewards)
+* Restaurant (CRUD, find all, search, validate, login)
+* Sale (CRUD, find all, search)
+* Reward (CRUD, find all, search)
 
+
+Supported features in this version are:
 1. Users can search for eateries:
 	- On the home page, there is a search bar function where users can begin to type a cafe name and if it's listed, it'll appear. (http://cafeco-app.herokuapp.com/dashboard)
 	- If the user clicks on 'All Eateries' in the navigation or 'View Complete List' on the home page, they can search or view a complete list of cafes partnered with CafeCo. (http://cafeco-app.herokuapp.com/restaurants)
