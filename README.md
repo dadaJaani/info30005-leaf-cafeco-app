@@ -64,7 +64,7 @@ The key functionalities addressed in this version (12/05/2019):
 
 
 ### Getting Started
-This is a react app. https://cafeco-frontend.herokuapp.com
+This is a react app. https://cafeco-app.herokuapp.com
 
 
 ### NOTE: This repository contains only the frontend web app for the Web Info Tech Project. 
