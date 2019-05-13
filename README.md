@@ -38,23 +38,23 @@ Supported features in this version are:
 	- Routes: routes.js
 	- Controllers: retaurant_controller.js
 	- Models: restaurant.js, db.js
-	- Screens: Home.js, RestaurantList.js
-	- Components: Footer.js, LogIn.js, NavBar.js
+	- Screens: Dashboard.js, RestaurantList.js
+	- Components: Footer.js, LogIn.js, NavBar.js, SignUp.js
 
 2. Users can discover eateries:
 	- On the home page, under the 'Discover Eateries' tab, there is a map function. It lists cafes in a map view, if a user clicks the 'food' icon, it takes them to an about page on the chosen cafe. (http://cafeco-app.herokuapp.com/dashboard)
 	- Routes: routes.js
 	- Controllers: restaurant_controller.js
 	- Models: restaurant.js, db.js
-	- Screens: Home.js
-	- Components: Footer.js, LogIn.js, NavBar.js
+	- Screens: Dashboard.js
+	- Components: Footer.js, LogIn.js, NavBar.js, SignUp.js
 
 3. Users can sign up:
 	- To sign up, users can register with a username & password by clicking the sign up button in the navbar. Once an account is created, 'My Profile' is added to the navbar. (http://cafeco-app.herokuapp.com/dashboard)
 	- Routes: routes.js
 	- Controllers: user_controller.js
 	- Models: user.js, db.js
-	- Screens: Home.js
+	- Screens: Dashboard.js
 	- Components: Footer.js, LogIn.js, NavBar.js, SignUp.js
 
 4. Users can log in:
