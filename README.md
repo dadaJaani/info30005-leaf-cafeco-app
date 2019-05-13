@@ -35,8 +35,8 @@ The key functionalities addressed in this version (12/05/2019):
 3. Users can sign up:
 	- To sign up, users can register with a username & password by clicking the sign up button in the navbar. Once an account is created, 'My Profile' is added to the navbar. (http://cafeco-app.herokuapp.com/dashboard)
 
-4. Users can sign up or log in:
-	- Returning users can  signup or log in through the sign up and log in buttons.(http://cafeco-app.herokuapp.com/dashboard)
+4. Users can log in:
+	- Returning users can log in through the log in button.(http://cafeco-app.herokuapp.com/dashboard)
 
 5. Logged in users can save their favourite eateries:
 	- In the profile page for their specific cafes, in the 'about section' there is a star users can click, which saves the particular cafe under 'saved eateries' in the my profile section. (http://cafeco-app.herokuapp.com/user/undefined)
