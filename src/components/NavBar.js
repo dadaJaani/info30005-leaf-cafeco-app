@@ -131,6 +131,15 @@ class NavBar extends Component {
                                 My Profile
                             </div>
 
+                            <Link
+                                className={this.props.history.location.pathname === '/sustainability'
+                                    ? 'navbar-button navbar-button-selected'
+                                    : 'navbar-button'
+                                }
+                                to={'/sustainability'}
+                            >
+                                Sustainability
+                            </Link>
 
                             <Link
                                 className={this.props.history.location.pathname === '/about'
@@ -169,6 +178,16 @@ class NavBar extends Component {
                                 to={'/restaurants'}
                             >
                                 All Eateries
+                            </Link>
+
+                            <Link
+                                className={this.props.history.location.pathname === '/sustainability'
+                                    ? 'navbar-button navbar-button-selected'
+                                    : 'navbar-button'
+                                }
+                                to={'/sustainability'}
+                            >
+                                Sustainability
                             </Link>
 
                             <Link

@@ -12,6 +12,7 @@ import Profile from './screens/Profile'
 import RestaurantDetails from './screens/RestaurantDetails'
 import RestaurantList from './screens/RestaurantList'
 import About from './screens/About'
+import Sustainability from './screens/Sustainability'
 import PartnerSignUp from './screens/PartnerSignUp'
 import PartnerDashboard from './screens/PartnerDashboard'
 import PartnerLogin from './screens/PartnerLogin'
@@ -283,6 +284,17 @@ class App extends Component {
                 logOutUser={this.logOutUser}
               />
             )}
+          />
+
+          <Route path="/sustainability" render={() => (
+              <Sustainability
+                  logInUser={this.logInUser}
+                  signUpUser={this.signUpUser}
+                  userLoggedIn={this.state.userLoggedIn}
+                  user={this.state.user}
+                  logOutUser={this.logOutUser}
+              />
+          )}
           />
 
           <Route path="/admin/createpartner" exact render={() => (
