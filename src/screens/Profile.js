@@ -9,6 +9,8 @@ import RedeemSuccess from '../components/RedeemSuccess'
 import * as API from '../utils/api'
 import {IoIosAddCircle, IoIosCheckmarkCircle} from "react-icons/io";
 
+import Loading from "../components/Loading";
+
 
 
 class Profile extends Component {
@@ -231,7 +233,7 @@ class Profile extends Component {
 
         if (this.props.loading){
             return (
-                <div > LOADING </div>
+                <Loading />
             )
         } else {
 

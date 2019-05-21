@@ -404,18 +404,18 @@
 }
 
 .partner-stats-container h2 {
-    font-size: 2em;
+    font-size: 3vh;
     margin: 0;
 
 }
 
 .partner-stats-container label {
-    font-size: 3em;
+    font-size: 4vh;
     margin: 0;
 }
 
 .partner-stats-container p {
-    font-size: 0.8em;
+    font-size: 0.9vh;
     margin: 0;
 
 }
@@ -433,8 +433,12 @@
 }
 
 .partner-sale-container h2 {
-    font-size: 2em;
-    margin: 0.81em 0;
+    flex: 0.4;
+    font-size: 3vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
 .partner-sale-container form {
@@ -442,7 +446,6 @@
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-
 }
 
 .partner-sale-container input {
@@ -453,7 +456,7 @@
     padding: 8px;
     margin: 0.1vh 0 2vh;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.4vh;
 }
 
 .partner-sale-button {
@@ -464,7 +467,7 @@
     height: 10vh;
     width: 10vh;
     border-radius: 6vh;
-    font-size: 0.9em;
+    font-size: 1.8vh;
     transition: all 0.3s;
     color: #333;
 }
@@ -472,7 +475,7 @@
 .partner-sale-button:hover {
     background-color: #333;
     color: #4AC785;
-    font-size: 1.2em;
+    font-size: 2.2vh;
 }
 
 

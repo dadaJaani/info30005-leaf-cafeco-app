@@ -250,6 +250,13 @@ class PartnerDashboard extends Component {
                                 {partner.address}
                             </div>
 
+                            <label className="restaurant-profile-item13">
+                                Phone:
+                            </label>
+                            <div className="restaurant-profile-item14">
+                                {partner.phone}
+                            </div>
+
                             <div className='restaurant-profile-button'>
                                 <button onClick={this.openEdit}>
                                     Edit

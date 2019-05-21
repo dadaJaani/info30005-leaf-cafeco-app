@@ -1840,14 +1840,14 @@ body p {
     /*margin-top: 50px;*/
 
     color: #eee;
-    height: 16vh;
+    height: 20vh;
     width: 90vw;
     background: linear-gradient(to right, #4ac785, #1a7773);
     display: grid;
     grid-template-rows: 3fr 1fr ;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
-            "footer-item1 footer-item2 footer-item3 . . footer-item4 "
+            "footer-item1 footer-item2 footer-item3 . footer-item4 footer-item4 "
             ". . footer-item5 footer-item5 . ."
     ;
     font-size: 13px;
@@ -1863,6 +1863,10 @@ body p {
 }
 
 .footer-item2{
+    grid-area: footer-item2;
+}
+
+.footer-item2 p{
     grid-area: footer-item2;
 }
 
@@ -1906,7 +1910,9 @@ body p {
     grid-area: footer-item5;
     text-align: center;
 }
-
+.footer-item5 p {
+    margin: 0;
+}
 /* ================================================================================= */
 /*ABOUT PAGE*/
 /* ================================================================================= */
@@ -2145,4 +2151,41 @@ body p {
     float: right;
     width: 25vw;
     margin: 1vh 2vw;
+}
+
+/* ================================================================================= */
+/* ================================================================================= */
+/*  LOADING SCREEN
+/* ================================================================================= */
+/* ================================================================================= */
+
+.loading-container {
+    z-index:5;
+    width: 100vw;
+    height: 100vh;
+    /*background-color: #3B3939;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: colorchange 5s infinite;
+    -webkit-animation: colorchange 5s infinite;
+}
+
+@keyframes colorchange
+{
+    0%   {background: #ef5439;}
+    33%  {background: #F8C960;}
+    66%  {background: #4AC785;}
+    100%   {background: #ef5439;}
+
+}
+
+@-webkit-keyframes colorchange
+{
+    0%   {background: #ef5439;}
+    33%  {background: #F8C960;}
+    66%  {background: #4AC785;}
+    100%   {background: #ef5439;}
+
 }

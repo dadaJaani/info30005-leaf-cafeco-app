@@ -13,6 +13,7 @@ import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 
 import locMarker from '../assets/loc-marker.svg'
+import Loading from "../components/Loading";
 
 const AnyReactComponent = ({ history, restaurantID, selectRestaurant, name }) => <div >
     <img
@@ -136,6 +137,7 @@ class Dashboard extends Component {
                     userLoggedIn={this.props.userLoggedIn}
                     goToProfile={this.goToProfile}
                 />
+
 
                 <div className='home-grid-container'>
 

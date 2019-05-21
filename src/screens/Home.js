@@ -8,6 +8,7 @@ import landing1 from '../assets/landing1.svg'
 import landing2 from '../assets/landing2.svg'
 import landing3 from '../assets/landing3.svg'
 
+import Loading from '../components/Loading'
 
 import '../styles/main.css'
 
@@ -97,6 +98,8 @@ class Home extends Component {
 
         return(
             <div className='home-container'>
+
+
 
                 <div className='home-landing-home-button-container'>
                     <Link

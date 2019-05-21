@@ -16,6 +16,7 @@ import leafOpaque from '../assets/leaf-opaque.svg'
 import locMarker from '../assets/loc-marker.svg'
 
 import * as API from '../utils/api'
+import Loading from "../components/Loading";
 
 
 const AnyReactComponent = ({ text }) => <div>
@@ -108,6 +109,7 @@ class RestaurantDetails extends Component {
     showLogin = () => {
         this.navbar.current.showLogin()
     }
+
     showSignup = () => {
         this.navbar.current.showSignup()
     }
@@ -216,7 +218,7 @@ class RestaurantDetails extends Component {
 
         if (this.props.loading){
             return (
-                <div>LOADING</div>
+                <Loading />
             )
         } else {
             return(
@@ -447,10 +449,7 @@ class RestaurantDetails extends Component {
 
                             )
                             :
-                            <div>
-                                Loading
-
-                            </div>
+                            <Loading />
                     }
 
 
