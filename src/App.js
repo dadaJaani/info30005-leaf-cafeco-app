@@ -12,6 +12,7 @@ import Profile from './screens/Profile'
 import RestaurantDetails from './screens/RestaurantDetails'
 import RestaurantList from './screens/RestaurantList'
 import About from './screens/About'
+import AboutHow from './screens/AboutHow'
 import Sustainability from './screens/Sustainability'
 import PartnerSignUp from './screens/PartnerSignUp'
 import PartnerDashboard from './screens/PartnerDashboard'
@@ -114,7 +115,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.populateAllRestaurants()
+    // this.populateAllRestaurants()
     API.getAllRestaurants().then(res => {
         this.setState({
           restaurants: res
@@ -137,7 +138,7 @@ class App extends Component {
           })
         } else {
           this.setState({
-            loading: true,
+            loading: false,
           })
         }
 
@@ -275,7 +276,7 @@ class App extends Component {
               />
           )}/>
 
-          <Route path="/about" render={() => (
+          <Route path="/about/us" render={() => (
               <About
                 logInUser={this.logInUser}
                 signUpUser={this.signUpUser}
@@ -284,6 +285,17 @@ class App extends Component {
                 logOutUser={this.logOutUser}
               />
             )}
+          />
+
+          <Route path="/about/how" render={() => (
+              <AboutHow
+                  logInUser={this.logInUser}
+                  signUpUser={this.signUpUser}
+                  userLoggedIn={this.state.userLoggedIn}
+                  user={this.state.user}
+                  logOutUser={this.logOutUser}
+              />
+          )}
           />
 
           <Route path="/sustainability" render={() => (

@@ -518,9 +518,11 @@ body p {
     box-shadow: none;
 }
 
-/* ======================================================
+/* ================================================================================= */
+/* ================================================================================= */
 /* NAVBAR
-/* ====================================================== */
+/* ================================================================================= */
+/* ================================================================================= */
 .navbar-container {
     height: 12vh;
     width: 90vw;
@@ -582,12 +584,68 @@ body p {
 }
 
 
+
+
+.navbar-button-about {
+    border: 0;
+    padding: 0;
+    font-size: 0.9em;
+    color: #4ac785;
+    outline: 0;
+    cursor: pointer;
+    margin: 0 0 0 2em;
+    transition: all 0.3s;
+}
+
+.navbar-button-about:hover {
+    text-shadow: 0 0 1px #EF5439 ;
+    color: #EF5439;
+}
+
+.navbar-about-list {
+    cursor: default;
+    position: absolute;
+    background-color: #ef5439;
+    width: 10em;
+    margin: 0 0 0 -1.5em;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 5vh;
+}
+
+.navbar-about-list a {
+    color: #eee;
+    text-decoration: none;
+    margin: 0;
+    border: solid 1px #eeeeee;
+    font-size: 1.2vh;
+    height: 5vh;
+    width: 5vh;
+    border-radius: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-about-list a:hover {
+    background-color: #eeeeee;
+    color: #ef5439;
+    border-color: #ef5439;
+}
+
 .navbar-button-selected {
     color: #EF5439;
 }
 
 
+/* ================================================================================= */
+/* ================================================================================= */
+
 /* PROFILE PAGE */
+/* ================================================================================= */
+/* ================================================================================= */
 
 .profile-container {
     margin: 0;
@@ -1914,7 +1972,7 @@ body p {
     margin: 0;
 }
 /* ================================================================================= */
-/*ABOUT PAGE*/
+/*  ABOUT PAGE*/
 /* ================================================================================= */
 
 
@@ -2128,7 +2186,6 @@ body p {
     right: 0;
     width: 75vw;
     margin: 2vh auto 10vh;
-
 }
 
 .sustainability-container h1 {
@@ -2187,5 +2244,52 @@ body p {
     33%  {background: #F8C960;}
     66%  {background: #4AC785;}
     100%   {background: #ef5439;}
+
+}
+
+
+/* ================================================================================= */
+/* ================================================================================= */
+/*  ABOUT HOW SCREEN
+/* ================================================================================= */
+/* ================================================================================= */
+
+
+.about-how-container {
+    left: 0;
+    right: 0;
+    width: 75vw;
+    margin: 2vh auto 10vh;
+
+}
+
+.about-how-container h1 {
+    font-size: 2.4rem;
+    color: #1A7773;
+}
+
+.about-how-container h2 {
+    font-size: 1.6rem;
+    margin: 5vh 0 0 0;
+    color: #ef5439;
+}
+
+.about-how-container p {
+    font-size: 1rem;
+    text-align: justify;
+}
+
+.about-how-container label {
+    /*display: inline;*/
+    float: right;
+    margin: -30px 0 0 150px;
+
+}
+
+
+.about-how-container div {
+    /*display: inline;*/
+    float: right;
+    margin: 15px 0;
 
 }

@@ -16,7 +16,7 @@ class NavBar extends Component {
         this.state = {
             viewSignup: false,
             viewLogin: false,
-
+            aboutHover: false,
         }
     }
 
@@ -64,6 +64,21 @@ class NavBar extends Component {
         if (this.props.history.location.pathname.search('/user') !== -1) {
             this.props.history.replace('/dashboard')
         }
+
+    }
+
+    onHoverAbout = () => {
+        this.setState({
+            aboutHover: true
+        })
+        console.log("hovver on")
+    }
+
+    offHoverAbout = () => {
+        this.setState({
+            aboutHover: false
+        })
+        console.log("hovver off")
 
     }
 
@@ -141,15 +156,37 @@ class NavBar extends Component {
                                 Sustainability
                             </Link>
 
-                            <Link
-                                className={this.props.history.location.pathname === '/about'
-                                    ? 'navbar-button navbar-button-selected'
-                                    : 'navbar-button'
-                                }
-                                to={'/about'}
+                            <div
+                                onMouseOver={this.onHoverAbout}
+                                onMouseOut={this.offHoverAbout}
                             >
-                                About
-                            </Link>
+                                <div
+                                    className={this.props.history.location.pathname.includes('/about')
+                                        ? 'navbar-button-about navbar-button-selected'
+                                        : 'navbar-button-about'
+                                    }
+
+                                >
+                                    About
+                                </div>
+
+                                <div
+                                    className='navbar-about-list'
+                                    style={this.state.aboutHover
+                                        ? { opacity: 0.9, height: '10vh', zIndex: 5}
+                                        : { opacity: 0, height: 0, zIndex: -1 }
+                                    }
+                                >
+
+                                    <Link to={'/about/us'}>
+                                        Who?
+                                    </Link>
+                                    <Link to={'/about/how'}>
+                                        How?
+                                    </Link>
+
+                                </div>
+                            </div>
 
                             <div
                                 className={'navbar-button navbar-button-logout'}
@@ -190,15 +227,37 @@ class NavBar extends Component {
                                 Sustainability
                             </Link>
 
-                            <Link
-                                className={this.props.history.location.pathname === '/about'
-                                    ? 'navbar-button navbar-button-selected'
-                                    : 'navbar-button'
-                                }
-                                to={'/about'}
+                            <div
+                                onMouseOver={this.onHoverAbout}
+                                onMouseOut={this.offHoverAbout}
                             >
-                                About
-                            </Link>
+                                <div
+                                    className={this.props.history.location.pathname.includes('/about')
+                                        ? 'navbar-button-about navbar-button-selected'
+                                        : 'navbar-button-about'
+                                    }
+
+                                >
+                                    About
+                                </div>
+
+                                <div
+                                    className='navbar-about-list'
+                                    style={this.state.aboutHover
+                                        ? { opacity: 0.9, height: '10vh'}
+                                        : { opacity: 0, height: 0 }
+                                    }
+                                >
+
+                                    <Link to={'/about/us'}>
+                                        Who?
+                                    </Link>
+                                    <Link to={'/about/how'}>
+                                        How?
+                                    </Link>
+
+                                </div>
+                            </div>
 
                             <div
                                 className={'navbar-button'}
