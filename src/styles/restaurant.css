@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
+
 .partner-top-container{
 
 }
@@ -252,6 +253,9 @@
             "rp-item7 rp-item8"
             "rp-item9 rp-item10"
             "rp-item11 rp-item12"
+            "rp-item13 rp-item14"
+            "rp-item15 rp-item16"
+            "rp-item17 rp-item18"
             "rp-button rp-button"
     ;
     border-radius: 15px;
@@ -307,12 +311,16 @@
     align-items: center;
     text-align: right;
     color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
 }
 
 .restaurant-profile-item2{
     grid-area: rp-item2;
     margin: 0;
     padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
 }
 
 .restaurant-profile-item3{
@@ -323,11 +331,15 @@
     align-items: center;
     text-align: right;
     color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
 }
 
 .restaurant-profile-item4{
     grid-area: rp-item4;
     padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
 }
 
 .restaurant-profile-item5{
@@ -338,11 +350,15 @@
     align-items: center;
     text-align: right;
     color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
 }
 
 .restaurant-profile-item6{
     grid-area: rp-item6;
     padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
 }
 
 .restaurant-profile-item7{
@@ -353,11 +369,15 @@
     align-items: center;
     text-align: right;
     color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
 }
 
 .restaurant-profile-item8{
     grid-area: rp-item8;
     padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
 }
 
 .restaurant-profile-item9{
@@ -368,11 +388,15 @@
     align-items: center;
     text-align: right;
     color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
 }
 
 .restaurant-profile-item10{
     grid-area: rp-item10;
     padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
 }
 
 .restaurant-profile-item11{
@@ -383,12 +407,83 @@
     align-items: center;
     text-align: right;
     color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
 }
 
 .restaurant-profile-item12{
     grid-area: rp-item12;
     padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
 }
+
+.restaurant-profile-item13{
+    grid-area: rp-item13;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
+}
+
+.restaurant-profile-item14{
+    grid-area: rp-item14;
+    padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
+
+}
+
+.restaurant-profile-item15{
+    grid-area: rp-item15;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
+}
+
+.restaurant-profile-item16{
+    grid-area: rp-item16;
+    padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
+
+
+}
+
+.restaurant-profile-item16 img{
+    width: 75%;
+    /*height: 100px;*/
+}
+
+.restaurant-profile-item17{
+    grid-area: rp-item17;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+    color: #eee;
+    font-family: 'Muli Bold', sans-serif;
+
+}
+
+.restaurant-profile-item18{
+    grid-area: rp-item18;
+    padding: 10px;
+    color: #eee;
+    font-family: 'Muli Light', sans-serif;
+
+}
+
 
 .partner-stats-container {
     grid-area: partner-stats-container;
@@ -757,4 +852,56 @@
 
 .sale-success-container button:hover{
     box-shadow: 0 0 10px 0 #4AC785;
+}
+
+@media screen and (max-width: 1024px) {
+    .partner-main-container {
+        padding-right: 3%;
+        padding-left: 3%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .restaurant-profile-container {
+        order: 1;
+        padding-top: 2vh;
+        padding-bottom: 5vh;
+        margin-bottom: 3vh;
+    }
+
+    .partner-sale-container {
+        order: 3;
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+
+    }
+
+    .partner-stats-container {
+        order: 2;
+        padding-bottom: 3vh;
+        padding-top: 2vh;
+        margin-bottom: 3vh;
+    }
+
+
+    .partner-sale-container h2 {
+        text-align: center;
+    }
+
+    .partner-review-container {
+        height: 100%;
+        padding: 3% 3% 0 3.5%;
+
+    }
+
+    .partner-reviews-item {
+        height: 90%;
+        padding-bottom: 0;
+    }
+
+    /*TODO: slight space at bottom of reviews page */
+
+
+
+
 }

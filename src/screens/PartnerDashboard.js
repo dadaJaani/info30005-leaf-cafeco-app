@@ -187,7 +187,7 @@ class PartnerDashboard extends Component {
                             </div>
 
                             <label className="restaurant-profile-item1">
-                                Name:
+                                <strong>Name:</strong>
                             </label>
                             <div className="restaurant-profile-item2">
                                 {partner.name}
@@ -195,7 +195,7 @@ class PartnerDashboard extends Component {
                             </div>
 
                             <label className="restaurant-profile-item3">
-                                Description
+                                <strong>Description:</strong>
                             </label>
                             <div className="restaurant-profile-item4">
                                 {partner.description}
@@ -204,7 +204,7 @@ class PartnerDashboard extends Component {
 
 
                             <label className="restaurant-profile-item5">
-                                Rewards Offered:
+                                <strong>Rewards Offered:</strong>
 
                             </label>
                             <div className="restaurant-profile-item6">
@@ -221,14 +221,14 @@ class PartnerDashboard extends Component {
                             </div>
 
                             <label className="restaurant-profile-item7">
-                                About:
+                                <strong>About:</strong>
                             </label>
                             <div className="restaurant-profile-item8">
                                 {partner.about}
                             </div>
 
                             <label className="restaurant-profile-item9">
-                                Sustainability Practices:
+                                <strong>Sustainability Practices:</strong>
                             </label>
                             <div className="restaurant-profile-item10">
                                 <ul>
@@ -244,17 +244,32 @@ class PartnerDashboard extends Component {
                             </div>
 
                             <label className="restaurant-profile-item11">
-                                Address:
+                                <strong>Address:</strong>
                             </label>
                             <div className="restaurant-profile-item12">
                                 {partner.address}
                             </div>
 
                             <label className="restaurant-profile-item13">
-                                Phone:
+                                <strong>Phone:</strong>
                             </label>
                             <div className="restaurant-profile-item14">
                                 {partner.phone}
+                            </div>
+
+                            <label className="restaurant-profile-item15">
+                                <strong>Photo:</strong>
+                            </label>
+                            <div className="restaurant-profile-item16">
+                                <img src={partner.photo} />
+
+                            </div>
+
+                            <label className="restaurant-profile-item17">
+                                <strong>Website:</strong>
+                            </label>
+                            <div className="restaurant-profile-item18">
+                                {partner.website}
                             </div>
 
                             <div className='restaurant-profile-button'>
