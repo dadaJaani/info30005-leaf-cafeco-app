@@ -854,6 +854,10 @@
     box-shadow: 0 0 10px 0 #4AC785;
 }
 
+
+
+
+
 @media screen and (max-width: 1024px) {
     .partner-main-container {
         padding-right: 3%;
@@ -901,7 +905,146 @@
 
     /*TODO: slight space at bottom of reviews page */
 
+}
+
+@media screen and (max-width: 414px) {
+    /*Based of code from https://codepen.io/chriscoyier/pen/umEgv     https://css-tricks.com/off-canvas-menu-with-css-target/
+        https://jsonformatter.org/scss-to-css */
+    /* TODO: figure out how to get the menu to work properly */
+    .partner-main-container {
+        z-index: 1;
+        float: right;
+        width: 94%;
+        display: flex;
+        grid-template-columns: 1fr;
+        left: 0;
+    }
+
+    .partner-sidebar-info {
+        padding-bottom: 50%;
+    }
+
+    .partner-sidebar-container {
+        background: #f7faf8;
+        z-index: 4;
+        width: 0;
+    }
+
+    .partner-sidebar-menu {
+        width: 0;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 4;
+        background: #1A7773;
+    }
+
+    .partner-sidebar-menu:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+    }
+
+    #partner-sidebar-menu:target {
+        width: 55%;
+        z-index: 4;
+    }
+
+    #partner-sidebar-menu:target + .partner-main-container {
+    }
+
+    #partner-sidebar-menu:target + .partner-main-container  .open {
+        display: none;
+    }
+
+    #partner-sidebar-menu:target + .partner-main-container  .close{
+        display: block;
+        color: #fff;
+        z-index: 9;
+    }
+
+    .open {
+        color: #1A7773;
+        position: absolute;
+        left: 0;
+    }
+
+    .close {
+        display: none;
+    }
+
+    .partner-stats-container label {
+        padding: 5% 0;
+
+    }
+
+    .partner-stats-container p{
+        font-size: 1em;
+
+    }
+
+    .partner-sale-container {
+        display: grid;
+        height: 39%;
+
+    }
+
+    .partner-sale-container h2{
+        font-size: 150%;
+    }
+
+    .partner-sale-container input{
+        width: 87%;
+    }
 
 
+
+
+    .partner-review-rating {
+        flex-flow: column wrap;
+        width: 25vw;
+
+    }
+
+    .partner-review-rating img{
+        margin-top: 0.5%;
+    }
+
+    .partner-review-container {
+        left: 11%;
+
+    }
+
+    .partner-top-reviews-container {
+        flex-flow: column nowrap;
+
+    }
+
+    .partner-worst-reviews-container {
+        flex-flow: column nowrap;
+
+    }
+
+    .partner-all-reviews-container {
+        flex-flow: column nowrap;
+
+    }
+
+    .partner-reviews-item {
+        width: 90%;
+        margin-bottom: 3%;
+        margin-right: 0;
+
+    }
+
+    .partner-reviews-item label {
+        padding-right: 3%;
+    }
+
+    
 
 }

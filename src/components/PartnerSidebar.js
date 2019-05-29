@@ -14,21 +14,22 @@ class PartnerSidebar extends Component {
     render() {
         return (
             <div className = "partner-sidebar-container">
-                <div className = "partner-sidebar-info">
-                    <img className = "white-logo" src={logo} alt = "cafe profile image"/>
+                <div className="partner-sidebar-menu" id={"partner-sidebar-menu"}>
+                    <div className = "partner-sidebar-info">
+                        <img className = "white-logo" src={logo} alt = "cafe profile image"/>
 
-                    <h2 className = "cafe-title">
-                        {this.props.name}
-                    </h2>
+                        <h2 className = "cafe-title">
+                            {this.props.name}
+                        </h2>
 
-                    <p>
-                        {this.props.address}
+                        <p>
+                            {this.props.address}
 
-                    </p>
+                        </p>
 
-                </div>
+                    </div>
 
-                <div className="partner-sidebar-menu" >
+
                     <Link
                         to='/partner/home'
                         className='partner-sidebar-menu-item'
@@ -51,6 +52,15 @@ class PartnerSidebar extends Component {
 
                     </div>
                 </div>
+
+
+                <a href={"#partner-sidebar-menu"} className={"open"}>
+                    ☰
+                </a>
+
+                <a href={"#"} className={"close"}>
+                    Close
+                </a>
             </div>
         )
     }

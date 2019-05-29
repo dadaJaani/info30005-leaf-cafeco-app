@@ -424,4 +424,5 @@ class Profile extends Component {
     }
 }
 
-export default withRouter(Profile)
+
+    export default withRouter(Profile)

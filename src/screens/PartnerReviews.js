@@ -162,7 +162,7 @@ class PartnerReviews extends Component {
                         </div>
 
                         <div className="partner-all-reviews-heading">
-                            All 5Reviews
+                            All Reviews
                         </div>
                         <div className="partner-all-reviews-container">
                             {

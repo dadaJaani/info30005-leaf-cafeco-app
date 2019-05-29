@@ -261,6 +261,7 @@ class NavBar extends Component {
 
                             <div
                                 className={'navbar-button'}
+                                id = {'login-button'}
                                 onClick={this.showLogin}
                             >
                                 Log In

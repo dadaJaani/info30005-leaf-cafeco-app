@@ -2298,9 +2298,6 @@ body p {
 
 
 
-
-
-
 /* Referenced week 7 lectures on responsive design */
 @media screen and (max-width: 1024px) {
     /*TODO: profile- account info, credits box*/
@@ -2388,11 +2385,16 @@ body p {
 
     .navbar-button-about {
         margin-left: 0;
+        margin-right: 0;
+    }
+
+    #login-button {
+        margin-left: 7%;
     }
 
     .navbar-button-logout {
-        margin-left: 7%;
-        margin-right: 0;
+        margin-left: 0;
+        margin-right: 7%;
     }
 
     .home-grid-main {
@@ -2464,14 +2466,54 @@ body p {
         margin: 5% 0 10% 0;
     }
 
+    /*SUSTAINABILITY*/
+    .sustainability-container {
+        margin-top: 18%;
+    }
 
+    /*ABOUT-WHO*/
+    .about-container {
+        display: flex;
+        flex-flow: column nowrap;
+        margin-top: 13%;
+    }
 
+    /*ABOUT-HOW*/
+    .about-how-container {
+        margin-top: 18%;
+    }
 
+    /*LOGIN*/
+    .login-container1 {
+        width: 80%;
+        height: 50%;
+        top: 27%;
+        left: 10%;
+    }
 
+    /*SIGNUP*/
+    .signup-container {
+        width: 85%;
+        top: 20%;
+        left: 7%;
 
+    }
 
+    /*LOGIN ERROR*/
+    .profile-not-signed-in a{
+        margin-top: 85%;
+
+    }
+
+    /*DETAILED EATERY PAGE*/
 
 }
+
+/* TODO: 375 px wide */
+/* TODO: partner log in */
+/* TODO: homepage */
+/* TODO: slideshow */
+
 
 
 
