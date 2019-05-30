@@ -2393,8 +2393,8 @@ body p {
     }
 
     .navbar-button-logout {
-        margin-left: 0;
-        margin-right: 7%;
+        margin-left: 7%;
+        margin-right: 0;
     }
 
     .home-grid-main {
@@ -2506,13 +2506,124 @@ body p {
     }
 
     /*DETAILED EATERY PAGE*/
+    .restaurant-detail-container {
+        margin-top: 15%;
+        display: flex;
+        flex-flow: column nowrap;
+
+    }
+
+    .restaurant-detail-title {
+        order: 1;
+    }
+
+    .restaurant-detail-photo {
+        order: 2;
+    }
+
+    .restaurant-detail-info {
+        order: 3;
+    }
+
+    .restaurant-detail-rating {
+        order: 4;
+    }
+
+    .reward-selector {
+        order: 5;
+        margin: 4% 0;
+    }
+
+    .restaurant-detail-about {
+        order: 6;
+    }
+
+    .restaurant-detail-reviews {
+        order: 7;
+        margin-top: 2%;
+        height: 45vh;
+        /* flex-flow: column nowrap;*/
+
+    }
+
+    .restaurant-detail-reviews h2 {
+        margin-left: -13%;
+
+    }
+
+    .restaurant-detail-reviews-list-input {
+        width: 40%;
+        height: 40vh;
+        margin-left: -9%;
+
+    }
+
+    .restaurant-detail-reviews-list-input button {
+        width: 90%;
+
+    }
+
+    .restaurant-detail-reviews-list {
+        z-index: 2;
+    }
+
+    /* .restaurant-detail-reviews-list {
+        border-top: solid 1px #666;
+        border-left: none;
+
+    } */
+
+    .restaurant-detail-reviews-list-item {
+        width: 105%;
+        height: 100%;
+
+    }
+
+    .restaurant-detail-title {
+        margin-bottom: 2%;
+    }
+
+    .restaurant-detail-info span {
+        padding-bottom: 1%;
+    }
+
+    .reward-selector-not {
+        order: 5;
+        margin: 4% 0;
+    }
 
 }
 
-/* TODO: 375 px wide */
-/* TODO: partner log in */
-/* TODO: homepage */
-/* TODO: slideshow */
+@media screen and (max-width: 375px) {
+    /* all restaurants has space to right for some reason */
+    /* HOMEPAGE */
+    .home-grid-main-form a {
+        height: 5vh;
+        text-align: center;
+    }
+
+    /* DETAILED EATERY PAGE */
+    .restaurant-detail-reviews h2 {
+        margin-left: -16%;
+
+    }
+
+    .restaurant-detail-reviews-list {
+        z-index: 2;
+        margin: 1%;
+    }
+
+    .restaurant-detail-reviews-list-input {
+        width: 35%;
+    }
+
+    .restaurant-detail-reviews-list-item {
+        width: 107%;
+    }
+
+}
+
+/* TODO: slideshow?? */
 
 
 
