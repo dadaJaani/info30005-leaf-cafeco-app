@@ -224,7 +224,7 @@
 
 
 
-
+/* IPAD */
 @media screen and (max-width: 1024px) {
     .login-container {
         min-height: 100%;
@@ -241,6 +241,7 @@
 
 }
 
+/* MOBILE */
 @media screen and (max-width: 414px){
     .login-container {
         height: 100%;

@@ -59,7 +59,7 @@ class PartnerSidebar extends Component {
                 </a>
 
                 <a href={"#"} className={"close"}>
-                    Close
+                    ☰
                 </a>
             </div>
         )

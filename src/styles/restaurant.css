@@ -27,6 +27,14 @@
     align-items: stretch;
 }
 
+.close {
+    display: none;
+}
+
+.open {
+    display: none;
+}
+
 .partner-sidebar-info{
     flex: 1;
     color: #eee;
@@ -37,8 +45,9 @@
     padding: 1vh;
 }
 .partner-sidebar-info img {
-    margin: 0;
+    /*margin: 0;*/
     margin: 7vh 0 10vh;
+    width: 18vw;
 
 }
 
@@ -52,11 +61,13 @@
     margin: 0;
     text-align: center;
     font-size: 0.8em;
+    margin-bottom: 20vh;
 
 }
 
 .partner-sidebar-menu{
     color: #eee;
+
 }
 
 .partner-sidebar-menu-item {
@@ -858,7 +869,9 @@
 
 
 
+/* IPAD */
 @media screen and (max-width: 1024px) {
+    /* MAIN CONTENTS */
     .partner-main-container {
         padding-right: 3%;
         padding-left: 3%;
@@ -875,9 +888,18 @@
 
     .partner-sale-container {
         order: 3;
-        padding-top: 3vh;
-        padding-bottom: 3vh;
+        padding: 3vh 0;
+        display: grid;
+        height: 20%;
 
+    }
+
+    .partner-sale-container h2{
+        font-size: 3vh;
+    }
+
+    .partner-sale-container input{
+        width: 87%;
     }
 
     .partner-stats-container {
@@ -885,11 +907,6 @@
         padding-bottom: 3vh;
         padding-top: 2vh;
         margin-bottom: 3vh;
-    }
-
-
-    .partner-sale-container h2 {
-        text-align: center;
     }
 
     .partner-review-container {
@@ -902,8 +919,6 @@
         height: 90%;
         padding-bottom: 0;
     }
-
-    /*TODO: slight space at bottom of reviews page */
 
 }
 
@@ -920,10 +935,7 @@
         left: 0;
     }
 
-    .partner-sidebar-info {
-        padding-bottom: 50%;
-    }
-
+    /* SIDEBAR */
     .partner-sidebar-container {
         background: #f7faf8;
         z-index: 4;
@@ -971,12 +983,16 @@
         color: #1A7773;
         position: absolute;
         left: 0;
+        display: inline;
     }
 
     .close {
         display: none;
     }
 
+
+    /* MAIN CONTENTS */
+    /* STATS */
     .partner-stats-container label {
         padding: 5% 0;
 
@@ -987,6 +1003,7 @@
 
     }
 
+    /* SALE */
     .partner-sale-container {
         display: grid;
         height: 39%;
@@ -1001,9 +1018,7 @@
         width: 87%;
     }
 
-
-
-
+    /* REVIEWS */
     .partner-review-rating {
         flex-flow: column wrap;
         width: 25vw;
