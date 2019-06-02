@@ -894,6 +894,7 @@
 
     }
 
+    /* SALE */
     .partner-sale-container h2{
         font-size: 3vh;
     }
@@ -902,13 +903,18 @@
         width: 87%;
     }
 
+    /* STATS */
     .partner-stats-container {
         order: 2;
         padding-bottom: 3vh;
         padding-top: 2vh;
         margin-bottom: 3vh;
+        display: grid;
+        text-align: center;
+        height: 20vh;
     }
 
+    /* REVIEWS */
     .partner-review-container {
         height: 100%;
         padding: 3% 3% 0 3.5%;
@@ -918,6 +924,16 @@
     .partner-reviews-item {
         height: 90%;
         padding-bottom: 0;
+    }
+
+    /* SIDEBAR */
+    .partner-sidebar-menu-item {
+        text-align: center;
+
+    }
+
+    .partner-sidebar-info {
+        padding: 0;
     }
 
 }
