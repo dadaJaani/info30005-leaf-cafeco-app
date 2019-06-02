@@ -5,7 +5,7 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 
 import hands from '../assets/hands.png'
-import team from '../assets/team.png'
+import team from '../assets/team.svg'
 
 class About extends Component {
 
