@@ -12,6 +12,21 @@ import leafOpaque from "../assets/leaf-opaque.svg";
 
 class AboutHow extends  Component {
 
+    logInUser = (user) => {
+        this.props.logInUser(user)
+    }
+
+    logOutUser = () => {
+        this.props.logOutUser()
+    }
+
+    goToProfile = () => {
+        this.props.history.push('/user/' + this.props.user.name)
+    }
+
+    signUpUser = (user) => {
+        this.props.signUpUser(user)
+    }
 
     render() {
 

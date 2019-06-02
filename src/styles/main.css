@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
+
 .input-label {
     font-size: 40px;
 }
@@ -2209,6 +2210,7 @@ body p {
     float: right;
     width: 25vw;
     margin: 1vh 2vw;
+    min-width: 125px;
 }
 
 /* ================================================================================= */
@@ -2365,6 +2367,80 @@ body p {
         left: 7%;
 
     }
+
+
+    /* NAVBAR */
+    .navbar-container {
+        height: max-content;
+        width: 100vw;
+        display: flex;
+        /*flex-flow: column wrap;*/
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        /*align-items: center;*/
+        padding: 0;
+        /*padding: 0 5vw;*/
+
+    }
+
+    .navbar-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-buttons {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        /*align-items: center;*/
+    }
+
+    .navbar-about-list {
+        margin: 0 0 0 -2.5em;
+    }
+
+    .navbar-button-about {
+        margin: 0 2vw;
+
+    }
+
+    .navbar-button {
+        margin: 0 2vw;
+
+    }
+
+    /* FOOTER*/
+    .footer-container {
+        grid-template-rows: 3fr 1fr ;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+                "footer-item1 footer-item2 footer-item3 footer-item4 "
+                ". footer-item5 footer-item5 ."
+    }
+
+
+
+    /* ALL EATERIES */
+    .restaurant-list-top-buttons {
+        font-size: 2vw;
+        max-font-size: 1.4em;
+    }
+
+    .restaurant-list-top-buttons span {
+        margin: 0 1.2%;
+    }
+
+    .restaurant-list-search {
+        margin: 5% 0 0 0;
+    }
+
+    .restaurant-list-search input{
+        margin: 0;
+        width: 50%;
+    }
 }
 
 
@@ -2372,36 +2448,68 @@ body p {
 
 
 /* MOBILE PHONE */
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 475px) {
     /* DASHBOARD/HOMEPAGE */
-    .navbar-buttons {
-        margin-top: 5%;
-        font-size: 75%;
-        justify-content: left;
-        text-align: center;
+
+
+    /* NAVBAR */
+    .navbar-container {
+        height: max-content;
+        width: 100vw;
+        display: flex;
+        /*flex-flow: column wrap;*/
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        /*align-items: center;*/
+        padding: 0;
+        /*padding: 0 5vw;*/
+
     }
 
-    .navbar-button {
-        margin-left: 0;
-        margin-right: 5%;
+    .navbar-item {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-buttons {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 0.85rem;
+        /*align-items: center;*/
+    }
+
+    .navbar-about-list {
+        margin: -3rem 0 0 4rem;
     }
 
     .navbar-button-about {
-        margin-left: 0;
-        margin-right: 0;
+        margin: 1vw 2vw;
     }
 
-    #login-button {
-        margin-left: 5%;
+    .navbar-button {
+        margin: 1vw 2vw;
     }
+
 
     .navbar-button-logout {
-        margin-left: 5%;
-        margin-right: 0;
+        /*margin-left: 5%;*/
+        /*margin-right: 0;*/
     }
 
+    /* HOME */
+
     .home-grid-main {
-        background-size: 100% 100%;
+        background-size: 80%;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        padding: 5vh 5vw;
+        /*height: 60vh;*/
+
     }
 
     .home-grid-featured-item-photo {
@@ -2420,11 +2528,6 @@ body p {
         padding-top: 3%;
 
     }
-
-    .navbar-about-list {
-        margin-left: -11%;
-    }
-
 
     /* LOGIN */
     .login-container1 {
@@ -2450,42 +2553,77 @@ body p {
 
     /* FOOTER*/
     .footer-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: max-content max-content max-content max-content max-content;
         grid-template-areas:
-                " footer-item1 footer-item2 footer-item3 footer-item3 footer-item4 footer-item4 "
-                " footer-item5 footer-item5 footer-item5 footer-item5 footer-item5 footer-item5" ;
+                /*" footer-item1 footer-item2 footer-item3 footer-item3 footer-item4 footer-item4 "*/
+                " footer-item1 "
+                " footer-item2 "
+                " footer-item3  "
+                " footer-item4 "
+                " footer-item5 "
+                /*" footer-item5 footer-item5 footer-item5 footer-item5 footer-item5 footer-item5" ;*/
+    }
+
+    .footer-container p {
+        margin: 5px;
     }
 
     .footer-item1 {
-        text-align: left;
-        padding-right: 3vw;
+        text-align: center;
+        padding: 0;
+        margin: 5px;
+
     }
 
     .footer-item2 {
-        text-align: left;
-        padding-right: 3vw;
+        text-align: center;
+        padding: 0;
+        margin: 5px;
+
+    }
+
+    .footer-item3 {
+        text-align: center;
+        padding: 0;
+        margin: 5px;
+
     }
 
     .footer-item4 {
-        text-align: right;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        margin: 5px;
+
+
     }
 
     .footer-item5 {
         text-align: center;
+        padding: 0;
+        padding-bottom: 5vw;
+
     }
 
     /* ALL EATERIES */
+
+
     .restaurant-list-top-buttons {
-        font-size: 1.2vh;
+        font-size: 3vw;
     }
 
     .restaurant-list-top-buttons span {
-        margin-left: 2%;
-        margin-right: 2%;
+        margin: 0 1.2%;
     }
 
     .restaurant-list-search {
-        margin-top: 15%;
+        margin: 5% 0 0 0;
+    }
 
+    .restaurant-list-search input{
+        margin: 0;
+        width: 80%;
     }
 
     .restaurant-list-sublist-item {
@@ -2528,7 +2666,7 @@ body p {
 
     /* SUSTAINABILITY */
     .sustainability-container {
-        margin-top: 18%;
+        margin-top: 5%;
     }
 
     /* ABOUT-WHO */
@@ -2540,7 +2678,7 @@ body p {
 
     /* ABOUT-HOW */
     .about-how-container {
-        margin-top: 18%;
+        margin-top: 5%;
     }
 
     /* LOGIN ERROR */
@@ -2567,6 +2705,18 @@ body p {
 
     .restaurant-detail-info {
         order: 3;
+        padding: 0 4vw;
+        text-align: center;
+    }
+    .restaurant-detail-info span{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .restaurant-detail-info a{
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .restaurant-detail-rating {
@@ -2585,29 +2735,35 @@ body p {
     .restaurant-detail-reviews {
         order: 7;
         margin-top: 2%;
-        height: 45vh;
+        /*height: 45vh;*/
+        height: max-content;
+        display: block;
 
     }
 
     .restaurant-detail-reviews h2 {
-        margin-left: -13%;
-
+        /*position: absolute;*/
+        transform: rotate(0deg);
+        /*margin-left: -13%;*/
+        text-align: center;
     }
 
     .restaurant-detail-reviews-list-input {
-        width: 40%;
-        height: 40vh;
-        margin-left: -9%;
-
+        /*display: block;*/
+        width: 96vw;
+        margin: 0;
+        /*height: 40vh;*/
+        /*margin-left: -9%;*/
     }
 
     .restaurant-detail-reviews-list-input button {
-        width: 90%;
-
+        /*width: 90%;*/
     }
 
     .restaurant-detail-reviews-list {
         z-index: 2;
+        border: 0;
+        border-top: solid 1px #888;
     }
 
     /* .restaurant-detail-reviews-list {
@@ -2617,7 +2773,7 @@ body p {
     } */
 
     .restaurant-detail-reviews-list-item {
-        width: 105%;
+        width: 93vw;
         height: 100%;
 
     }
@@ -2639,29 +2795,12 @@ body p {
 
 @media screen and (max-width: 375px) {
     /* HOMEPAGE */
-    .home-grid-main-form a {
-        height: 5vh;
-        text-align: center;
-    }
+    /*.home-grid-main-form a {*/
+    /*    height: 5vh;*/
+    /*    text-align: center;*/
+    /*}*/
 
-    /* DETAILED EATERY PAGE */
-    .restaurant-detail-reviews h2 {
-        margin-left: -16%;
 
-    }
-
-    .restaurant-detail-reviews-list {
-        z-index: 2;
-        margin: 1%;
-    }
-
-    .restaurant-detail-reviews-list-input {
-        width: 35%;
-    }
-
-    .restaurant-detail-reviews-list-item {
-        width: 107%;
-    }
 
 }
 
