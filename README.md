@@ -35,7 +35,7 @@ Supported features in this version are:
 1. Users can search for eateries:
 	- On the home page, there is a search bar function where users can begin to type a cafe name and if it's listed, it'll appear. (http://cafeco-app.herokuapp.com/dashboard)
 	- If the user clicks on 'All Eateries' in the navigation or 'View Complete List' on the home page, they can search or view a complete list of cafes partnered with CafeCo. (http://cafeco-app.herokuapp.com/restaurants)
-	- Routes: GET/restaurant (all restaurants), GET/restaurant/:restaurantID (gives the restaurant with the restaurant ID)
+	- Routes: GET /restaurant (all restaurants), GET /restaurant/:restaurantID (gives the restaurant with the restaurant ID)
 	- Controllers: retaurant_controller.js
 	- Models: restaurant.js
 	- Screens: Dashboard.js, RestaurantList.js
@@ -43,7 +43,7 @@ Supported features in this version are:
 
 2. Users can discover eateries:
 	- On the home page, under the 'Discover Eateries' tab, there is a map function. It lists cafes in a map view, if a user clicks the 'food' icon, it takes them to an about page on the chosen cafe. (http://cafeco-app.herokuapp.com/dashboard)
-	- Routes: GET/restaurant
+	- Routes: GET /restaurant
 	- Controllers: restaurant_controller.js
 	- Models: restaurant.js
 	- Screens: Dashboard.js
@@ -51,7 +51,7 @@ Supported features in this version are:
 
 3. Users can sign up:
 	- To sign up, users can register with a username & password by clicking the sign up button in the navbar. Once an account is created, 'My Profile' is added to the navbar. (http://cafeco-app.herokuapp.com/dashboard)
-	- Routes: POST/user
+	- Routes: POST /user
 	- Controllers: user_controller.js
 	- Models: user.js
 	- Screens: Dashboard.js
@@ -59,7 +59,7 @@ Supported features in this version are:
 
 4. Users can log in:
 	- Returning users can log in through the log in button.(http://cafeco-app.herokuapp.com/dashboard)
-	- Routes: POST/user/login
+	- Routes: POST /user/login
 	- Controllers: user_controller.js
 	- Models: user.js
 	- Screens: Dashboard.js
@@ -67,7 +67,7 @@ Supported features in this version are:
 
 5. Logged in users can save their favourite eateries:
 	- In the profile page for their specific cafes, in the 'about section' there is a star users can click, which saves the particular cafe under 'saved eateries' in the my profile section. (http://cafeco-app.herokuapp.com/user/undefined)
-	- Routes: PUT/user/:username/savedRestaurants
+	- Routes: PUT /user/:username/savedRestaurants
 	- Controllers: user_controller.js
 	- Models: user.js
 	- Screens: RestaurantDetails.js
@@ -75,7 +75,7 @@ Supported features in this version are:
 
 6. Logged in users can leave reviews for a cafe:
 	- In the profile page for their specific cafe, if users scroll down to the bottom, there is a review section. Users can write a small review & rate their eco-friendliness/experience. (http://cafeco-app.herokuapp.com/restaurant/auctionroom)
-	- Routes: PUT/restaurant/:id/review
+	- Routes: PUT /restaurant/:id/review
 	- Controllers: restaurant_controller.js
 	- Models: restaurant.js
 	- Screens: RestaurantDetails.js
@@ -123,6 +123,18 @@ Supported features in this version are:
 	- Models: restaurant.js
 	- Screens: PartnerDashbaord.js
 	- Components: PartnerEdit.js
+	
+13. Users can view information about sustainability:
+	- Under the "Sustainability" tab on the homepage. (http://cafeco-frontend.herokuapp.com/sustainability)
+	- Routes: GET /sustainability
+	- Screens: Sustainability.js
+	- Components: Navbar.js, Footer.js 
+	
+14. Users can view information about the website:
+	- Under the "About" tabs on the homepage. (http://cafeco-frontend.herokuapp.com/about/us) (http://cafeco-frontend.herokuapp.com/about/how)
+	- Routes: GET /about/us (about-who), GET/about/how (about-how)
+	- Screens: About.js, AboutHow.js
+	- Components: Navbar.js, Footer.js 
 
 
 ### Getting Started
