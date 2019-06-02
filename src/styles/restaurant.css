@@ -993,6 +993,10 @@
 
     /* MAIN CONTENTS */
     /* STATS */
+    .partner-stats-container {
+        height: 25vh;
+    }
+
     .partner-stats-container label {
         padding: 5% 0;
 
