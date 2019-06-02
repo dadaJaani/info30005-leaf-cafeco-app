@@ -993,9 +993,11 @@
 
     /* MAIN CONTENTS */
     /* STATS */
-    .partner-stats-container {
-        height: 25vh;
+    .partner-stats-container div{
+        flex-flow: column wrap;
+        height: max-content;
     }
+
 
     .partner-stats-container label {
         padding: 5% 0;

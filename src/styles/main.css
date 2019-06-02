@@ -2383,7 +2383,7 @@ body p {
 
     .navbar-button {
         margin-left: 0;
-        margin-right: 4%;
+        margin-right: 5%;
     }
 
     .navbar-button-about {
@@ -2392,11 +2392,11 @@ body p {
     }
 
     #login-button {
-        margin-left: 4%;
+        margin-left: 5%;
     }
 
     .navbar-button-logout {
-        margin-left: 4%;
+        margin-left: 5%;
         margin-right: 0;
     }
 
@@ -2412,9 +2412,19 @@ body p {
         grid-template-rows: 30% 13% 55% 10%;
     }
 
+    .home-grid-featured-item-info {
+        font-size: 0.7em;
+    }
+
     .home-grid-featured {
         padding-top: 3%;
+
     }
+
+    .navbar-about-list {
+        margin-left: -11%;
+    }
+
 
     /* LOGIN */
     .login-container1 {
