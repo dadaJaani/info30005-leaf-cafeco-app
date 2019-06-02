@@ -993,9 +993,10 @@
 
     /* MAIN CONTENTS */
     /* STATS */
-    .partner-stats-container div{
-        flex-flow: column wrap;
-        height: max-content;
+    .partner-stats-container {
+        display: grid;
+        text-align: center;
+        height: 25vh;
     }
 
 
